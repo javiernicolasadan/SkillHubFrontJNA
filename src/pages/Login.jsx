@@ -1,9 +1,12 @@
-import { useState } from "react"
-/* import { useNavigate } from "react-router-dom" */
+import { useContext, useState } from "react"
+import { SessionContext } from "../contexts/SessionContext"
+import { Link, useNavigate } from "react-router-dom"
     
 
 export default function Login() {
-    /* const navigate = useNavigate() */
+    const {setToken} = useContext(SessionContext)
+
+    const navigate = useNavigate()
     const [user, setUser] = useState({
         email: '',
         password: ''
@@ -21,11 +24,14 @@ export default function Login() {
         })
         if(response.status === 200){
             const tokenFromResp = await response.json()
-            console.log(tokenFromResp)
+            setToken(tokenFromResp)
+            navigate('/profile')
         }
     }
 
   return (
+    <>
+    <Link to={'/profile'}>Profile Page</Link>
     <form onSubmit={handleSubmit}>
         <div className="authField">
             <label>Email: </label>
@@ -41,5 +47,6 @@ export default function Login() {
         <button type="submit">Log In</button>
 
     </form>
+    </>
   )
 }
