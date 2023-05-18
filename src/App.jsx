@@ -4,6 +4,8 @@ import Navbar from './components/Navbar'
 import Homepage from './pages/Homepage'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
+import AddSkill from './pages/AddSkill'
+import AddEvent from './pages/AddEvent'
 
 function App() {
 
@@ -14,7 +16,10 @@ function App() {
       <Routes>
         <Route path='/' element={<Homepage/>}/>
         <Route path='/signup' element={<Signup/>}/>
-        <Route path='/signup' element={<Login/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/addskill' element={<AddSkill/>} />
+        <Route path='/addevent' element={<AddEvent/>}/>
+        
       </Routes>
     </>
   )
