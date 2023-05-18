@@ -12,11 +12,15 @@ export default function Signup() {
 
     const handleSubmit = async(event)=>{
         event.preventDefault()
+        
         const response = await fetch('http://localhost:5005/auth/signup', {
-        method:'POST', headers:{
+        method:'POST', 
+        headers:{
             "Content-Type": "application/json"
-        }, body: JSON.stringify({email: newUser.email, username:newUser.username, password:newUser.password})
+        }, 
+        body: JSON.stringify({email: newUser.email, username:newUser.username, password:newUser.password})
     })
+    console.log(response)
     if(response.status===201){
         navigate('/login')
     }
