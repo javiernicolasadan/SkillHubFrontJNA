@@ -1,6 +1,8 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function Signup() {
+    const navigate = useNavigate()
     const [newUser, setNewUser] = useState({
         email: '',
         username: '',
@@ -8,9 +10,20 @@ export default function Signup() {
     })
 
 
-    const handleSubmit = (event)=>{
+    const handleSubmit = async(event)=>{
         event.preventDefault()
-        console.log(newUser.email, newUser.password, newUser.username)
+        
+        const response = await fetch('http://localhost:5005/auth/signup', {
+        method:'POST', 
+        headers:{
+            "Content-Type": "application/json"
+        }, 
+        body: JSON.stringify({email: newUser.email, username:newUser.username, password:newUser.password})
+    })
+    console.log(response)
+    if(response.status===201){
+        navigate('/login')
+    }
     }
 
 

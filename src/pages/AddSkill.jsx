@@ -1,16 +1,34 @@
 import { useState } from "react"
+import { useNavigate } from "react-router"
 
 export default function AddSkill() {
 
     const [newCategory, setCategory] = useState("Other")
     const [newTitle, setTitle] = useState("")
     const [newDescription, setDescription] = useState("")
+    const navigate= useNavigate()
 
-    const handleSubmit = (e) => {
+
+      const handleSubmit = async (e) => {
         e.preventDefault()
-        
-        console.log("New Skill created:", newCategory, newTitle, newDescription)
+        const payload = {category: newCategory, title: newTitle, details: newDescription }
+        console.log(payload)
+        try {
+         const response = await fetch('http://localhost:5005/skill/create', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload)
+          })
+          if (response.status === 201) {
+            const newSkill = await response.json()
+            navigate(`/skill/${newSkill._id}`)
+          }
+        } catch (error) {
+         console.log(error) 
+        }
       }
+
 
   return (
     <form onSubmit={handleSubmit}>
