@@ -6,6 +6,8 @@ import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
 import PrivateRoute from './components/PrivateRoute'
+import AddSkill from './pages/AddSkill'
+import AddEvent from './pages/AddEvent'
 
 function App() {
 
@@ -19,6 +21,10 @@ function App() {
         <Route path='/login' element={<Login/>}/>
 
         <Route path='/profile' element={<PrivateRoute><Profile/></PrivateRoute>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/addskill' element={<AddSkill/>} />
+        <Route path='/addevent' element={<AddEvent/>}/>
+        
       </Routes>
     </>
   )
