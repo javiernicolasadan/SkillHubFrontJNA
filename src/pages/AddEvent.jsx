@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router"
 
 export default function AddEvent() {
 
@@ -6,10 +7,26 @@ export default function AddEvent() {
     const  [newDate, setDate] = useState("")
     const  [newLocationType, setLocatioType] = useState("online")
     const  [newDescription, setDescription] = useState("")
+    const navigate= useNavigate()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log("New Event created:", newTitle, newDate, newLocationType, newDescription)
+        const payload = {title: newTitle, description: newDescription, date: newDate, locationType: newLocationType}
+        console.log(payload)
+         try {
+         const response = await fetch('http://localhost:5005/event/create', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload)
+          })
+          if (response.status === 201) {
+            const newEvent = await response.json()
+            navigate(`/eventdets/${newEvent._id}`)
+          }
+        } catch (error) {
+         console.log(error) 
+        } 
       }
 
   return (

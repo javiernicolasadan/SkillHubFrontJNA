@@ -25,7 +25,7 @@ function App() {
         <Route path='/profile' element={<PrivateRoute><Profile/></PrivateRoute>}/>
         <Route path='/allskills' element={<AllSkills/>} />
         <Route path='/addskill' element={<PrivateRoute><AddSkill/></PrivateRoute>} />
-        <Route path='/addevent' element={<PrivateRoute><AddEvent/></PrivateRoute>}/>
+        <Route path='/addevent' element={<AddEvent/>}/>
         <Route path='/skilldets/:skillid' element={<PrivateRoute><SkillDetails/></PrivateRoute>}/>
         <Route path='/eventdets/:eventid' element={<PrivateRoute><EventDetails/></PrivateRoute>}/>
 
