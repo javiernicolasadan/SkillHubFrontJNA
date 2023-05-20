@@ -1,6 +1,6 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+
 
 export default function AddSkill({ isUpdating = false, skillid }) {
   const [newCategory, setCategory] = useState("Other");
@@ -14,6 +14,7 @@ export default function AddSkill({ isUpdating = false, skillid }) {
       category: newCategory,
       title: newTitle,
       details: newDescription,
+
     };
     console.log(payload);
     try {
@@ -96,4 +97,3 @@ export default function AddSkill({ isUpdating = false, skillid }) {
     </>
   );
 }
-
