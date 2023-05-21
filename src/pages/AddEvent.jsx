@@ -14,15 +14,18 @@ export default function AddEvent() {
         const payload = {title: newTitle, description: newDescription, date: newDate, locationType: newLocationType}
         console.log(payload)
          try {
-         const response = await fetch('http://localhost:5005/event/create', {
+         const response = await fetch('http://localhost:5005/event/create',  {
             method: 'POST',
             headers: {'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(payload)
-          })
+          }, 
+          body: JSON.stringify(payload),
+        
+          
+          }) 
           if (response.status === 201) {
             const newEvent = await response.json()
             navigate(`/eventdets/${newEvent._id}`)
+                        
           }
         } catch (error) {
          console.log(error) 
@@ -31,6 +34,7 @@ export default function AddEvent() {
 
   return (
     <form onSubmit={handleSubmit}>
+    
        <div>
          <label>Event Title:</label>
          <input type="text" name="title" value={newTitle} onChange={(e) => setTitle(e.target.value)} required></input>
