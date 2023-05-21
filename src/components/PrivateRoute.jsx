@@ -4,27 +4,22 @@ import { Navigate } from "react-router-dom";
 
 export default function PrivateRoute({children}) {
   const { isLoggedIn, isLoading } = useContext(SessionContext);
-  const [showMessage, setShowMessage] = useState(false);
+  const [showMessage, setShowMessage] = useState(true);
   const [redirect, setRedirect] = useState(false);
-  const [isInitialLoad, setIsInitialLoad] = useState(true)
 
   useEffect(() => {
-    if (!isInitialLoad && !isLoggedIn) {
-      setShowMessage(true);
+    if (!isLoading && !isLoggedIn) {
       setTimeout(() => {
         setShowMessage(false);
         setRedirect(true);
       }, 4000);
+    }else{
+      setShowMessage(false)
     }
-  }, [isLoggedIn, isInitialLoad]);
-
-  useEffect(()=>{
-    if(!isLoading){
-        setIsInitialLoad(false)
-    }
-  },[isLoading])
+  }, [isLoggedIn, isLoading]);
 
   if (redirect) {
+    setRedirect(false)
     return <Navigate to="/login" />;
   }
 

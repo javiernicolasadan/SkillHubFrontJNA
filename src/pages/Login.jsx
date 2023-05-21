@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
     
 
 export default function Login() {
-    const {setToken} = useContext(SessionContext)
+    const {setToken, setIsLoggedIn} = useContext(SessionContext)
 
     const navigate = useNavigate()
     const [user, setUser] = useState({
@@ -25,6 +25,7 @@ export default function Login() {
         if(response.status === 200){
             const tokenFromResp = await response.json()
             setToken(tokenFromResp)
+            setIsLoggedIn(true)
             navigate('/profile')
         }
     }

@@ -15,7 +15,8 @@ const SessionContextProvider = ({children}) => {
             }
         })
         if(response.status === 200){
-            const parsed = await response.json()
+            await response.json()
+            localStorage.setItem('authToken', currentToken)
             setToken(currentToken)
             setIsLoggedIn(true)
         }
@@ -26,10 +27,10 @@ const SessionContextProvider = ({children}) => {
         if (token) {
           localStorage.setItem('authToken', token);
           setIsLoggedIn(true);
-        } else {
+        } /* else {
           localStorage.removeItem('authToken');
           setIsLoggedIn(false);
-        }
+        } */
       }, [token]);
 
     useEffect(()=>{
@@ -52,7 +53,7 @@ const SessionContextProvider = ({children}) => {
 
 
     return (
-    <SessionContext.Provider value={{token, setToken, isLoggedIn, isLoading, logout}}>{children}</SessionContext.Provider>
+    <SessionContext.Provider value={{token, setToken, isLoggedIn, isLoading, logout, setIsLoggedIn}}>{children}</SessionContext.Provider>
     )
   }
 

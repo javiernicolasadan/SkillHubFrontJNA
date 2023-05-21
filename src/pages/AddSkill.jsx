@@ -31,6 +31,7 @@ export default function AddSkill() {
 
 
   return (
+    <>
     <form onSubmit={handleSubmit}>
        <div>
          <label>Category:</label>
@@ -62,6 +63,7 @@ export default function AddSkill() {
        </div>
 
     </form>
+    </>
     
   )
 }
