@@ -2,10 +2,7 @@ import { useEffect, useState } from "react"
 
 export default function AllSkills() {
     const [selectedCategory, setSelectedCategory] = useState('All')
-
-    /* useEffect(()=>{
-        console.log(selectedCategory)
-    },[selectedCategory]) */
+    const [skills, setSkills] = useState()
 
     const fetchData = async()=>{
         try {
@@ -17,7 +14,7 @@ export default function AllSkills() {
             const response = await fetch(url)
             if (response.status===200){
                 const parsed = await response.json()
-                console.log(parsed)
+                setSkills(parsed)
             }
         } catch (error) {
             console.log(error)
@@ -47,7 +44,19 @@ export default function AllSkills() {
         </div>
 
         <div>
-            <p>skills here</p>
+            {!skills ? 
+                <p>Loading...</p>
+            : skills.length===0?
+            <p>No skills to show</p>
+            :
+            skills.map((eachSkill)=>(
+                <div key={eachSkill._id}>
+                    <p>{eachSkill.title}</p>
+                </div>
+               
+            ))
+            }
+            
         </div>
         
     </>
