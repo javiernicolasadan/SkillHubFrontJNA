@@ -1,8 +1,10 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { SessionContext } from "../contexts/SessionContext";
 
 export default function SkillDetails() {
   const { skillid } = useParams();
+  const { currentUser } = useContext(SessionContext);
   const [skill, setSkill] = useState();
   const navigate = useNavigate()
 
@@ -22,9 +24,9 @@ export default function SkillDetails() {
       fetchSkill()
     },[])
 
-    useEffect(()=>{
+    /* useEffect(()=>{
       console.log(skill)
-    },[skill])
+    },[skill]) */
   
 
 const handleDelete = async () => {
@@ -39,6 +41,17 @@ const handleDelete = async () => {
     console.log(error)
     
   }
+}
+
+const handleSubs = async(eventId)=>{
+  const response = await fetch(`http://localhost:5005/event/subscribe/${eventId}`,{
+    method: 'POST',
+    headers:{
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({userId: currentUser._id})
+  }
+  )
 }
 
   return (
@@ -59,11 +72,11 @@ const handleDelete = async () => {
             <div key={eachEvent._id} className="eventDiv">
               <h4>{eachEvent.title}</h4>
               <p>{eachEvent.locationType}</p>
-              <p>{eachEvent.description}</p>
+              <Link to={`/eventdets/${eachEvent._id}`}>More details</Link>
+              <button onClick={() => (handleSubs(eachEvent._id))}>Subscribe</button>
             </div>)
           })}
           </>
-          
         
         ):(
         

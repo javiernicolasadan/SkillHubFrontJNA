@@ -59,7 +59,7 @@ export default function AddEvent() {
     <>
     <h2>Category: {selectedSkill.category}</h2>
     <h3>{selectedSkill.title}</h3>
-    <h3>Created by: {currentUser}</h3>
+    <h3>Created by: {currentUser.username}</h3>
     </>
     :
     <p>Loading...</p>}

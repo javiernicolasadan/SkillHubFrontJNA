@@ -20,7 +20,7 @@ const SessionContextProvider = ({children}) => {
             localStorage.setItem('authToken', currentToken)
             setToken(currentToken)
             setIsLoggedIn(true)
-            setCurrentUser(data.user.username)
+            setCurrentUser(data.user)
             /* console.log("User Info:", data.user) */
         }
         setIsLoading(false)

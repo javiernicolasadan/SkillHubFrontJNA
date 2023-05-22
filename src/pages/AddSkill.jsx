@@ -15,7 +15,7 @@ export default function AddSkill({ isUpdating = false, skillid }) {
       category: newCategory,
       title: newTitle,
       details: newDescription,
-      createdBy: currentUser,
+      createdBy: currentUser.username,
     };
     try {
       let response;
