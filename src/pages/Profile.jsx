@@ -12,7 +12,7 @@ export default function Profile() {
  
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('http://localhost:5005/event/events')
+      const response = await axios.get('http://localhost:5005/event')
       const data = response.data
       
       const filteredPastEvents = data.events.filter(

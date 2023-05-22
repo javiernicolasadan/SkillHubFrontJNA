@@ -12,6 +12,7 @@ import SkillDetails from './pages/SkillDetails'
 import EventDetails from './pages/EventDetails'
 import AllSkills from './pages/AllSkills'
 import UpdateEvent from './pages/UpdateEvent'
+import AllEvents from './pages/AllEvents'
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path='/skilldets/:skillid' element={<SkillDetails/>}/>
         <Route path='/eventdets/:eventId' element={<EventDetails/>}/>
         <Route path='/updateevent/:eventId' element={<UpdateEvent/>}/>
+        <Route path='/allevents' element={<AllEvents/>}/>
 
         
       </Routes>
