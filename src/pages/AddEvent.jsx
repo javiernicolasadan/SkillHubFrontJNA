@@ -8,7 +8,7 @@ export default function AddEvent() {
     const  [newDate, setDate] = useState("")
     const  [newLocationType, setLocatioType] = useState("online")
     const  [newDescription, setDescription] = useState("")
-    /* const  [skillTitles, setSkillTitles] = useState([]) */
+    
     const navigate= useNavigate()
 
     const handleSubmit = async (e) => {
@@ -34,21 +34,6 @@ export default function AddEvent() {
          console.log(error) 
         } 
       }
- /*    const getSkillTitles = async () => {
-        try {
-          const response = await axios.get(
-            `http://localhost:5005/skill/eventskills/${eventId}`
-          );
-          setSkillTitles(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-      useEffect(() => {
-        
-        getSkillTitles();
-      }, []); */
       
 
   return (
@@ -72,16 +57,7 @@ export default function AddEvent() {
          </select>
        </div>
 
-   {/*     <div>
-        <label>Skills:</label>
-        <select>
-          {skillTitles.map((title) => (
-            <option key={title} value={title}>
-              {title}
-            </option>
-          ))}
-        </select>
-      </div> */}
+    
 
        <div>
         <label>Description:</label>
