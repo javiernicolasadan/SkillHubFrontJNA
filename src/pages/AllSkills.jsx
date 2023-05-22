@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 export default function AllSkills() {
     const [selectedCategory, setSelectedCategory] = useState('All')
@@ -50,9 +51,9 @@ export default function AllSkills() {
             <p>No skills to show</p>
             :
             skills.map((eachSkill)=>(
-                <div key={eachSkill._id}>
+                <Link to={`/skilldets/${eachSkill._id}`} key={eachSkill._id}>
                     <p>{eachSkill.title}</p>
-                </div>
+                </Link>
                
             ))
             }

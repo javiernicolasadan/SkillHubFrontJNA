@@ -7,6 +7,7 @@ const SessionContextProvider = ({children}) => {
     const [token, setToken] = useState()
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const [currentUser, setCurrentUser] = useState()
 
     const verifyToken=async(currentToken)=>{
         const response = await fetch('http://localhost:5005/auth/verify',{
@@ -15,10 +16,12 @@ const SessionContextProvider = ({children}) => {
             }
         })
         if(response.status === 200){
-            await response.json()
+            const data = await response.json()
             localStorage.setItem('authToken', currentToken)
             setToken(currentToken)
             setIsLoggedIn(true)
+            setCurrentUser(data.user.username)
+            /* console.log("User Info:", data.user) */
         }
         setIsLoading(false)
     }
@@ -53,7 +56,7 @@ const SessionContextProvider = ({children}) => {
 
 
     return (
-    <SessionContext.Provider value={{token, setToken, isLoggedIn, isLoading, logout, setIsLoggedIn}}>{children}</SessionContext.Provider>
+    <SessionContext.Provider value={{token, setToken, isLoggedIn, isLoading, logout, setIsLoggedIn, currentUser}}>{children}</SessionContext.Provider>
     )
   }
 
