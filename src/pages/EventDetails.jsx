@@ -6,6 +6,7 @@ export default function EventDetails() {
   const  { eventId }  = useParams();
   const [ oneEvent, setOneEvent] = useState()
   const navigate = useNavigate()
+  
 
   const getDetails = async () => {
     try {
