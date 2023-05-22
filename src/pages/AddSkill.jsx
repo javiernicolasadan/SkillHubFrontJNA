@@ -22,7 +22,7 @@ export default function AddSkill() {
           })
           if (response.status === 201) {
             const newSkill = await response.json()
-            navigate(`/skill/${newSkill._id}`)
+            navigate(`/skilldets/${newSkill._id}`)
           }
         } catch (error) {
          console.log(error) 
