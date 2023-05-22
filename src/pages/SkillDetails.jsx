@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 export default function SkillDetails() {
   const { skillid } = useParams();
   const navigate = useNavigate()
-  console.log(skillid);
   const [skill, setSkill] = useState();
 
   const fetchSkill = async () => {
@@ -12,7 +11,6 @@ export default function SkillDetails() {
       const response = await fetch(`http://localhost:5005/skill/${skillid}`);
       if (response.status === 200) {
         const parsed = await response.json();
-        console.log(parsed);
         setSkill(parsed);
       }
     } catch (error) {
@@ -24,9 +22,9 @@ export default function SkillDetails() {
     fetchSkill();
   }, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     console.log(skill);
-  }, [skill]);
+  }, [skill]); */
 
 
 const handleDelete = async () => {
@@ -51,6 +49,7 @@ const handleDelete = async () => {
           <h2>{skill.details}</h2>
           <Link to={`/update/${skillid}`}> Update </Link>
          <button type="button" onClick={handleDelete}> Delete </button>
+         <Link to={`/addevent/${skillid}`}>Add event</Link>
         </div>
       ) : (
         <h3>Loading...</h3>

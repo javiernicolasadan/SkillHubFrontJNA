@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
-
+import { SessionContext } from "../contexts/SessionContext";
 
 export default function AddSkill({ isUpdating = false, skillid }) {
+  const { currentUser } = useContext(SessionContext);
   const [newCategory, setCategory] = useState("Other");
   const [newTitle, setTitle] = useState("");
   const [newDescription, setDescription] = useState("");
@@ -14,16 +15,24 @@ export default function AddSkill({ isUpdating = false, skillid }) {
       category: newCategory,
       title: newTitle,
       details: newDescription,
-
+      createdBy: currentUser,
     };
-    console.log(payload);
     try {
-      const response = await fetch("http://localhost:5005/skill/create", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (response.status === 201) {
+      let response;
+      if (isUpdating && skillid) {
+        response = await fetch(`http://localhost:5005/skill/${skillid}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+      } else {
+        response = await fetch("http://localhost:5005/skill/create", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+      }
+      if (response.status === 201 || response.status === 200) {
         const newSkill = await response.json();
         navigate(`/skilldets/${newSkill._id}`);
       }
@@ -31,26 +40,6 @@ export default function AddSkill({ isUpdating = false, skillid }) {
       console.log(error);
     }
   };
-
-  const fetchSkill = async () => {
-    try {
-      const response = await fetch(`http://localhost:5005/skill/${skillid}`);
-      if (response.status === 200) {
-        const skill = await response.json();
-        setTitle(skill.title);
-        setCategory(skill.category);
-        setDescription(skill.details);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    if (isUpdating && skillid) {
-      fetchSkill();
-    }
-  }, [isUpdating, skillid]);
 
   return (
     <>
