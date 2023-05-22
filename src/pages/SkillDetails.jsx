@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 
 export default function SkillDetails() {
   const { skillid } = useParams();
-  const navigate = useNavigate()
   const [skill, setSkill] = useState();
+  const navigate = useNavigate()
 
   const fetchSkill = async () => {
     try {
@@ -17,15 +17,15 @@ export default function SkillDetails() {
       console.log(error);
     }
   };
+    
+    useEffect(()=>{
+      fetchSkill()
+    },[])
 
-  useEffect(() => {
-    fetchSkill();
-  }, []);
-
-  /* useEffect(() => {
-    console.log(skill);
-  }, [skill]); */
-
+    useEffect(()=>{
+      console.log(skill)
+    },[skill])
+  
 
 const handleDelete = async () => {
   try {
@@ -44,16 +44,38 @@ const handleDelete = async () => {
   return (
     <>
       {skill ? (
-        <div>
-          <h1>Details of {skill.title}</h1>
+      <div>
+      <h1>Details of {skill.title}</h1>
           <h2>{skill.details}</h2>
           <Link to={`/update/${skillid}`}> Update </Link>
          <button type="button" onClick={handleDelete}> Delete </button>
          <Link to={`/addevent/${skillid}`}>Add event</Link>
-        </div>
+        
+        {skill.events.length > 0 ? (
+          <>
+          <h3>Events</h3>
+          {skill.events.map((eachEvent)=>{
+            return (
+            <div key={eachEvent._id} className="eventDiv">
+              <h4>{eachEvent.title}</h4>
+              <p>{eachEvent.locationType}</p>
+              <p>{eachEvent.description}</p>
+            </div>)
+          })}
+          </>
+          
+        
+        ):(
+        
+          <p>No events to show</p>
+        )}
+      </div>
+
       ) : (
-        <h3>Loading...</h3>
-      )}
+
+      <p>Loading...</p>
+      )
+      }
     </>
   );
 }
