@@ -35,7 +35,7 @@ const handleDelete = async () => {
       method: 'DELETE',
     })
     if (response.status === 200) {
-      navigate('/')
+      navigate('/allSkills')
     }
   } catch (error) {
     console.log(error)
