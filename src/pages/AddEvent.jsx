@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { useNavigate } from "react-router"
+/* import { axios } from "axios" */
 
 export default function AddEvent() {
 
@@ -6,14 +8,52 @@ export default function AddEvent() {
     const  [newDate, setDate] = useState("")
     const  [newLocationType, setLocatioType] = useState("online")
     const  [newDescription, setDescription] = useState("")
+    /* const  [skillTitles, setSkillTitles] = useState([]) */
+    const navigate= useNavigate()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log("New Event created:", newTitle, newDate, newLocationType, newDescription)
+        const payload = {
+          title: newTitle, 
+          description: newDescription,
+          date: newDate, 
+          locationType: newLocationType}
+        
+         try {
+         const response = await fetch('http://localhost:5005/event/create',  {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json',
+          }, 
+          body: JSON.stringify(payload),
+          }) 
+          if (response.status === 201) {
+            const newEvent = await response.json()
+            navigate(`/eventdets/${newEvent._id}`)
+          }
+        } catch (error) {
+         console.log(error) 
+        } 
       }
+ /*    const getSkillTitles = async () => {
+        try {
+          const response = await axios.get(
+            `http://localhost:5005/skill/eventskills/${eventId}`
+          );
+          setSkillTitles(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      useEffect(() => {
+        
+        getSkillTitles();
+      }, []); */
+      
 
   return (
     <form onSubmit={handleSubmit}>
+    
        <div>
          <label>Event Title:</label>
          <input type="text" name="title" value={newTitle} onChange={(e) => setTitle(e.target.value)} required></input>
@@ -31,6 +71,17 @@ export default function AddEvent() {
             <option value="in-person">In-Person</option>
          </select>
        </div>
+
+   {/*     <div>
+        <label>Skills:</label>
+        <select>
+          {skillTitles.map((title) => (
+            <option key={title} value={title}>
+              {title}
+            </option>
+          ))}
+        </select>
+      </div> */}
 
        <div>
         <label>Description:</label>
