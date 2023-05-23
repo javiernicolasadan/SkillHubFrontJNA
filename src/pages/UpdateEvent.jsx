@@ -15,7 +15,7 @@ export default function UpdateEvent() {
   const getEventDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5005/event/eventdets/${eventId}`
+          `${import.meta.env.VITE_BASE_API_URL}/event/eventdets/${eventId}`
         );
         const event = response.data
         setUpdatedTitle(event.title)
@@ -42,7 +42,7 @@ export default function UpdateEvent() {
     console.log(payload)
     try {
       const response = await axios.put(
-        `http://localhost:5005/event/updateevent/${eventId}`,
+        `http://${import.meta.env.VITE_BASE_API_URL}/event/updateevent/${eventId}`,
         payload
       );
       if (response.status === 200) {

@@ -12,7 +12,7 @@ export default function EventDetails() {
   const getDetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5005/event/eventdets/${eventId}`
+        `${import.meta.env.VITE_BASE_API_URL}/event/eventdets/${eventId}`
       );
       setOneEvent(response.data);
     } catch (error) {
@@ -30,7 +30,7 @@ export default function EventDetails() {
 
   const handleDeleteEvent = async () => {
     try {
-      await axios.delete(`http://localhost:5005/event/deleteevent/${eventId}`);
+      await axios.delete(`${import.meta.env.VITE_BASE_API_URL}/event/deleteevent/${eventId}`);
       navigate("/allskills"); 
     } catch (error) {
       console.log(error);

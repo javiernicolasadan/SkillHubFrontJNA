@@ -10,6 +10,7 @@ export default function Navbar() {
       <Link to={"/"}>Home</Link>
       {isLoggedIn && <Link to="/profile">Profile</Link>}
       {isLoggedIn && <Link to="/allskills">Skills Venue</Link>}
+      {isLoggedIn && <Link to="/allevents">Events Venue</Link>}
     </nav>
   );
 }

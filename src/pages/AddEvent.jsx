@@ -15,7 +15,7 @@ export default function AddEvent() {
     const navigate= useNavigate()
 
     const fetchSkillData = async()=>{
-      const response = await fetch(`http://localhost:5005/skill/${skillid}`)
+      const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/${skillid}`)
       if(response.status === 200){
         const parsed = await response.json()
         setSelectedSkill(parsed)
@@ -39,7 +39,7 @@ export default function AddEvent() {
         
        
          try {
-         const response = await axios.post('http://localhost:5005/event/create', fData 
+         const response = await axios.post(`${import.meta.env.VITE_BASE_API_URL}/event/create`, fData 
                               
           ) 
           if (response.status === 201) {

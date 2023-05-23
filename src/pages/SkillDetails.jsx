@@ -6,14 +6,16 @@ const currentDate = new Date()
 export default function SkillDetails() {
   const { skillid } = useParams();
   const { currentUser } = useContext(SessionContext);
+  console.log(currentUser)
   const [skill, setSkill] = useState();
   const navigate = useNavigate()
   const [upcomingEvents, setUpcomingEvents] = useState()
   const [pastEvents, setPastEvents] = useState([]);
+  /* const [subsEvents, setSubsEvents] = useState([]) */
 
   const fetchSkill = async () => {
     try {
-      const response = await fetch(`http://localhost:5005/skill/${skillid}`);
+      const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/skill/${skillid}`);
       if (response.status === 200) {
         const parsed = await response.json();
         setSkill(parsed);
@@ -41,6 +43,16 @@ export default function SkillDetails() {
       fetchSkill()
     },[])
 
+   /*  useEffect(()=>{
+      if(currentUser){
+        setSubsEvents(currentUser.subscribedEvents)
+      }
+    },[currentUser]) */
+
+   /*  useEffect(()=>{
+      console.log(subsEvents)
+    },[subsEvents]) */
+
     /* useEffect(()=>{
       console.log(skill)
     },[skill]) */
@@ -48,7 +60,7 @@ export default function SkillDetails() {
 
 const handleDelete = async () => {
   try {
-    const response = await fetch(`http://localhost:5005/skill/${skillid}`, {
+    const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/skill/${skillid}`, {
       method: 'DELETE',
     })
     if (response.status === 200) {
@@ -61,7 +73,9 @@ const handleDelete = async () => {
 }
 
 const handleSubs = async(eventId)=>{
-  const response = await fetch(`http://localhost:5005/event/subscribe/${eventId}`,{
+  /* const isSubscribed = currentUser.subscribedEvents.includes(eventId)
+  console.log(isSubscribed) */
+  const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/event/subscribe/${eventId}`,{
     method: 'POST',
     headers:{
       'Content-Type': 'application/json'
@@ -89,6 +103,7 @@ const handleSubs = async(eventId)=>{
                 <p>{eachEvent.locationType}</p>
                 <Link to={`/eventdets/${eachEvent._id}`}>More details</Link>
                 <button onClick={() => (handleSubs(eachEvent._id))}>Subscribe</button>
+                <button onClick={() => (handleSubs(eachEvent._id))}>Unsubscribe</button>
               </div>
             ))
           ) : (
@@ -103,6 +118,7 @@ const handleSubs = async(eventId)=>{
                 <p>{eachEvent.locationType}</p>
                 <Link to={`/eventdets/${eachEvent._id}`}>More details</Link>
                 <button onClick={() => (handleSubs(eachEvent._id))}>Subscribe</button>
+                <button onClick={() => (handleSubs(eachEvent._id))}>Unsubscribe</button>
               </div>
             ))
           ) : (
