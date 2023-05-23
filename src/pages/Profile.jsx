@@ -42,13 +42,25 @@ export default function Profile() {
       <Link to="/addskill">Add skill</Link>
 
       <div>
-        <h1>My Skills:</h1>
-        {currentUser.skills.map((skill) => (
+  {currentUser ? (
+    <>
+      <h1>My Skills:</h1>
+      {currentUser.skills.length > 0 ? (
+        currentUser.skills.map((skill) => (
           <div key={skill._id}>
             <h4>{skill.title}</h4>
           </div>
-        ))}
-      </div>
+        ))
+      ) : (
+        <p>No skills to show</p>
+      )}
+    </>
+  ) : (
+    <p>Loading...</p>
+  )}
+</div>
+
+
 
       <div>
         <h3>Upcoming Events:</h3>
