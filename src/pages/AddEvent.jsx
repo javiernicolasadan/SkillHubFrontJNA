@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router"
 import { SessionContext } from "../contexts/SessionContext"
-/* import { axios } from "axios" */
+import  axios  from "axios"
 
 export default function AddEvent() {
 
@@ -24,47 +24,53 @@ export default function AddEvent() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const payload = {
-          title: newTitle, 
-          description: newDescription,
-          date: newDate, 
-          locationType: newLocationType,
-          skillTitle: selectedSkill.title,
-          skillid:selectedSkill._id}
         
+        const fData = new FormData() 
+        const image = e.target.imageUrl.files[0]
+        fData.append("title", newTitle )
+        fData.append("date", newDate)
+        fData.append("locationType", newLocationType)
+        fData.append("description", newDescription)
+        fData.append("imageUrl", image)
+        fData.append("skillTitle", selectedSkill.title )
+        fData.append("skillid", selectedSkill._id )
+        
+          console.log(fData)
+        
+       
          try {
-         const response = await fetch('http://localhost:5005/event/create',  {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json',
-          }, 
-          body: JSON.stringify(payload),
-          }) 
+         const response = await axios.post('http://localhost:5005/event/create', fData 
+                              
+          ) 
           if (response.status === 201) {
-            const newEvent = await response.json()
+            /* const newEvent = await response.json() */
+            console.log(response.data)
+            const newEvent = response.data
             navigate(`/eventdets/${newEvent._id}`)
+            
           }
         } catch (error) {
          console.log(error) 
         } 
-      }
+      } 
 
       useEffect(()=>{
         fetchSkillData()
-      },[])
+      },[]) 
       
 
   return (
     <>
-    {selectedSkill ?
+    {/* {selectedSkill ?
     <>
     <h2>Category: {selectedSkill.category}</h2>
     <h3>{selectedSkill.title}</h3>
     <h3>Created by: {currentUser.username}</h3>
     </>
     :
-    <p>Loading...</p>}
+    <p>Loading...</p>} */}
 
-    <form onSubmit={handleSubmit}>
+    <form encType="multipart/form-data" onSubmit={handleSubmit}>
        <div>
          <label>Event Title:</label>
          <input type="text" name="title" value={newTitle} onChange={(e) => setTitle(e.target.value)} required></input>
@@ -86,6 +92,13 @@ export default function AddEvent() {
        <div>
         <label>Description:</label>
         <textarea type="text" name="description" value={newDescription} onChange={(e) => setDescription(e.target.value)} required></textarea>
+       </div>
+
+       <div>
+        <label>
+          <input type="file" accept="image/jpg image/png" name="imageUrl" />
+        </label>
+
        </div>
 
        <div>

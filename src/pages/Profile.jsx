@@ -1,15 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import axios from "axios";
+import { Link } from "react-router-dom";
 const currentDate = new Date()
 
 
 export default function Profile() {
 
-  const {logout} = useContext(SessionContext)
+  const { logout, currentUser } = useContext(SessionContext)
   const [pastEvents, setPastEvents] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
- 
+
+  console.log(currentUser)
   const fetchEvents = async () => {
     try {
       const response = await axios.get('http://localhost:5005/event')
@@ -37,8 +39,16 @@ export default function Profile() {
     <>
       <div>Profile</div>
       <button type='button' onClick={logout}>Log Out</button>
-      
-      
+      <Link to="/addskill">Add skill</Link>
+
+      <div>
+        <h1>My Skills:</h1>
+        {currentUser.skills.map((skill) => (
+          <div key={skill._id}>
+            <h4>{skill.title}</h4>
+          </div>
+        ))}
+      </div>
 
       <div>
         <h3>Upcoming Events:</h3>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 const currentDate = new Date()
-console.log("current date", currentDate)
+
 
 
 export default function Allevents() {
@@ -13,7 +13,7 @@ export default function Allevents() {
           const response = await axios.get('http://localhost:5005/event') 
           if (response.status === 200) {
           const data = response.data
-          
+          console.log(data)
           const filteredUpcomingEvents = data.filter(
             (event) => new Date(event.date) >= currentDate,
           ) 
@@ -44,7 +44,8 @@ export default function Allevents() {
             <li key={event._id}>
               <h2>{event.title}</h2>
               <p>Date: {event.date}</p>
-              <p>Location: {event.location}</p>
+              <p>Location: {event.locationType}</p>
+              <img src={event.imageUrl} />
             </li>
           ))}
         </ul>
