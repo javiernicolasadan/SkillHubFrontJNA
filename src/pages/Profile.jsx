@@ -1,16 +1,74 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SessionContext } from "../contexts/SessionContext";
+import axios from "axios";
+const currentDate = new Date()
 
 
 export default function Profile() {
 
-    const {logout} = useContext(SessionContext)
+  const {logout} = useContext(SessionContext)
+  const [pastEvents, setPastEvents] = useState([]);
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
  
+  const fetchEvents = async () => {
+    try {
+      const response = await axios.get('http://localhost:5005/event/events')
+      const data = response.data
+      
+      const filteredPastEvents = data.events.filter(
+        (event) => new Date(event.date) < currentDate
+      )
+      const filteredUpcomingEvents = data.events.filter(
+        (event) => new Date(event.date) >= currentDate
+      )
+      setPastEvents(filteredPastEvents);
+      setUpcomingEvents(filteredUpcomingEvents);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents()
+  }, [])
+
+
   return (
     <>
       <div>Profile</div>
       <button type='button' onClick={logout}>Log Out</button>
-  
+      
+      
+
+      <div>
+        <h3>Upcoming Events:</h3>
+        {upcomingEvents.length > 0 ? (
+          upcomingEvents.map((event) => (
+            <div key={event._id}>
+              <h4>{event.title}</h4>
+            </div>
+          ))
+        ) : (
+          <p>No upcoming events found</p>
+        )}
+      </div>
+
+      <div>
+        <h3>Past Events:</h3>
+        {pastEvents.length > 0 ? (
+          pastEvents.map((event) => (
+            <div key={event._id}>
+              <h4>{event.title}</h4>
+            </div>
+          ))
+        ) : (
+          <p>No past events found</p>
+        )}
+      </div>
+
+
+
+
     </>
   );
 }
