@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+
 export default function EventDetails() {
   const  { eventId }  = useParams();
   const [ oneEvent, setOneEvent] = useState()
@@ -43,6 +44,7 @@ export default function EventDetails() {
       <div>{oneEvent.description}</div>
       <div>{oneEvent.date}</div>
       <div>{oneEvent.locationType}</div>    
+      <img src={oneEvent.imageUrl}/>    
       <button onClick={handleEditEvent}>Edit Event</button>  
       <button onClick={handleDeleteEvent}>Delete Event</button>  
     </div>
