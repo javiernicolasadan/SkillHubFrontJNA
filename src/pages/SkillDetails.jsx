@@ -6,10 +6,12 @@ const currentDate = new Date()
 export default function SkillDetails() {
   const { skillid } = useParams();
   const { currentUser } = useContext(SessionContext);
+  console.log(currentUser)
   const [skill, setSkill] = useState();
   const navigate = useNavigate()
   const [upcomingEvents, setUpcomingEvents] = useState()
   const [pastEvents, setPastEvents] = useState([]);
+  /* const [subsEvents, setSubsEvents] = useState([]) */
 
   const fetchSkill = async () => {
     try {
@@ -41,6 +43,16 @@ export default function SkillDetails() {
       fetchSkill()
     },[])
 
+   /*  useEffect(()=>{
+      if(currentUser){
+        setSubsEvents(currentUser.subscribedEvents)
+      }
+    },[currentUser]) */
+
+   /*  useEffect(()=>{
+      console.log(subsEvents)
+    },[subsEvents]) */
+
     /* useEffect(()=>{
       console.log(skill)
     },[skill]) */
@@ -61,6 +73,8 @@ const handleDelete = async () => {
 }
 
 const handleSubs = async(eventId)=>{
+  /* const isSubscribed = currentUser.subscribedEvents.includes(eventId)
+  console.log(isSubscribed) */
   const response = await fetch(`http://localhost:5005/event/subscribe/${eventId}`,{
     method: 'POST',
     headers:{
@@ -89,6 +103,7 @@ const handleSubs = async(eventId)=>{
                 <p>{eachEvent.locationType}</p>
                 <Link to={`/eventdets/${eachEvent._id}`}>More details</Link>
                 <button onClick={() => (handleSubs(eachEvent._id))}>Subscribe</button>
+                <button onClick={() => (handleSubs(eachEvent._id))}>Unsubscribe</button>
               </div>
             ))
           ) : (
@@ -103,6 +118,7 @@ const handleSubs = async(eventId)=>{
                 <p>{eachEvent.locationType}</p>
                 <Link to={`/eventdets/${eachEvent._id}`}>More details</Link>
                 <button onClick={() => (handleSubs(eachEvent._id))}>Subscribe</button>
+                <button onClick={() => (handleSubs(eachEvent._id))}>Unsubscribe</button>
               </div>
             ))
           ) : (
