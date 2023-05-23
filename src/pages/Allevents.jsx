@@ -10,7 +10,7 @@ export default function Allevents() {
 
     const fetchEvents = async () => {
         try {
-          const response = await axios.get('http://localhost:5005/event') 
+          const response = await axios.get(`${import.meta.env.VITE_BASE_API_URL}/event`) 
           if (response.status === 200) {
           const data = response.data
           console.log(data)
