@@ -16,7 +16,7 @@ export default function AddSkill({ isUpdating = false }) {
   useEffect(() => {
     const fetchSkill = async () => {
       try {
-        const response = await fetch(`http://localhost:5005/skill/${skillid}`);
+        const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/skill/${skillid}`);
         const data = await response.json();
         setCategory(data.category);
         setTitle(data.title);
@@ -46,13 +46,13 @@ export default function AddSkill({ isUpdating = false }) {
     try {
       let response;
       if (isUpdating && skillid) {
-        response = await fetch(`http://localhost:5005/skill/${skillid}`, {
+        response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/skill/${skillid}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
         });
       } else {
-        response = await fetch("http://localhost:5005/skill/create", {
+        response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/skill/create`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),

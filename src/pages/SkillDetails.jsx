@@ -15,7 +15,7 @@ export default function SkillDetails() {
 
   const fetchSkill = async () => {
     try {
-      const response = await fetch(`http://localhost:5005/skill/${skillid}`);
+      const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/skill/${skillid}`);
       if (response.status === 200) {
         const parsed = await response.json();
         setSkill(parsed);
@@ -60,7 +60,7 @@ export default function SkillDetails() {
 
 const handleDelete = async () => {
   try {
-    const response = await fetch(`http://localhost:5005/skill/${skillid}`, {
+    const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/skill/${skillid}`, {
       method: 'DELETE',
     })
     if (response.status === 200) {
@@ -75,7 +75,7 @@ const handleDelete = async () => {
 const handleSubs = async(eventId)=>{
   /* const isSubscribed = currentUser.subscribedEvents.includes(eventId)
   console.log(isSubscribed) */
-  const response = await fetch(`http://localhost:5005/event/subscribe/${eventId}`,{
+  const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/event/subscribe/${eventId}`,{
     method: 'POST',
     headers:{
       'Content-Type': 'application/json'

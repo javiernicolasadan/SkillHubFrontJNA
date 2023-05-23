@@ -14,7 +14,7 @@ export default function Profile() {
   console.log(currentUser)
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('http://localhost:5005/event')
+      const response = await axios.get(`${import.meta.env.VITE_BASE_API_URL}/event`)
       const data = response.data
       
       const filteredPastEvents = data.events.filter(

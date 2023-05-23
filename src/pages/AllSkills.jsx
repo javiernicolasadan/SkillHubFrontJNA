@@ -7,7 +7,7 @@ export default function AllSkills() {
 
     const fetchData = async()=>{
         try {
-            let url = 'http://localhost:5005/skill'
+            let url = `${import.meta.env.VITE_BASE_API_URL}/skill`
             if(selectedCategory !== 'All'){
                 url += `?category=${selectedCategory}`
             }
