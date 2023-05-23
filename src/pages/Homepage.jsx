@@ -6,6 +6,7 @@ export default function Homepage() {
         <div>Homepage</div>
         <Link to={'/signup'}>Signup</Link>
         <Link to={'/login'}>Login</Link>
+        <Link to={'/allskills'}>All Skills</Link>
 
     </>
   )

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 const currentDate = new Date()
 
 
@@ -35,6 +36,7 @@ export default function Allevents() {
 
   return (
     <div>
+      <Link to={'/allskills'} >See all the skills</Link>
       <h1>Upcoming Events</h1>
       {upcomingEvents ? (
         

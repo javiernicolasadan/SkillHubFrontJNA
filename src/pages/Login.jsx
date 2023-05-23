@@ -28,7 +28,7 @@ export default function Login() {
     if (response.status === 200) {
       const tokenFromResp = await response.json();
       setToken(tokenFromResp);
-      setIsLoggedIn(true);
+      /* setIsLoggedIn(true); */
       navigate("/profile");
     } else {
         const errorData = await response.json();
