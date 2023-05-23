@@ -41,7 +41,7 @@ export default function AddSkill({ isUpdating = false }) {
       category: newCategory,
       title: newTitle,
       details: newDescription,
-      createdBy: currentUser,
+      createdBy: currentUser.username,
     };
     try {
       let response;

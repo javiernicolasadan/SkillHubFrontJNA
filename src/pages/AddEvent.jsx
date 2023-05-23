@@ -5,8 +5,8 @@ import { SessionContext } from "../contexts/SessionContext"
 
 export default function AddEvent() {
 
-    const  [newTitle, setTitle] = useState("")
-    const  [newDate, setDate] = useState("")
+    const [newTitle, setTitle] = useState("")
+    const [newDate, setDate] = useState("")
     const [newLocationType, setLocatioType] = useState("online")
     const [newDescription, setDescription] = useState("")
     const [selectedSkill, setSelectedSkill] = useState()
@@ -59,7 +59,7 @@ export default function AddEvent() {
     <>
     <h2>Category: {selectedSkill.category}</h2>
     <h3>{selectedSkill.title}</h3>
-    <h3>Created by: {currentUser}</h3>
+    <h3>Created by: {currentUser.username}</h3>
     </>
     :
     <p>Loading...</p>}
