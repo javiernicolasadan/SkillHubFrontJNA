@@ -12,6 +12,7 @@ import SkillDetails from './pages/SkillDetails'
 import EventDetails from './pages/EventDetails'
 import AllSkills from './pages/AllSkills'
 import UpdateEvent from './pages/UpdateEvent'
+import AllEvents from './pages/AllEvents'
 
 
 function App() {
@@ -27,10 +28,12 @@ function App() {
         <Route path='/profile' element={<PrivateRoute><Profile/></PrivateRoute>}/>
         <Route path='/allskills' element={<AllSkills/>} />
         <Route path='/addskill' element={<AddSkill/>} />
+        <Route path ='/updateskill/:skillid' element={<AddSkill isUpdating />} />
         <Route path='/addevent/:skillid' element={<AddEvent/>}/>
         <Route path='/skilldets/:skillid' element={<SkillDetails/>}/>
         <Route path='/eventdets/:eventId' element={<EventDetails/>}/>
         <Route path='/updateevent/:eventId' element={<UpdateEvent/>}/>
+        <Route path='/allevents' element={<AllEvents/>}/>
 
         
       </Routes>
