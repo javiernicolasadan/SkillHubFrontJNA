@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 const currentDate = new Date()
+console.log("current date", currentDate)
 
 
 export default function Allevents() {
@@ -12,9 +13,11 @@ export default function Allevents() {
           const response = await axios.get('http://localhost:5005/event') 
           if (response.status === 200) {
           const data = response.data
-          const filteredUpcomingEvents = data.events.filter(
-            (event) => new Date(event.date) >= currentDate
-          )
+          
+          const filteredUpcomingEvents = data.filter(
+            (event) => new Date(event.date) >= currentDate,
+          ) 
+          
           setUpcomingEvents(filteredUpcomingEvents);
           }
         } catch (error) {
@@ -26,17 +29,19 @@ export default function Allevents() {
         fetchEvents()
       }, [])
 
-      useEffect (() => {
+    /*   useEffect (() => {
     console.log(upcomingEvents)
-      },[upcomingEvents])
+      },[upcomingEvents]) */
 
   return (
     <div>
       <h1>Upcoming Events</h1>
       {upcomingEvents ? (
+        
+
         <ul>
           {upcomingEvents.map((event) => (
-            <li key={event.id}>
+            <li key={event._id}>
               <h2>{event.title}</h2>
               <p>Date: {event.date}</p>
               <p>Location: {event.location}</p>
