@@ -1,13 +1,39 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { SessionContext } from "../contexts/SessionContext";
+import { useParams } from "react-router-dom";
 
-export default function AddSkill({ isUpdating = false, skillid }) {
+export default function AddSkill({ isUpdating = false }) {
   const { currentUser } = useContext(SessionContext);
   const [newCategory, setCategory] = useState("Other");
   const [newTitle, setTitle] = useState("");
   const [newDescription, setDescription] = useState("");
   const navigate = useNavigate();
+  const { skillid } = useParams()
+  console.log(skillid)
+
+
+  useEffect(() => {
+    const fetchSkill = async () => {
+      try {
+        const response = await fetch(`http://localhost:5005/skill/${skillid}`);
+        const data = await response.json();
+        setCategory(data.category);
+        setTitle(data.title);
+        setDescription(data.details);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if (isUpdating && skillid) {
+      fetchSkill();
+    }
+
+  }, [isUpdating, skillid]);
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
