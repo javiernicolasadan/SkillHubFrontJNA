@@ -14,7 +14,7 @@ export default function Profile() {
   console.log(currentUser)
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('http://localhost:5005/event')
+      const response = await axios.get(`${import.meta.env.VITE_BASE_API_URL}/event`)
       const data = response.data
       
       const filteredPastEvents = data.events.filter(
@@ -42,13 +42,25 @@ export default function Profile() {
       <Link to="/addskill">Add skill</Link>
 
       <div>
-        <h1>My Skills:</h1>
-        {currentUser.skills.map((skill) => (
+  {currentUser ? (
+    <>
+      <h1>My Skills:</h1>
+      {currentUser.skills.length > 0 ? (
+        currentUser.skills.map((skill) => (
           <div key={skill._id}>
             <h4>{skill.title}</h4>
           </div>
-        ))}
-      </div>
+        ))
+      ) : (
+        <p>No skills to show</p>
+      )}
+    </>
+  ) : (
+    <p>Loading...</p>
+  )}
+</div>
+
+
 
       <div>
         <h3>Upcoming Events:</h3>

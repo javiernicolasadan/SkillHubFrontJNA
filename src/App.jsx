@@ -12,7 +12,7 @@ import SkillDetails from './pages/SkillDetails'
 import EventDetails from './pages/EventDetails'
 import AllSkills from './pages/AllSkills'
 import UpdateEvent from './pages/UpdateEvent'
-import AllEvents from './pages/AllEvents'
+import AllEvents from './pages/Allevents'
 
 
 function App() {
