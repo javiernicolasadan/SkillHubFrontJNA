@@ -20,7 +20,6 @@ function App() {
   return (
     <>
       <Navbar/>
-
       <Routes>
         <Route path='/' element={<Homepage/>}/>
         <Route path='/signup' element={<Signup/>}/>
