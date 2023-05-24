@@ -93,11 +93,11 @@ nav{
 }
 
 .allskills{
-  background-image: url('../public/images/b&w skillsjpg.jpg');
+  background-image: url('/images/b&w skillsjpg.jpg');
 }
 
 .allevents{
-  background-image: url('../public/images/b&w events.jpg');
+  background-image: url('/images/b&w events.jpg');
 }
 
 
