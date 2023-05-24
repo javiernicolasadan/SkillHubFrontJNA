@@ -8,6 +8,7 @@ export default function SkillDetails() {
   const { currentUser } = useContext(SessionContext);
   /* console.log(currentUser) */
   const [skill, setSkill] = useState();
+  
   const navigate = useNavigate()
   const [upcomingEvents, setUpcomingEvents] = useState()
   const [pastEvents, setPastEvents] = useState([]);
@@ -62,6 +63,7 @@ export default function SkillDetails() {
 
   return (
     <>
+<<<<<<< HEAD
     {skill ? (
     <div>
     <h1>Details of {skill.title}</h1>
@@ -69,6 +71,16 @@ export default function SkillDetails() {
         <Link to={`/update/${skillid}`}> Update </Link>
         <button type="button" onClick={handleDelete}>Delete</button>
         <Link to={`/addevent/${skillid}`}>Add event</Link>
+=======
+      {skill ? (
+      <div>
+      <h1>Details of {skill.title}</h1>
+          <h2>{skill.details}</h2>
+          <img src={skill.imageUrl}/>
+          <Link to={`/updateskill/${skillid}`}> Update </Link>
+          <button type="button" onClick={handleDelete}>Delete</button>
+          <Link to={`/addevent/${skillid}`}>Add event</Link>
+>>>>>>> 740d25a3dcd5f4ce874bc24c61c1c6f3deb6c282
 
         <h3>Upcoming Events:</h3>
         {upcomingEvents ? (

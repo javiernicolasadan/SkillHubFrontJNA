@@ -10,6 +10,8 @@ export default function UpdateEvent() {
   const [updatedDate, setUpdatedDate] = useState("")
   const [updatedLocationType, setUpdatedLocationType] = useState("")
   const [updatedDescription, setUpdatedDescription] = useState("")
+  const [previewImageUrl, setPreviewImageUrl] = useState("");
+  const [originalImageUrl, setOriginalImageUrl] = useState("");
 
   
   const getEventDetails = async () => {
@@ -22,6 +24,8 @@ export default function UpdateEvent() {
         setUpdatedDate(event.date)
         setUpdatedLocationType(event.locationType)
         setUpdatedDescription(event.description)
+        setPreviewImageUrl(event.imageUrl);
+        setOriginalImageUrl(event.imageUrl);
       } catch (error) {
         console.log(error);
       }
@@ -33,18 +37,38 @@ export default function UpdateEvent() {
 
   const handleUpdate = async (e) => {
     e.preventDefault()
-    const payload = {
+    
+    const fData = new FormData() 
+        const imageUrl = e.target.imageUrl.files[0]
+        fData.append("title", updatedTitle )
+        fData.append("date", updatedDate)
+        fData.append("locationType", updatedLocationType)
+        fData.append("description", updatedDescription)
+        /* fData.append("skillTitle", selectedSkill.title ) */
+        fData.append("eventId", eventId )
+        if (imageUrl) {
+          fData.append("imageUrl", imageUrl);
+          setPreviewImageUrl(URL.createObjectURL(imageUrl));
+        } else {
+          if (!imageUrl && originalImageUrl) {
+            fData.append("originalImageUrl", originalImageUrl);
+          }
+        }
+        
+        console.log(imageUrl)
+    /* const payload = {
       title: updatedTitle,
       description: updatedDescription,
       date: updatedDate,
       locationType: updatedLocationType,
     };
-    console.log(payload)
+    console.log(payload) */
     try {
       const response = await axios.put(
-        `http://${import.meta.env.VITE_BASE_API_URL}/event/updateevent/${eventId}`,
-        payload
+        `${import.meta.env.VITE_BASE_API_URL}/event/updateevent/${eventId}`,
+        fData
       );
+      console.log(response)
       if (response.status === 200) {
         navigate(`/eventdets/${eventId}`);
       }
@@ -101,6 +125,13 @@ export default function UpdateEvent() {
           <option value="in-person">In-Person</option>
         </select>
       </div>
+
+      <div>
+      <label>
+        <input type="file" accept="image/jpg,image/png" name="imageUrl" />
+      </label>
+      {previewImageUrl && <img src={previewImageUrl} alt="Preview" />}
+    </div>
 
       <div>
         <button type="submit">Update Event</button>
