@@ -40,8 +40,8 @@ export default function Profile() {
       <div>Profile</div>
       <button type='button' onClick={logout}>Log Out</button>
       <Link to="/addskill">Add skill</Link>
-
-      <div>
+      <Link to="/addevent">Add Event</Link>
+      <div className="container">
   {currentUser ? (
     <>
       <h1>My Skills:</h1>
@@ -62,7 +62,7 @@ export default function Profile() {
 
 
 
-      <div>
+      <div className="container">
         <h3>Upcoming Events:</h3>
         {upcomingEvents.length > 0 ? (
           upcomingEvents.map((event) => (
@@ -75,7 +75,7 @@ export default function Profile() {
         )}
       </div>
 
-      <div>
+      <div className="container">
         <h3>Past Events:</h3>
         {pastEvents.length > 0 ? (
           pastEvents.map((event) => (
