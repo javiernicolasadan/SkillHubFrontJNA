@@ -6,11 +6,18 @@ export default function Navbar() {
   const { isLoggedIn } = useContext(SessionContext);
 
   return (
-    <nav>
+    <nav className="navBar">
+      <div>
       <Link to={"/"}>Home</Link>
+      </div>
+      
+      <div className="navMenus">
+      {!isLoggedIn && <Link to="/signup">Signup</Link>}
+      {!isLoggedIn && <Link to="/login">Login</Link>}
       {isLoggedIn && <Link to="/profile">Profile</Link>}
       {isLoggedIn && <Link to="/allskills">Skills Venue</Link>}
       {isLoggedIn && <Link to="/allevents">Events Venue</Link>}
+      </div>
     </nav>
   );
 }
