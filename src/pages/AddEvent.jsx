@@ -70,7 +70,7 @@ export default function AddEvent() {
     </>
     :
     <p>Loading...</p>} */}
-
+     
     <form encType="multipart/form-data" onSubmit={handleSubmit}>
        <div>
          <label>Event Title:</label>

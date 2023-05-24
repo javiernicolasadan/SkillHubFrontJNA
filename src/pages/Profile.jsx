@@ -2,37 +2,27 @@ import { useContext, useEffect, useState } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
-const currentDate = new Date()
-
 
 export default function Profile() {
-
+  const currentDate = new Date()
   const { logout, currentUser } = useContext(SessionContext)
-  const [pastEvents, setPastEvents] = useState([]);
-  const [upcomingEvents, setUpcomingEvents] = useState([]);
 
-  /* console.log(currentUser) */
-  const fetchEvents = async () => {
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_BASE_API_URL}/event`)
-      const data = response.data
-      
-      const filteredPastEvents = data.events.filter(
-        (event) => new Date(event.date) < currentDate
-      )
-      const filteredUpcomingEvents = data.events.filter(
-        (event) => new Date(event.date) >= currentDate
-      )
-      setPastEvents(filteredPastEvents);
-      setUpcomingEvents(filteredUpcomingEvents);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+/* useEffect(()=>{
+  console.log(currentUser)
+  console.log('user details', currentUser.subscribedEvents[0].date)
+  console.log('comparison', currentUser.subscribedEvents[0].date < currentDate)
+},[currentUser]) */
 
-  useEffect(() => {
-    fetchEvents()
-  }, [])
+const pastEvents = currentUser.subscribedEvents.filter((event) => {
+  const eventDate = new Date(event.date);
+  return eventDate < currentDate;
+});
+
+const upcomingEvents = currentUser.subscribedEvents.filter((event) => {
+  const eventDate = new Date(event.date);
+  return eventDate >= currentDate;
+});
+
 
 
   return (
@@ -48,7 +38,9 @@ export default function Profile() {
       {currentUser.skills.length > 0 ? (
         currentUser.skills.map((skill) => (
           <div key={skill._id}>
+          <Link to={`//skilldets/${skill._id}`}>
             <h4>{skill.title}</h4>
+            </Link>
           </div>
         ))
       ) : (
@@ -67,7 +59,9 @@ export default function Profile() {
         {upcomingEvents.length > 0 ? (
           upcomingEvents.map((event) => (
             <div key={event._id}>
-              <h4>{event.title}</h4>
+              <Link to={`/eventdets/${event._id}`}>
+                <h4>{event.title}</h4>
+              </Link>
             </div>
           ))
         ) : (
@@ -80,16 +74,15 @@ export default function Profile() {
         {pastEvents.length > 0 ? (
           pastEvents.map((event) => (
             <div key={event._id}>
-              <h4>{event.title}</h4>
+              <Link to={`/eventdets/${event._id}`}>
+                <h4>{event.title}</h4>
+              </Link>
             </div>
           ))
         ) : (
           <p>No past events found</p>
         )}
       </div>
-
-
-
 
     </>
   );

@@ -71,6 +71,7 @@ export default function AddSkill({ isUpdating = false }) {
   return (
     <>
       <h1>{isUpdating ? "Update your Skill" : "Create a new"}</h1>
+     <div className="pageForms">
       <form onSubmit={handleSubmit}>
         <div>
           <label>Category:</label>
@@ -110,6 +111,7 @@ export default function AddSkill({ isUpdating = false }) {
         </div>
         <button>{isUpdating ? "Update" : "Create"}</button>
       </form>
+      </div>
     </>
   );
 }
