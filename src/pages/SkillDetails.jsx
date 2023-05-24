@@ -8,6 +8,7 @@ export default function SkillDetails() {
   const { currentUser } = useContext(SessionContext);
   /* console.log(currentUser) */
   const [skill, setSkill] = useState();
+  
   const navigate = useNavigate()
   const [upcomingEvents, setUpcomingEvents] = useState()
   const [pastEvents, setPastEvents] = useState([]);
@@ -91,7 +92,8 @@ const handleSubs = async(eventId)=>{
       <div>
       <h1>Details of {skill.title}</h1>
           <h2>{skill.details}</h2>
-          <Link to={`/update/${skillid}`}> Update </Link>
+          <img src={skill.imageUrl}/>
+          <Link to={`/updateskill/${skillid}`}> Update </Link>
           <button type="button" onClick={handleDelete}>Delete</button>
           <Link to={`/addevent/${skillid}`}>Add event</Link>
 

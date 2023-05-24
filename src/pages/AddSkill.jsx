@@ -11,6 +11,8 @@ export default function AddSkill({ isUpdating = false }) {
   const [newDetails, setNewDetails] = useState("");
   const navigate = useNavigate();
   const { skillid } = useParams()
+  const [previewImageUrl, setPreviewImageUrl] = useState("");
+  const [originalImageUrl, setOriginalImageUrl] = useState("");
   /* console.log(skillid) */
 
 
@@ -22,6 +24,8 @@ export default function AddSkill({ isUpdating = false }) {
         setCategory(data.category);
         setTitle(data.title);
         setNewDetails(data.details);
+        setPreviewImageUrl(data.imageUrl);
+        setOriginalImageUrl(data.imageUrl);
       } catch (error) {
         console.log(error);
       }
@@ -40,10 +44,17 @@ export default function AddSkill({ isUpdating = false }) {
         const imageUrl = e.target.imageUrl.files[0]
         fData.append("title", newTitle )
         fData.append("details", newDetails)
-        fData.append("imageUrl", imageUrl)
         fData.append("category", newCategory) 
         fData.append("createdBy", currentUser._id)
-        
+               
+        if (imageUrl) {
+           fData.append("imageUrl", imageUrl)
+          setPreviewImageUrl(URL.createObjectURL(imageUrl));
+        } else {
+          if (!imageUrl && originalImageUrl) {
+            fData.append("originalImageUrl", originalImageUrl);
+          }
+        }
         console.log(imageUrl)
     
     /* try {
@@ -91,7 +102,7 @@ export default function AddSkill({ isUpdating = false }) {
   return (
     <>
       <h1>{isUpdating ? "Update your Skill" : "Create a new"}</h1>
-      <form onSubmit={handleSubmit}>
+      <form encType="multipart/form-data" onSubmit={handleSubmit}>
         <div>
           <label>Category:</label>
           <select
@@ -129,10 +140,11 @@ export default function AddSkill({ isUpdating = false }) {
           ></textarea>
         </div>
         <div>
-        <label>
-          <input type="file" accept="image/jpg image/png" name="imageUrl" />
-        </label>
-       </div>
+          <label>
+           <input type="file" accept="image/jpg,image/png" name="imageUrl" />
+          </label>
+            {previewImageUrl && <img src={previewImageUrl} alt="Preview" />}
+        </div>
         <button>{isUpdating ? "Update" : "Create"}</button>
       </form>
     </>

@@ -37,6 +37,7 @@ export default function UpdateEvent() {
 
   const handleUpdate = async (e) => {
     e.preventDefault()
+    
     const fData = new FormData() 
         const imageUrl = e.target.imageUrl.files[0]
         fData.append("title", updatedTitle )
@@ -129,9 +130,7 @@ export default function UpdateEvent() {
       <label>
         <input type="file" accept="image/jpg,image/png" name="imageUrl" />
       </label>
-      {previewImageUrl && (
-        <img src={previewImageUrl} alt="Preview" />
-      )}
+      {previewImageUrl && <img src={previewImageUrl} alt="Preview" />}
     </div>
 
       <div>
