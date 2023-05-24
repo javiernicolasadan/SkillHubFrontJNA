@@ -44,32 +44,18 @@ export default function SkillDetails() {
     },[])
   
 
-const handleDelete = async () => {
-  try {
-    const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/skill/${skillid}`, {
-      method: 'DELETE',
-    })
-    if (response.status === 200) {
-      navigate('/allSkills')
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`http://localhost:5005/skill/${skillid}`, {
+        method: "DELETE",
+      });
+      if (response.status === 200) {
+        navigate("/allSkills");
+      }
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error)
-    
-  }
-}
-
-const handleSubs = async(eventId)=>{
-  /* const isSubscribed = currentUser.subscribedEvents.includes(eventId)
-  console.log(isSubscribed) */
-  const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/event/subscribe/${eventId}`,{
-    method: 'POST',
-    headers:{
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({userId: currentUser._id})
-  }
-  )
-}
+  };
 
   return (
     <>
@@ -81,42 +67,39 @@ const handleSubs = async(eventId)=>{
           <button type="button" onClick={handleDelete}>Delete</button>
           <Link to={`/addevent/${skillid}`}>Add event</Link>
 
-          <h3>Upcoming Events:</h3>
-          {upcomingEvents ? (
-            upcomingEvents.map((eachEvent) => (
-              <div key={eachEvent._id} className="eventDiv">
-                <h4>{eachEvent.title}</h4>
-                <p>{eachEvent.locationType}</p>
-                <Link to={`/eventdets/${eachEvent._id}`}>More details</Link>
-                <button onClick={() => (handleSubs(eachEvent._id))}>Subscribe</button>
-                <button onClick={() => (handleSubs(eachEvent._id))}>Unsubscribe</button>
-              </div>
-            ))
-          ) : (
-            <p>No upcoming events found</p>
-          )}
-
-          <h3>Past Events:</h3>
-          {pastEvents.length > 0 ? (
-            pastEvents.map((eachEvent) => (
-              <div key={eachEvent._id} className="eventDiv">
+        <h3>Upcoming Events:</h3>
+        {upcomingEvents ? (
+          upcomingEvents.map((eachEvent) => (
+            <div key={eachEvent._id} className="eventDiv">
               <h4>{eachEvent.title}</h4>
-                <p>{eachEvent.locationType}</p>
-                <Link to={`/eventdets/${eachEvent._id}`}>More details</Link>
-                <button onClick={() => (handleSubs(eachEvent._id))}>Subscribe</button>
-                <button onClick={() => (handleSubs(eachEvent._id))}>Unsubscribe</button>
-              </div>
-            ))
-          ) : (
-            <p>No past events found</p>
-          )}
-      </div>
+              <p>{eachEvent.locationType}</p>
+              <Link to={`/eventdets/${eachEvent._id}`}>More details</Link>
 
-      ) : (
+            </div>
+          ))
+        ) : (
+          <p>No upcoming events found</p>
+        )}
 
-      <p>Loading...</p>
-      )
-      }
-    </>
-  );
+        <h3>Past Events:</h3>
+        {pastEvents.length > 0 ? (
+          pastEvents.map((eachEvent) => (
+            <div key={eachEvent._id} className="eventDiv">
+            <h4>{eachEvent.title}</h4>
+              <p>{eachEvent.locationType}</p>
+              <Link to={`/eventdets/${eachEvent._id}`}>More details</Link>
+            </div>
+          ))
+        ) : (
+          <p>No past events found</p>
+        )}
+    </div>
+
+    ) : (
+
+    <p>Loading...</p>
+    )
+    }
+  </>
+);
 }
