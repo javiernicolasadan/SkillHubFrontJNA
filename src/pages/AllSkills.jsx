@@ -28,6 +28,7 @@ export default function AllSkills() {
 
   return (
     <>
+        <Link to={'/allevents'} >Discover all the events</Link>
         <div>
             <label>Category</label>
             <select onChange={(event)=>(setSelectedCategory(event.target.value))}>

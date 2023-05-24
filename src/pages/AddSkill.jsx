@@ -4,7 +4,7 @@ import { SessionContext } from "../contexts/SessionContext";
 import { useParams } from "react-router-dom";
 
 export default function AddSkill({ isUpdating = false }) {
-  const { currentUser } = useContext(SessionContext);
+  const { currentUser , setNeedRefreshUser} = useContext(SessionContext);
   const [newCategory, setCategory] = useState("Other");
   const [newTitle, setTitle] = useState("");
   const [newDescription, setDescription] = useState("");
@@ -60,6 +60,7 @@ export default function AddSkill({ isUpdating = false }) {
       }
       if (response.status === 201 || response.status === 200) {
         const newSkill = await response.json();
+        setNeedRefreshUser(true)
         navigate(`/skilldets/${newSkill._id}`);
       }
     } catch (error) {

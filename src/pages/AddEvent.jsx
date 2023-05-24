@@ -11,7 +11,7 @@ export default function AddEvent() {
     const [newDescription, setDescription] = useState("")
     const [selectedSkill, setSelectedSkill] = useState()
     const {skillid} = useParams()
-    const { currentUser } = useContext(SessionContext)
+    const { currentUser , setNeedRefreshUser} = useContext(SessionContext)
     const navigate= useNavigate()
 
     const fetchSkillData = async()=>{
@@ -32,8 +32,8 @@ export default function AddEvent() {
         fData.append("locationType", newLocationType)
         fData.append("description", newDescription)
         fData.append("imageUrl", image)
-        fData.append("skillTitle", selectedSkill.title )
-        fData.append("skillid", selectedSkill._id )
+        /* fData.append("skillTitle", selectedSkill.title ) */
+        fData.append("skillid", skillid )
         
           console.log(fData)
         
@@ -46,6 +46,7 @@ export default function AddEvent() {
             /* const newEvent = await response.json() */
             console.log(response.data)
             const newEvent = response.data
+            setNeedRefreshUser(true)
             navigate(`/eventdets/${newEvent._id}`)
             
           }
