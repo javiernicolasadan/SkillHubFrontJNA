@@ -32,7 +32,6 @@ export default function AllSkills() {
 
   return (
     <>
-        {/* <Link to={'/allevents'} >Discover all the events</Link> */}
         <div className="dropDownMenu">
             <label>Category</label>
             <select onChange={(event)=>(setSelectedCategory(event.target.value))}>
@@ -50,21 +49,30 @@ export default function AllSkills() {
         </div>
 
         <div className="grid">
-            {!skills ? 
+            {!skills ? (
                 <p>Loading...</p>
-            : skills.length===0?
-            <p>No skills to show</p>
-            :
-            skills.map((eachSkill)=>(
-                <div className="container">
-                <Link to={`/skilldets/${eachSkill._id}`} key={eachSkill._id}>
-                    <p>{eachSkill.title}</p>
-                </Link>
+            ) : skills.length === 0 ? (
+                <p>No skills to show</p>
+            ) : (
+                skills.map((eachSkill) => (
+                <div className="container" key={eachSkill._id}>
+                    <Link to={`/skilldets/${eachSkill._id}`}>
+                    <h2>{eachSkill.title}</h2>
+                    </Link>
+                    {eachSkill.imageUrl ? (
+                        <img src={eachSkill.imageUrl} alt={eachSkill.title} />
+                    ) : (
+                        <p></p>
+                    )}
                 </div>
-            ))
-            }
-            
-        </div>
+                ))
+            )}
+            </div>
+
+            <div className="endLink">
+            <Link to={'/allevents'} >Check our events out</Link>
+            </div>
+
         
     </>
     
