@@ -26,12 +26,12 @@ export default function AddEvent() {
         e.preventDefault()
         
         const fData = new FormData() 
-        const image = e.target.imageUrl.files[0]
+        const imageUrl = e.target.imageUrl.files[0]
         fData.append("title", newTitle )
         fData.append("date", newDate)
         fData.append("locationType", newLocationType)
         fData.append("description", newDescription)
-        fData.append("imageUrl", image)
+        fData.append("imageUrl", imageUrl)
         /* fData.append("skillTitle", selectedSkill.title ) */
         fData.append("skillid", skillid )
         

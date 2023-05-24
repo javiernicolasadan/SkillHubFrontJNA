@@ -2,15 +2,16 @@ import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { SessionContext } from "../contexts/SessionContext";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 export default function AddSkill({ isUpdating = false }) {
   const { currentUser , setNeedRefreshUser} = useContext(SessionContext);
   const [newCategory, setCategory] = useState("Other");
   const [newTitle, setTitle] = useState("");
-  const [newDescription, setDescription] = useState("");
+  const [newDetails, setNewDetails] = useState("");
   const navigate = useNavigate();
   const { skillid } = useParams()
-  console.log(skillid)
+  /* console.log(skillid) */
 
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function AddSkill({ isUpdating = false }) {
         const data = await response.json();
         setCategory(data.category);
         setTitle(data.title);
-        setDescription(data.details);
+        setNewDetails(data.details);
       } catch (error) {
         console.log(error);
       }
@@ -32,34 +33,53 @@ export default function AddSkill({ isUpdating = false }) {
 
   }, [isUpdating, skillid]);
 
-
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const payload = {
-      category: newCategory,
-      title: newTitle,
-      details: newDescription,
-      createdBy: currentUser._id,
-    };
-    try {
+
+    const fData = new FormData() 
+        const imageUrl = e.target.imageUrl.files[0]
+        fData.append("title", newTitle )
+        fData.append("details", newDetails)
+        fData.append("imageUrl", imageUrl)
+        fData.append("category", newCategory) 
+        fData.append("createdBy", currentUser._id)
+        
+        console.log(imageUrl)
+    
+    /* try {
       let response;
       if (isUpdating && skillid) {
         response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/skill/${skillid}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
+          body: JSON.stringify(fData),
         });
       } else {
         response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/skill/create`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
+          body: JSON.stringify(fData),
         });
       }
       if (response.status === 201 || response.status === 200) {
         const newSkill = await response.json();
+        setNeedRefreshUser(true)
+        navigate(`/skilldets/${newSkill._id}`);
+      }
+    } catch (error) {
+      console.log(error);
+    } */
+    try {
+      
+      let response
+      if (isUpdating && skillid) {
+        response = await axios.put(`${import.meta.env.VITE_BASE_API_URL}/skill/${skillid}`, fData)
+      } else {
+        response = await axios.post(`${import.meta.env.VITE_BASE_API_URL}/skill/create`, fData)
+      }
+      if (response.status === 201 || response.status === 200) {
+        const newSkill = await response.data;
+        console.log(newSkill)
         setNeedRefreshUser(true)
         navigate(`/skilldets/${newSkill._id}`);
       }
@@ -100,14 +120,19 @@ export default function AddSkill({ isUpdating = false }) {
           />
         </div>
         <div>
-          <label>Description:</label>
+          <label>Details:</label>
           <textarea
-            name="description"
-            value={newDescription}
-            onChange={(e) => setDescription(e.target.value)}
+            name="details"
+            value={newDetails}
+            onChange={(e) => setNewDetails(e.target.value)}
             required
           ></textarea>
         </div>
+        <div>
+        <label>
+          <input type="file" accept="image/jpg image/png" name="imageUrl" />
+        </label>
+       </div>
         <button>{isUpdating ? "Update" : "Create"}</button>
       </form>
     </>
