@@ -11,7 +11,7 @@ export default function AddEvent() {
     const [newDescription, setDescription] = useState("")
     const [selectedSkill, setSelectedSkill] = useState()
     const {skillid} = useParams()
-    const { currentUser } = useContext(SessionContext)
+    const { currentUser , setNeedRefreshUser} = useContext(SessionContext)
     const navigate= useNavigate()
 
     const fetchSkillData = async()=>{
@@ -46,6 +46,7 @@ export default function AddEvent() {
             /* const newEvent = await response.json() */
             console.log(response.data)
             const newEvent = response.data
+            setNeedRefreshUser(true)
             navigate(`/eventdets/${newEvent._id}`)
             
           }

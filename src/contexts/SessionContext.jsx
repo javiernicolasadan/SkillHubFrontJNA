@@ -9,8 +9,10 @@ const SessionContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [currentUser, setCurrentUser] = useState();
+  const [needRefreshUser, setNeedRefreshUser] = useState(false)
 
   const verifyToken = async currentToken => {
+    /* console.log('isLoggedIn', isLoggedIn, 'isLoading', isLoading, 'start of verify func') */
     const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/auth/verify`, {
       headers: {
         Authorization: `Bearer ${currentToken}`,
@@ -21,39 +23,52 @@ const SessionContextProvider = ({ children }) => {
       setToken(currentToken)
       setCurrentUser(parsed.user)
       setIsLoggedIn(true)
+      setIsLoading(false)
+      /* console.log('isLoggedIn', isLoggedIn, 'isLoading', isLoading) */
     }else{
         setIsLoggedIn(false);
         setIsLoading(false)
     }
-    setIsLoading(false)
   }
+
+  /* const userData = ()=>{
+
+  } */
 
   useEffect(() => {
     const localToken = localStorage.getItem('authToken')
     if (localToken) {
       verifyToken(localToken)
-    }else {
-        setIsLoading(false);
-      }
+    }else{
+        setIsLoading(false)
+    }
   }, [])
 
   useEffect(() => {
     if (token) {
       localStorage.setItem('authToken', token)
-      setIsLoading(false)
+      verifyToken(token)
     } else {
       localStorage.removeItem('authToken')
     }
   }, [token])
 
+  useEffect(()=>{
+    if(needRefreshUser){
+        verifyToken(token)
+        setNeedRefreshUser(false)
+    }
+  },[needRefreshUser])
+
   const logout = () => {
     setToken()
     localStorage.removeItem('authToken')
     setIsLoggedIn(false)
+    setCurrentUser(null)
   }
 
   return (
-    <SessionContext.Provider value={{ token, setToken, isLoggedIn, isLoading, logout, currentUser }}>
+    <SessionContext.Provider value={{ token, setToken, isLoggedIn, isLoading, logout, currentUser, setIsLoggedIn, setNeedRefreshUser }}>
       {children}
     </SessionContext.Provider>
   )

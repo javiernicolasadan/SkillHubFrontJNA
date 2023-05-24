@@ -25,10 +25,10 @@ export default function Login() {
         password: user.password,
       }),
     });
-    if (response.status === 200) {
+    if (response.status === 200 || response.status === 304) {
       const tokenFromResp = await response.json();
       setToken(tokenFromResp);
-      /* setIsLoggedIn(true); */
+      setIsLoggedIn(true);
       navigate("/profile");
     } else {
         const errorData = await response.json();
