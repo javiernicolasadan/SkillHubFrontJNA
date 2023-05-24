@@ -6,7 +6,7 @@ const currentDate = new Date()
 export default function SkillDetails() {
   const { skillid } = useParams();
   const { currentUser } = useContext(SessionContext);
-  console.log(currentUser)
+  /* console.log(currentUser) */
   const [skill, setSkill] = useState();
   const navigate = useNavigate()
   const [upcomingEvents, setUpcomingEvents] = useState()

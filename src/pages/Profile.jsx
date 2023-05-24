@@ -11,7 +11,7 @@ export default function Profile() {
   const [pastEvents, setPastEvents] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
 
-  console.log(currentUser)
+  /* console.log(currentUser) */
   const fetchEvents = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BASE_API_URL}/event`)
