@@ -8,7 +8,6 @@ export default function SkillDetails() {
   const { currentUser } = useContext(SessionContext);
   /* console.log(currentUser) */
   const [skill, setSkill] = useState();
-  
   const navigate = useNavigate()
   const [upcomingEvents, setUpcomingEvents] = useState()
   const [pastEvents, setPastEvents] = useState([]);
@@ -43,20 +42,6 @@ export default function SkillDetails() {
     useEffect(()=>{
       fetchSkill()
     },[])
-
-   /*  useEffect(()=>{
-      if(currentUser){
-        setSubsEvents(currentUser.subscribedEvents)
-      }
-    },[currentUser]) */
-
-   /*  useEffect(()=>{
-      console.log(subsEvents)
-    },[subsEvents]) */
-
-    /* useEffect(()=>{
-      console.log(skill)
-    },[skill]) */
   
 
 const handleDelete = async () => {
@@ -92,7 +77,6 @@ const handleSubs = async(eventId)=>{
       <div>
       <h1>Details of {skill.title}</h1>
           <h2>{skill.details}</h2>
-          <img src={skill.imageUrl}/>
           <Link to={`/updateskill/${skillid}`}> Update </Link>
           <button type="button" onClick={handleDelete}>Delete</button>
           <Link to={`/addevent/${skillid}`}>Add event</Link>
