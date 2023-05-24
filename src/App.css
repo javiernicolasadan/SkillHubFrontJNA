@@ -93,23 +93,53 @@ nav{
 }
 
 .allskills{
-  background-image: url('../public/images/b&w skillsjpg.jpg');
+  background-image: url('/images/b&w skillsjpg.jpg');
 }
 
 .allevents{
-  background-image: url('../public/images/b&w events.jpg');
+  background-image: url('/images/b&w events.jpg');
 }
 
+.dropDownMenu{
+  margin-top: 1rem;
+}
 
+.dropDownMenu select{
+  width: calc(70% - 2rem);
+  border: 1px solid grey;
+  font-size: 1rem;
+}
+
+.dropDownMenu option {
+  font-size: 0.7rem;
+}
+
+.grid {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40vw, 1fr));
+  gap: 5px;
+}
 
 .container {
-  min-height: 100vh;
-  font-style: sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background-color: lightgray;
+  margin: 0;
+  padding: 0 0.8rem;
+  text-align: center;
 }
+
+.container p {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 5px;
+  border-radius: 5px;
+  color: black;
+}
+
+.container a{
+  text-decoration: none;
+}
+
 
 @keyframes logo-spin {
   from {

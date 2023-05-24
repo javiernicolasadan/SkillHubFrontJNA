@@ -6,25 +6,24 @@ import { Link } from "react-router-dom";
 export default function Profile() {
   const currentDate = new Date()
   const { logout, currentUser } = useContext(SessionContext)
+  
+  let pastEvents = [];
+  let upcomingEvents = [];
 
-/* useEffect(()=>{
-  console.log(currentUser)
-  console.log('user details', currentUser.subscribedEvents[0].date)
-  console.log('comparison', currentUser.subscribedEvents[0].date < currentDate)
-},[currentUser]) */
-
-const pastEvents = currentUser.subscribedEvents.filter((event) => {
-  const eventDate = new Date(event.date);
-  return eventDate < currentDate;
-});
-
-const upcomingEvents = currentUser.subscribedEvents.filter((event) => {
-  const eventDate = new Date(event.date);
-  return eventDate >= currentDate;
-});
-
-
-
+if(currentUser){
+  if(currentUser.subscribedEvents.length > 0){
+    pastEvents = currentUser.subscribedEvents.filter((event) => {
+      const eventDate = new Date(event.date);
+      return eventDate < currentDate;
+    });
+    
+    upcomingEvents = currentUser.subscribedEvents.filter((event) => {
+      const eventDate = new Date(event.date);
+      return eventDate >= currentDate;
+    });
+  }
+ 
+}
   return (
     <>
       <div>Profile</div>
@@ -51,8 +50,6 @@ const upcomingEvents = currentUser.subscribedEvents.filter((event) => {
     <p>Loading...</p>
   )}
 </div>
-
-
 
       <div className="container">
         <h3>Upcoming Events:</h3>

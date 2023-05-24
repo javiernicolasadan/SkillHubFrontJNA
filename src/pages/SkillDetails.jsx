@@ -42,20 +42,6 @@ export default function SkillDetails() {
     useEffect(()=>{
       fetchSkill()
     },[])
-
-   /*  useEffect(()=>{
-      if(currentUser){
-        setSubsEvents(currentUser.subscribedEvents)
-      }
-    },[currentUser]) */
-
-   /*  useEffect(()=>{
-      console.log(subsEvents)
-    },[subsEvents]) */
-
-    /* useEffect(()=>{
-      console.log(skill)
-    },[skill]) */
   
 
 const handleDelete = async () => {
@@ -91,7 +77,7 @@ const handleSubs = async(eventId)=>{
       <div>
       <h1>Details of {skill.title}</h1>
           <h2>{skill.details}</h2>
-          <Link to={`/update/${skillid}`}> Update </Link>
+          <Link to={`/updateskill/${skillid}`}> Update </Link>
           <button type="button" onClick={handleDelete}>Delete</button>
           <Link to={`/addevent/${skillid}`}>Add event</Link>
 
