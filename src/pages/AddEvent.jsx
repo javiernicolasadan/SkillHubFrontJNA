@@ -32,8 +32,8 @@ export default function AddEvent() {
         fData.append("locationType", newLocationType)
         fData.append("description", newDescription)
         fData.append("imageUrl", image)
-        fData.append("skillTitle", selectedSkill.title )
-        fData.append("skillid", selectedSkill._id )
+        /* fData.append("skillTitle", selectedSkill.title ) */
+        fData.append("skillid", skillid )
         
           console.log(fData)
         
