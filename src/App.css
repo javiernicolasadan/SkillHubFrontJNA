@@ -80,7 +80,8 @@ nav{
   background-image: url("/images/header2bg.jpg");
   background-size: cover;
   color: white;
-  padding-bottom: 3rem;
+  padding-bottom: 5rem;
+  padding-top: 5rem;
 }
 
 .allLink{
