@@ -43,7 +43,7 @@ export default function EventDetails() {
 
   const handleSubs = async (eventId) => {
     const response = await fetch(
-      `http://localhost:5005/event/subscribe/${eventId}`,
+      `${import.meta.env.VITE_BASE_API_URL}/event/subscribe/${eventId}`,
       {
         method: "POST",
         headers: {
