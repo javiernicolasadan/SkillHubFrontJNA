@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { SessionContext } from "../contexts/SessionContext";
 
 
 export default function Homepage() {
-
+  const { isLoggedIn } = useContext(SessionContext);
   
   return (
     <>
@@ -13,9 +15,23 @@ export default function Homepage() {
         Our platform is designed to connect individuals with different skill sets and<br/>
         interests, creating a community where learning and personal growth are prioritized.<br/><br/>
         </p>
-        <p>Join us now!</p> 
-        <Link to={"/signup"}>Signup</Link>
-        <Link to={"/login"}>Login</Link>
+        {!isLoggedIn &&
+        <div>
+          <p  style={{ fontSize: '1.3rem', fontWeight: 500 }}>Join us now!</p>
+          <Link className="genButton" to="/signup">Signup</Link>
+          <Link className="genButton" to={"/login"}>Login</Link>
+        </div>
+        }
+
+        {isLoggedIn &&
+        <div>
+          <p  style={{ fontSize: '1.3rem', fontWeight: 500 }}>Check our info out below!</p>
+        </div>
+        }
+        
+
+        
+        
       </div>
 
       <div className="allLink allskills">

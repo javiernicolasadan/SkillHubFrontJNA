@@ -13,7 +13,12 @@ body{
 body *{
   padding: 0.5rem 1rem;
   font-family: Montserrat, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+h1{
+  font-size: 1.5rem;
 }
 
 nav{
@@ -73,6 +78,7 @@ nav{
   background-image: url("/images/header2bg.jpg");
   background-size: cover;
   color: white;
+  padding-bottom: 3rem;
 }
 
 .allLink{
@@ -179,6 +185,16 @@ nav{
   border-radius: 1rem;
   font-weight: 700;
 }
+
+.genButton{
+  background-color: #fbeb7c;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  color: black;
+  font-weight: 600;
+}
+
 
 
 @keyframes logo-spin {
