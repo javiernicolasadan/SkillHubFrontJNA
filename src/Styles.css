@@ -144,6 +144,7 @@ display: none;
   }
 
   .hamburger img {
+    padding: auto;
     margin-top: 1rem;
   }
 
@@ -151,12 +152,12 @@ display: none;
     position: absolute;
     right: 0;
     top: 2rem;
-    padding: 1rem;
+    /* padding: 1rem; */
     display: flex;
     flex-direction: column;
-    background:rgb(223, 230, 236, 0.7);
-    border-radius: 10px;
-    
+    background:rgb(223, 230, 236);
+    /* border-radius: 10px; */
+    border: none;
   }
 
  .nav-menus button {

@@ -25,7 +25,7 @@ h1{
 
 nav{
   background-color: #fbeb7c;
-  /* height: 3rem; */
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,7 +69,6 @@ nav{
     0 0 1px #e2e60c,
     0 0 1px #e2e60c,
     0 0 100px #e2e60c;
-    padding-left: 1rem;
 }
 
 .header p{
@@ -122,10 +121,6 @@ nav{
 
 .dropDownMenu option {
   font-size: 0.9rem;
-}
-
-.contentDiv{
-  padding-bottom: 3rem;
 }
 
 .grid {
@@ -240,7 +235,7 @@ nav{
 .grid {
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 0.5fr));
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   gap: 2px;
   padding: 0;
 }
@@ -257,13 +252,10 @@ nav{
   height: 7rem;
 }
 
-
-
-
 /* Estilos para tablet */
 @media (min-width: 768px) {
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 0.333333333333333333fr));
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   }
 
   .container {
@@ -274,7 +266,7 @@ nav{
 /* Estilos para web */
 @media (min-width: 1200px) {
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 0.333333333333333fr));
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   }
 
   .container {
