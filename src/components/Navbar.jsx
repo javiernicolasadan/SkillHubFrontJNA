@@ -19,8 +19,7 @@ export default function Navbar() {
       {isLoggedIn && <Link to="/profile">Profile</Link>}
       {isLoggedIn && <Link to="/allskills">Skills Venue</Link>}
       {isLoggedIn && <Link to="/allevents">Events Venue</Link>}
-      {isLoggedIn && <button type='button' onClick={logout}>Log Out</button>}
-      </div>
+      </div> */}
     </nav>
   );
 }
