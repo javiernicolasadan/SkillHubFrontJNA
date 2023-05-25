@@ -2,27 +2,41 @@ import { useContext, useEffect, useState } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
+const currentDate = new Date()
+
 
 export default function Profile() {
-  const currentDate = new Date()
+
   const { logout, currentUser } = useContext(SessionContext)
+  const [pastEvents, setPastEvents] = useState([]);
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
 
-/* useEffect(()=>{
-  console.log(currentUser)
-  console.log('user details', currentUser.subscribedEvents[0].date)
-  console.log('comparison', currentUser.subscribedEvents[0].date < currentDate)
-},[currentUser]) */
+console.log("Hey there ",new Date("2023-05-31") > currentDate)
+  /* console.log(currentUser) */
+  const fetchEvents = async () => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_BASE_API_URL}/event`)
+      const data = response.data
+      console.log(data)
 
-const pastEvents = currentUser.subscribedEvents.filter((event) => {
-  const eventDate = new Date(event.date);
-  return eventDate < currentDate;
-});
+      const filteredPastEvents = data.filter(
+        (event) => new Date(event.date) < currentDate
+      )
+      const filteredUpcomingEvents = data.filter(
+        (event) => new Date(event.date) >= currentDate
+      )
+      console.log("Upcoming ",filteredUpcomingEvents);
+      console.log("past event",filteredPastEvents);
+      setPastEvents(filteredPastEvents);
+      setUpcomingEvents(filteredUpcomingEvents);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-const upcomingEvents = currentUser.subscribedEvents.filter((event) => {
-  const eventDate = new Date(event.date);
-  return eventDate >= currentDate;
-});
-
+  useEffect(() => {
+    fetchEvents()
+  }, [])
 
 
   return (
@@ -38,7 +52,7 @@ const upcomingEvents = currentUser.subscribedEvents.filter((event) => {
       {currentUser.skills.length > 0 ? (
         currentUser.skills.map((skill) => (
           <div key={skill._id}>
-          <Link to={`//skilldets/${skill._id}`}>
+          <Link to={`/skilldets/${skill._id}`}>
             <h4>{skill.title}</h4>
             </Link>
           </div>
@@ -59,9 +73,9 @@ const upcomingEvents = currentUser.subscribedEvents.filter((event) => {
         {upcomingEvents.length > 0 ? (
           upcomingEvents.map((event) => (
             <div key={event._id}>
-              <Link to={`/eventdets/${event._id}`}>
-                <h4>{event.title}</h4>
-              </Link>
+            <Link to={`/eventdets/${event._id}`}>
+            <h4>{event.title}</h4>
+            </Link>
             </div>
           ))
         ) : (
@@ -74,15 +88,18 @@ const upcomingEvents = currentUser.subscribedEvents.filter((event) => {
         {pastEvents.length > 0 ? (
           pastEvents.map((event) => (
             <div key={event._id}>
-              <Link to={`/eventdets/${event._id}`}>
-                <h4>{event.title}</h4>
-              </Link>
+            <Link to={`/eventdets/${event._id}`}>
+            <h4>{event.title}</h4>
+            </Link>
             </div>
           ))
         ) : (
           <p>No past events found</p>
         )}
       </div>
+
+
+
 
     </>
   );
