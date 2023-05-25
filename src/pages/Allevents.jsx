@@ -48,6 +48,9 @@ export default function Allevents() {
                 <p>{event.locationType}</p>
                 <p>{format(new Date(event.date), 'dd-MM-yyyy')}</p>
               </Link>
+                {event.imageUrl && (
+                        <img src={event.imageUrl} alt={event.title} />
+                    )}
             </div>
           ))
         

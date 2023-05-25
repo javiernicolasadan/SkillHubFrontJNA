@@ -59,10 +59,8 @@ export default function AllSkills() {
                     <Link to={`/skilldets/${eachSkill._id}`}>
                     <h2>{eachSkill.title}</h2>
                     </Link>
-                    {eachSkill.imageUrl ? (
+                    {eachSkill.imageUrl && (
                         <img src={eachSkill.imageUrl} alt={eachSkill.title} />
-                    ) : (
-                        <p></p>
                     )}
                 </div>
                 ))

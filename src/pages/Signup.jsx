@@ -40,8 +40,8 @@ export default function Signup() {
 
   return (
     <div className="authForms">
-    <form className="authForms" onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit}>
+      <div className="authField">
         <label>Email: </label>
         <input
           type="email"
@@ -57,7 +57,7 @@ export default function Signup() {
         />
       </div>
 
-      <div>
+      <div className="authField">
         <label>Username: </label>
         <input
           type="text"
@@ -73,7 +73,7 @@ export default function Signup() {
         />
       </div>
 
-      <div>
+      <div className="authField">
         <label>Password: </label>
         <input
           type="password"
@@ -93,7 +93,7 @@ export default function Signup() {
         <Link to={"/login"}>Login</Link>
       )}
 
-      <button type="submit">Sign Up for free!</button>
+      <button type="submit" className="genButton">Sign Up for free!</button>
     </form>
     </div>
   );

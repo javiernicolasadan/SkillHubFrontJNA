@@ -119,6 +119,8 @@ export default function AddSkill({ isUpdating = false }) {
             <option value="Cooking">Cooking</option>
             <option value="Gardening">Gardening</option>
             <option value="Beauty">Beauty</option>
+            <option value="Domestic-Skills">Domestic-Skills</option>
+            <option value="Languages">Languages</option>
           </select>
         </div>
         <div>

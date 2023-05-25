@@ -34,9 +34,8 @@ function App() {
         <Route path='/eventdets/:eventId' element={<PrivateRoute><EventDetails/></PrivateRoute>}/>
         <Route path='/updateevent/:eventId' element={<PrivateRoute><UpdateEvent/></PrivateRoute>}/>
         <Route path='/allevents' element={<AllEvents/>}/>
-
-        
       </Routes>
+      
     </>
   )
 }
