@@ -8,102 +8,90 @@ This is an app that let people teach their skills to other people, and learn fro
 
 ## User Funcionalities
 
--  **Signup:** As an anon I can sign up in the platform so that I can start creating and managing my skills and events
--  **Login:** As a user I can login to the platform so that I can start creating and managing my skills and events
--  **Logout:** As a user I can logout from the platform so no one else can modify my information
--  **Toogle skills** As a user I can toogle between different types of skills
--  **Toogle events** As a user I can toogle between different types of events
--  **Add skills** As a user I can add skills to my skills
--  **Add events** As a user I can add events to my events
--  **Delete skills** As a user I can delete my skills
--  **Delete events** As a user I can delete my events
--  **subscribe to events** As a user I can subscribe to events that im going to
--  **Check profile** As a user I can check my profile, skills and events
+- **Signup:** As an anon I can sign up in the platform so that I can start creating and managing my skills and events
+- **Login:** As a user I can login to the platform so that I can start creating and managing my skills and events
+- **Logout:** As a user I can logout from the platform so no one else can modify my information
+- **Toogle skills** As a user I can toogle between different types of skills
+- **Toogle events** As a user I can toogle between different types of events
+- **Add skills** As a user I can add skills to my skills
+- **Add events** As a user I can add events to my events
+- **Delete skills** As a user I can delete my skills
+- **Delete events** As a user I can delete my events
+- **Subscribe to events** As a user I can subscribe to events that im going to
+- **Unsubscribe to events** As a user I can unsubscribe to events that im going to
+- **Check profile** As a user I can check my profile, skills and events
+- **Pictures** Can upload, change and delete pictures with all skill and events
 
 ## Backlog
 
-- Adding links for remote events
-- Don´t show subscribe to own events
+- Adding links for remote events / place for in-person
+- Don´t show subscribe to own events / subscribe directly to created events
 
 <br>
-
 
 # Client / Frontend
 
 ## React Router Routes (React App)
-| Path                      | Component                      | Permissions | Behavior                                                     |
-| ------------------------- | --------------------           | ----------- | ------------------------------------------------------------ |
-| `/`                       | HomePage                       | public `<Route>`            | Home page                                                     |
-| `/signup`                 | SignupPage                     | public `<Route>`            | Signup form, link to login, navigate to login after signup    |
-| `/login`                  | LoginPage                      | public `<Route>`            | Login form, link to signup, navigate to profile after login   |
-| `/logout`                 | n/a                            | user only `<PrivateRoute>`  | Navigate to homepage after logout, expire session             |
-| `/backlog/series`         | NavBar, ElementList, FooterBar | user only `<PrivateRoute>`  | Shows all tv series on backlog                                |
-| `/backlog/films`          | NavBar, ElementList, FooterBar | user only `<PrivateRoute>`  | Shows all films on backlog                                    |
-| `/backlog/games`          | NavBar, ElementList, FooterBar | user only `<PrivateRoute>`  | Shows all games on backlog                                    |
-| `/search/series`          | SearchForm, SearchResults      | user only  `<PrivateRoute>` | Search a tv series to be added                                |
-| `/search/films`           | SearchForm, SearchResults      | user only `<PrivateRoute>`  | Search a film to be added                                     |
-| `/search/games`           | SearchForm, SearchResults      | user only `<PrivateRoute>`  | Search a game to be added                                     |
-| `/add/:id`                | ElementInfo                    | user only `<PrivateRoute>`  | Add an element to the backlog                                 |
-| `/profile`                | Profile, Stats                 | user only  `<PrivateRoute>` | Check profile with stat information                           |
-| `/done/series`            | Done list for Series           | user only  `<PrivateRoute>` | Shows all tv series finished                                  |
-| `/done/films`             | Done list for films            | user only `<PrivateRoute>`  | Shows all films finished                                      |
-| `/done/games`             | Done list for games            | user only `<PrivateRoute>`  | Shows all videogames finished                                 |
-          
+
+| Path                    | Component           | Permissions                | Behavior                                                      |
+| ----------------------- | ------------------- | -------------------------- | ------------------------------------------------------------- |
+| `/`                     | HomePage            | public `<Route>`           | Home page                                                     |
+| `/signup`               | Signup              | public `<Route>`           | Signup form, link to login, navigate to login after signup    |
+| `/login`                | Login               | public `<Route>`           | Login form, link to signup, navigate to profile after login   |
+| `/profile`              | Profile             | user only `<PrivateRoute>` | Information about profile, my skills, events                  |
+| `/allskills`            | AllSkills           | user only `<PrivateRoute>` | Shows all skills filtered by category                         |
+| `/addskill`             | AddSkill            | user only `<PrivateRoute>` | Create a new skills                                           |
+| `/updateskill/:skillid` | AddSkill isUpdating | user only `<PrivateRoute>` | Show skill details, update, delete, add event, events related |
+| `/addevent/:skillid`    | AddEvent            | user only `<PrivateRoute>` | Form to create event                                          |
+| `/skilldets/:skillid`   | SkillDetails        | user only `<PrivateRoute>` | Show skill Details, link to update, delete, add event         |
+| `/eventdets/:eventId`   | EventDetails        | user only `<PrivateRoute>` | Show event Details, link to update, delete, subs, unsubs      |
+| `/updateevent/:eventId` | UpdateEvent         | user only `<PrivateRoute>` | Check profile with stat information                           |
+| `/allevents`            | AllEvents           | user only `<PrivateRoute>` | Shows all tv series finished                                  |
 
 ## Components
 
-- LoginPage
+- HomePage
 
-- SignupPage
+- Signup
 
-- NavBar
+- Login
 
-- FooterBar
+- Profile
 
-- BackBar
+- AllSkills
 
-- ElementList
+- AddSkill
 
-- SearchForm
+- AddSkill isUpdating
 
-- SearchResults
+- AddEvent
 
-- ElementInfo
+- SkillDetails
 
-- Stats
+- EventDetails
 
+- UpdateEvent
 
-
-  
-
- 
+- AllEvents
 
 ## Services
 
 - Auth Service
+
   - auth.login(user)
   - auth.signup(user)
   - auth.logout()
-  - auth.me()
 
-- Backlog Service
-  - backlog.filter(type, status) // for different types of media and if they are done or not
-  - backlog.detail(id)
-  - backlog.add(id)
-  - backlog.delete(id)
-  - backlog.update(id)
-  
-- External API
-  - API for games
-  - API for series
-  - API for films
-
+- Extra Services
+  - extra.filter(date) // for different events upcoming or past
+  - extra.detail(id)
+  - extra.add(id)
+  - extra.delete(id)
+  - extra.update(id)
 
 <br>
 
-
 # Server / Backend
-
 
 ## Models
 
@@ -111,74 +99,81 @@ User model
 
 ```javascript
 {
-  username: {type: String, required: true, unique: true},
-  email: {type: String, required: true, unique: true},
-  password: {type: String, required: true},
-  platform: [platforms]
-  elements: [{type: Schema.Types.ObjectId,ref:'Media'}]
+  username: {type: String, trim: true, required: true, unique: true},
+  email: {type: String, required: true, unique: true, lowercase: true, trim: true},
+  passwordHash: {type: String, required: true},
+  skills: [{type: Schema.Types.ObjectId,ref:'Skill'}]
+  subscribedEvents: [{type: Schema.Types.ObjectId,ref:'Event'}]
+  createdEvents: [{type: Schema.Types.ObjectId,ref:'Event'}]
 }
 ```
 
-
-
-Media model
+Skill model
 
 ```javascript
  {
+   category: {type: String, required: true,  enum: ['Music', 'Photography', 'Coding', 'Cooking', 'Gardening', 'Beauty', 'Domestic-Skills', 'Languages', 'Other' ], default: "Other"},
    title: {type: String, required: true},
-   type: {type: String, required: true},
-   done: {type: Boolean, required: true},
-   platform: {type: String, required: true},
-   image: {type: String, required: true}
-   description: {type, String, required: true}
-   user: {type: Schema.Types.ObjectId,ref:'User'},
- }
+   details: {type: String, required: true, maxLength: 2000},
+   events: {type: Schema.Types.ObjectId, ref:'Event'},
+   createdBy: {type: String}
+   imageUrl: {type: String}
+}
 ```
 
+Event model
+
+```javascript
+ {
+   title: {type: String, required: true,  unique: true, trim: true},
+   description: {type: String, required: true},
+   date: {type: String, required: true},
+   locationType: {type: String, enum: ['online', 'in-person'], default: 'online'},
+   createdBy: {type: Schema.Types.ObjectId, ref:'User'}
+   skillid: {type: Schema.Types.ObjectId, ref:'Skill'}
+   imageUrl: {type: String}
+}
+```
 
 <br>
-
 
 ## API Endpoints (backend routes)
 
-| HTTP Method | URL                         | Request Body                 | Success status | Error Status | Description                                                  |
-| ----------- | --------------------------- | ---------------------------- | -------------- | ------------ | ------------------------------------------------------------ |
-| GET         | `/auth/profile    `           | Saved session                | 200            | 404          | Check if user is logged in and return profile page           |
-| POST        | `/auth/signup`                | {name, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
-| POST        | `/auth/login`                 | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session    |
-| POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user                                            |
-| POST        | `/search/add`                 | {platform, title, type, id}  |                | 400          | Add new backlog element and add to user                                               |
-| GET         | `/backlog/series`             |                              |                | 400          | Show series elements                                           |
-| GET         | `/backlog/films`              |                              |                |              | Show film elements                                           |
-| GET         | `/backlog/games`              |                              |                |              | Show games elements                                          |
-| GET         | `/media/:id`                        |                              | 201            | 400          | Show specific element                                        |
-| PUT         | `/media/:id`                 |                              | 200            | 400          | edit element                                                 |
-| DELETE      | `/media/:id`                 |                              | 201            | 400          | delete element                                               |
-| GET         | `/done/series`                |                              |                | 400          | Show series elements                                         |
-| GET         | `/done/films`                 |                              |                |              | Show film elements                                           |
-| GET         | `/done/games`                 |                              |                |              | Show games elements                                          |
-
-
+| HTTP Method | URL                  | Request Body                 | Success status | Error Status | Description                                                                                                        |
+| ----------- | -------------------- | ---------------------------- | -------------- | ------------ | ------------------------------------------------------------------------------------------------------------------ |
+| POST        | `/auth/signup`       | {email, username, passwordH} | 201            | 400          | Check if user is logged in and return profile page                                                                 |
+| POST        | `/auth/login`        | {userId }                    | 201            | 404          | Checks if token exist                                                                                              |
+| GET         | `/auth/verify`       | {username, password}         | 200            |              | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
+| GET         | `/event      `       |                              | 200            |              | Find all events                                                                                                    |
+| POST        | `/event/create`      | {title, date, ...}           | 201            |              | Create an event                                                                                                    |
+| GET         | `/eventdets/eventId` | {\_id, title,description...} | 200            |              | Show event details form a especific event                                                                          |
+| PUT         | `/updateven/eventId` | {file, title, date...}       | 200            |              | Show details to update                                                                                             |
+| DELETE      | `/deleteven/eventId` | {eventId}                    | 200            |              | Show details to delete                                                                                             |
+| POST        | `/subscribe/eventId` | {eventId, userId}            | 200            |              | Subscribe to an event                                                                                              |
+| GET         | `/skill`             | {category}                   | 200            |              | Show skills                                                                                                        |
+| POST        | `/skill/create`      | {userId, title, details...}  | 201            |              | Create skill                                                                                                       |
+| GET         | `/skill/:skillid`    | {skillid}                    | 200            |              | Show events related to this skill                                                                                  |
+| PUT         | `/skill/:skillid`    | {skillid, iamgeUrl}          | 200            |              | Update an skill                                                                                                    |
+| DELETE      | `/skill/:skillid`    | {skillid}                    | 200            |              | Delete an skill                                                                                                    |
+| GET         | `/done/games`        |                              |                |              | Show games elements                                                                                                |
 
 <br>
-
 
 ## Links
 
 ### Trello/Kanban
 
-[Link to your trello board](https://trello.com/b/iloDccrZ/backlog-quest) 
-or picture of your physical board
+[Link to your trello board](https://trello.com/b/pUIpKj2Q/skill-hub)
 
 ### Git
 
 The url to your repository and to your deployed project
 
-[Client repository Link](https://github.com/jorgeberrizbeitia/backlog-quest)
+[Client repository Link](https://github.com/javiernicolasadan/SkillHubFront)
 
-[Server repository Link](https://github.com/jorgeberrizbeitia/backlog-quest-server)
+[Server repository Link](https://github.com/javiernicolasadan/SkillHubBack)
 
-[Deployed App Link](https://backlog-quest.herokuapp.com/login)
+[Deployed App Link](https://kaleidoscopic-eclair-d386a9.netlify.app/)
 
 ### Slides
 
