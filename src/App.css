@@ -17,7 +17,6 @@ body *{
 }
 
 nav{
-  /* background-color: #202020; */
   background-color: #fbeb7c;
   height: 2rem;
   display: flex;
@@ -26,6 +25,7 @@ nav{
   color: black;
   font-weight: 200;
 }
+
 
 .navBar > div{
   margin: 0;
@@ -195,3 +195,4 @@ nav{
     animation: logo-spin infinite 20s linear;
   }
 }
+
