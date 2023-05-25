@@ -29,7 +29,7 @@ if(currentUser){
 return (
   <>
    
-    <div>
+    <div className="contentDiv">
       {currentUser ? (
         <>
           <div className="userInfo">

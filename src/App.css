@@ -69,6 +69,7 @@ nav{
     0 0 1px #e2e60c,
     0 0 1px #e2e60c,
     0 0 100px #e2e60c;
+    padding-left: 1rem;
 }
 
 .header p{
@@ -121,6 +122,10 @@ nav{
 
 .dropDownMenu option {
   font-size: 0.9rem;
+}
+
+.contentDiv{
+  padding-bottom: 3rem;
 }
 
 .grid {

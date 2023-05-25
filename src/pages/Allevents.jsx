@@ -15,7 +15,6 @@ export default function Allevents() {
       );
       if (response.status === 200) {
         const data = response.data;
-        console.log(data);
         const filteredUpcomingEvents = data.filter(
           (event) => new Date(event.date) >= currentDate
         );
@@ -31,9 +30,6 @@ export default function Allevents() {
     fetchEvents();
   }, []);
 
-  useEffect(() => {
-    console.log(upcomingEvents);
-  }, [upcomingEvents]);
 
   return (
     <>

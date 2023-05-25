@@ -24,7 +24,7 @@ display: none;
 }
 
 .authForms input {
-  background-color: rgba(240, 240, 240, 0.26);
+  background-color: rgb(236, 235, 235);
   border: 1px solid #dfdfdf;
   border-radius: 16px;
   width: calc(100% - 5rem);
