@@ -235,7 +235,7 @@ nav{
 .grid {
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 0.5fr));
   gap: 2px;
   padding: 0;
 }
@@ -252,10 +252,13 @@ nav{
   height: 7rem;
 }
 
+
+
+
 /* Estilos para tablet */
 @media (min-width: 768px) {
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 0.333333333333333333fr));
   }
 
   .container {
@@ -266,7 +269,7 @@ nav{
 /* Estilos para web */
 @media (min-width: 1200px) {
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 0.333333333333333fr));
   }
 
   .container {

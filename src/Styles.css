@@ -44,12 +44,40 @@
   background: rgba(4, 3, 4, 0.9);
 }
 
-.pageForms input {
-  margin: 0.5rem 0;
-  background-color: rgba(240, 240, 240, 0.26);
-  border: 1px solid #dfdfdf;
-  border-radius: 16px;
-  box-sizing: border-box;
+.pageForms input, .pageForms select, .pageForms textarea {
+    width: 100%;
+    margin: 0.5rem 0;
+    background-color: rgb(236, 235, 235);
+    border: 1px solid #ebebeb;
+    border-radius: 16px;
+    box-sizing: border-box;
+    padding: 0.7rem;
+}
+
+.addSkillDiv{
+    margin-bottom: 2rem;
+}
+
+  .addSkillDiv h1{
+    margin-top: 2rem;
+    margin-left: 2rem;
+  }
+  
+  .addField{
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+
+  
+  .addField label {
+    color: rgb(14, 14, 13);
+    font-weight: 500;
+  }
+  
+
+.addField textarea{
+    height: 10rem;
 }
 
 @media (max-width: 768px) {

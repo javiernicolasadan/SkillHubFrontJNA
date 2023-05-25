@@ -45,8 +45,8 @@ export default function Allevents() {
             <div key={event._id} className="container">
               <Link to={`/eventdets/${event._id}`}>
                 <h2>{event.title}</h2>
-                <p>{event.locationType}</p>
-                <p>{format(new Date(event.date), 'dd-MM-yyyy')}</p>
+                {/* <p>{event.locationType}</p>
+                <p>{format(new Date(event.date), 'dd-MM-yyyy')}</p> */}
               </Link>
                 {event.imageUrl && (
                         <img src={event.imageUrl} alt={event.title} />
