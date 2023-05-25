@@ -3,15 +3,10 @@ import { useContext, useState } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 
 export default function DropDown() {
-  const { isLoggedIn } = useContext(SessionContext);
   const [isOpened, setIsopened] = useState(false);
+  const { isLoggedIn, logout } = useContext(SessionContext);
 
   const toggleMenu = () => {
-    // if (isOpened) {
-    //  setIsopened(false)
-    // } else {
-    //   setIsopened(true)
-    // }
     setIsopened(!isOpened);
   };
 
@@ -28,6 +23,7 @@ export default function DropDown() {
           {isLoggedIn && <Link to="/profile">Profile</Link>}
           {isLoggedIn && <Link to="/allskills">Skills Venue</Link>}
           {isLoggedIn && <Link to="/allevents">Events Venue</Link>}
+          {isLoggedIn && <button onClick={logout}>logout</button>}
         </div>
       </nav>
     </div>
