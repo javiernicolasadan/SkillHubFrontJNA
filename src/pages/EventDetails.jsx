@@ -6,6 +6,7 @@ import { SessionContext } from "../contexts/SessionContext";
 export default function EventDetails() {
   const { eventId } = useParams();
   const [oneEvent, setOneEvent] = useState();
+  const [isSubscribed, setIsSubscribed] = useState(false)
   const { currentUser,  setNeedRefreshUser } = useContext(SessionContext);
   const navigate = useNavigate();
 
@@ -22,7 +23,13 @@ export default function EventDetails() {
 
   useEffect(() => {
     getDetails();
-  }, []);
+  
+    if (currentUser && currentUser.subscribedEvents && currentUser.subscribedEvents.length > 0) {
+      const subscribedEventIds = currentUser.subscribedEvents.map(event => event._id);
+      setIsSubscribed(subscribedEventIds.includes(eventId));
+    }
+  }, [currentUser, eventId]);
+  
 
   const handleEditEvent = () => {
     navigate(`/updateevent/${eventId}`);
@@ -56,10 +63,13 @@ export default function EventDetails() {
         if (data.message === "Subscription deleted") {
           setMessage("Subscription deleted");
           setNeedRefreshUser(true)
+          navigate("/profile")
         } else if (data.message === "Subscription successfull") {
           setMessage("Subscription successful");
           setNeedRefreshUser(true)
+          navigate("/profile")
         }
+        
       } else {
         setMessage("Error subscribing to event");
       } 
@@ -75,9 +85,10 @@ export default function EventDetails() {
       <button onClick={handleEditEvent}>Edit Event</button>
       <button onClick={handleDeleteEvent}>Delete Event</button>
       <Link to={`/eventdets/${oneEvent._id}`}></Link>
-      <button onClick={() => handleSubs(oneEvent._id)}>Subscribe</button>
+      {isSubscribed && <button onClick={() => handleSubs(oneEvent._id)}>Subscribe</button>}
+      {!isSubscribed && <button onClick={() => handleSubs(oneEvent._id)}>Unsubscribe</button>}
       {message && <p>{message}</p>}
-      <button onClick={() => handleSubs(oneEvent._id)}>Unsubscribe</button>
+     {/*  <button onClick={() => handleSubs(oneEvent._id)}>Unsubscribe</button> */}
 
     </div>
   ) : (

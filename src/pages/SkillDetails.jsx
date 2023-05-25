@@ -46,7 +46,7 @@ export default function SkillDetails() {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:5005/skill/${skillid}`, {
+      const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/skill/${skillid}`, {
         method: "DELETE",
       });
       if (response.status === 200) {
