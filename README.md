@@ -1,4 +1,4 @@
-# SkilloHub
+# SkillHub FrontEnd
 
 <br>
 
@@ -139,23 +139,23 @@ Event model
 
 ## API Endpoints (backend routes)
 
-| HTTP Method | URL                  | Request Body                 | Success status | Error Status | Description                                                                                                        |
-| ----------- | -------------------- | ---------------------------- | -------------- | ------------ | ------------------------------------------------------------------------------------------------------------------ |
-| POST        | `/auth/signup`       | {email, username, passwordH} | 201            | 400          | Check if user is logged in and return profile page                                                                 |
-| POST        | `/auth/login`        | {userId }                    | 201            | 404          | Checks if token exist                                                                                              |
-| GET         | `/auth/verify`       | {username, password}         | 200            |              | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
-| GET         | `/event      `       |                              | 200            |              | Find all events                                                                                                    |
-| POST        | `/event/create`      | {title, date, ...}           | 201            |              | Create an event                                                                                                    |
-| GET         | `/eventdets/eventId` | {\_id, title,description...} | 200            |              | Show event details form a especific event                                                                          |
-| PUT         | `/updateven/eventId` | {file, title, date...}       | 200            |              | Show details to update                                                                                             |
-| DELETE      | `/deleteven/eventId` | {eventId}                    | 200            |              | Show details to delete                                                                                             |
-| POST        | `/subscribe/eventId` | {eventId, userId}            | 200            |              | Subscribe to an event                                                                                              |
-| GET         | `/skill`             | {category}                   | 200            |              | Show skills                                                                                                        |
-| POST        | `/skill/create`      | {userId, title, details...}  | 201            |              | Create skill                                                                                                       |
-| GET         | `/skill/:skillid`    | {skillid}                    | 200            |              | Show events related to this skill                                                                                  |
-| PUT         | `/skill/:skillid`    | {skillid, iamgeUrl}          | 200            |              | Update an skill                                                                                                    |
-| DELETE      | `/skill/:skillid`    | {skillid}                    | 200            |              | Delete an skill                                                                                                    |
-| GET         | `/done/games`        |                              |                |              | Show games elements                                                                                                |
+| HTTP Method | URL                  | Request Body                 | Success status | Error Status | Description                                        |
+| ----------- | -------------------- | ---------------------------- | -------------- | ------------ | -------------------------------------------------- |
+| POST        | `/auth/signup`       | {email, username, passwordH} | 201            | 400          | Check if user is logged in and return profile page |
+| POST        | `/auth/login`        | {userId }                    | 201            | 404          | Create a token exist                               |
+| GET         | `/auth/verify`       | {username, password}         | 200            |              | Checks if token exits and correspond to user       |
+| GET         | `/event      `       |                              | 200            |              | Find all events                                    |
+| POST        | `/event/create`      | {title, date, ...}           | 201            |              | Create an event                                    |
+| GET         | `/eventdets/eventId` | {\_id, title,description...} | 200            |              | Show event details form a especific event          |
+| PUT         | `/updateven/eventId` | {file, title, date...}       | 200            |              | Show details to update                             |
+| DELETE      | `/deleteven/eventId` | {eventId}                    | 200            |              | Show details to delete                             |
+| POST        | `/subscribe/eventId` | {eventId, userId}            | 200            |              | Subscribe to an event                              |
+| GET         | `/skill`             | {category}                   | 200            |              | Show skills                                        |
+| POST        | `/skill/create`      | {userId, title, details...}  | 201            |              | Create skill                                       |
+| GET         | `/skill/:skillid`    | {skillid}                    | 200            |              | Show events related to this skill                  |
+| PUT         | `/skill/:skillid`    | {skillid, iamgeUrl}          | 200            |              | Update an skill                                    |
+| DELETE      | `/skill/:skillid`    | {skillid}                    | 200            |              | Delete an skill                                    |
+| GET         | `/done/games`        |                              |                |              | Show games elements                                |
 
 <br>
 
