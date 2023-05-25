@@ -7,7 +7,7 @@ export default function Navbar() {
   const { isLoggedIn, logout } = useContext(SessionContext);
 
   return (
-    <nav className="navBar">
+    <nav>
       <div>
         <Link to={"/"}>Home</Link>
       </div>

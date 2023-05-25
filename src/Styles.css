@@ -111,17 +111,21 @@ display: none;
     background: rgba(4, 3, 4, 0.9);
     padding: 1rem;
     font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.3rem;
 }
 
 .skill-dets button {
     border: wheat;
     border: 1px solid #dfdfdf;
     border-radius: 25px;
-    color: rgb(223, 230, 236);
+    color: rgb(237, 231, 231);
     size: 1rem;
     background: rgba(4, 3, 4, 0.9);
     padding: 1rem;
     font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
 }
 
 .skill-dets p {
@@ -141,23 +145,25 @@ display: none;
     margin-right: -1rem;
     background: rgba(0, 0, 0, 0.9);
     height: 3rem;
+    cursor: pointer;
   }
-
+  
   .hamburger img {
     padding: auto;
     margin-top: 1rem;
   }
-
-  .menu-container.opened .nav-menus {
+  
+  .menu-container {
     position: absolute;
     right: 0;
-    top: 2rem;
-    /* padding: 1rem; */
-    display: flex;
-    flex-direction: column;
-    background:rgb(223, 230, 236);
-    /* border-radius: 10px; */
-    border: none;
+    display: none;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 1; 
+  }
+  
+  .menu-container.opened {
+    display: block;
   }
 
  .nav-menus button {
@@ -190,9 +196,9 @@ display: none;
     margin-bottom: 0.5rem;
   }
 
-  /* .menu-container.opened .nav-menus a {
+  .menu-container.opened .nav-menus a {
     transition: all 0.3s ease-in-out;
-  } */
+  }
 
   .menu-container.opened .nav-menus a:focus {
     outline: none;

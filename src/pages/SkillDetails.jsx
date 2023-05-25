@@ -68,7 +68,7 @@ export default function SkillDetails() {
         </div>
         <br/>
 
-        <div>
+        <div className="skill-dets">
           <h3>Details of {skill.title}</h3>
           <p>{skill.details}</p>
           <br/>

@@ -11,7 +11,7 @@ export default function DropDown() {
   };
 
   return (
-    <div className="dropDown">
+    <div >
       <div className="hamburger" 
         onClick={() => toggleMenu()}>
         <img src="/images/icon-menu.png"></img>

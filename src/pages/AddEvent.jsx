@@ -63,7 +63,7 @@ export default function AddEvent() {
 
   return (
     <div className="addSkillDiv">
-     <h1>Schedule an event</h1>
+     <h2>Schedule an event</h2>
      {selectedSkill && <h3>{selectedSkill.category} / {selectedSkill.title}</h3>}
 
     <form className="pageForms" encType="multipart/form-data" onSubmit={handleSubmit}>
