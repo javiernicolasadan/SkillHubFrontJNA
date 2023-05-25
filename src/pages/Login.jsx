@@ -40,6 +40,7 @@ export default function Login() {
     <>
       {/* <Link to={"/profile"}>Profile Page</Link> */}
       <div className="authForms">
+      <div>
       <form onSubmit={handleSubmit}>
         <div className="authField">
           <label>Email: </label>
@@ -53,7 +54,7 @@ export default function Login() {
           ></input>
         </div>
 
-        <div>
+        <div className="authField">
           <label>Password: </label>
           <input
             type="password"
@@ -68,8 +69,9 @@ export default function Login() {
           ></input>
         </div>
 
-        <button type="submit">Log In</button>
+        <button className="genButton" type="submit">Log In</button>
       </form>
+      </div>
       {errorMessage && <p>{errorMessage}</p>}
     {errorMessage === "User not found." && <Link to={"/signup"}>Sign Up</Link>}
 </div>
