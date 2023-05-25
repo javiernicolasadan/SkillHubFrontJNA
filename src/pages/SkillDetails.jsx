@@ -61,14 +61,17 @@ export default function SkillDetails() {
     <>
       {skill ? (
       <>
+      <div className="skill-dets">
         <div className="fullWidthImg">
         {skill.imageUrl &&
           <img src={skill.imageUrl} alt={skill.title}/>}
         </div>
+        <br/>
 
         <div>
-          <h1>Details of {skill.title}</h1>
-          <h2>{skill.details}</h2>
+          <h3>Details of {skill.title}</h3>
+          <p>{skill.details}</p>
+          <br/>
           <Link to={`/updateskill/${skillid}`}> Update </Link>
           <button type="button" onClick={handleDelete}>Delete</button>
           <Link to={`/addevent/${skillid}`}>Add event</Link>
@@ -99,6 +102,7 @@ export default function SkillDetails() {
         ) : (
           <p>No past events found</p>
         )}
+    </div>
     </div>
       </>
       
