@@ -26,10 +26,13 @@ export default function AllSkills() {
         fetchData()
     }, [selectedCategory])
 
+    useEffect(()=>{
+        console.log(skills)
+    },[skills])
+
   return (
     <>
-        <Link to={'/allevents'} >Discover all the events</Link>
-        <div>
+        <div className="dropDownMenu">
             <label>Category</label>
             <select onChange={(event)=>(setSelectedCategory(event.target.value))}>
                 <option value='All'>All categories</option>
@@ -45,21 +48,31 @@ export default function AllSkills() {
             </select>
         </div>
 
-        <div>
-            {!skills ? 
+        <div className="grid">
+            {!skills ? (
                 <p>Loading...</p>
-            : skills.length===0?
-            <p>No skills to show</p>
-            :
-            skills.map((eachSkill)=>(
-                <Link to={`/skilldets/${eachSkill._id}`} key={eachSkill._id}>
-                    <p>{eachSkill.title}</p>
-                </Link>
-               
-            ))
-            }
-            
-        </div>
+            ) : skills.length === 0 ? (
+                <p>No skills to show</p>
+            ) : (
+                skills.map((eachSkill) => (
+                <div className="container" key={eachSkill._id}>
+                    <Link to={`/skilldets/${eachSkill._id}`}>
+                    <h2>{eachSkill.title}</h2>
+                    </Link>
+                    {eachSkill.imageUrl ? (
+                        <img src={eachSkill.imageUrl} alt={eachSkill.title} />
+                    ) : (
+                        <p></p>
+                    )}
+                </div>
+                ))
+            )}
+            </div>
+
+            <div className="endLink">
+            <Link to={'/allevents'} >Check our events out</Link>
+            </div>
+
         
     </>
     

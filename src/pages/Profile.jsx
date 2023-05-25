@@ -8,37 +8,24 @@ const currentDate = new Date()
 export default function Profile() {
 
   const { logout, currentUser } = useContext(SessionContext)
-  const [pastEvents, setPastEvents] = useState([]);
-  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  
+  let pastEvents = [];
+  let upcomingEvents = [];
 
-console.log("Hey there ",new Date("2023-05-31") > currentDate)
-  /* console.log(currentUser) */
-  const fetchEvents = async () => {
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_BASE_API_URL}/event`)
-      const data = response.data
-      console.log(data)
-
-      const filteredPastEvents = data.filter(
-        (event) => new Date(event.date) < currentDate
-      )
-      const filteredUpcomingEvents = data.filter(
-        (event) => new Date(event.date) >= currentDate
-      )
-      console.log("Upcoming ",filteredUpcomingEvents);
-      console.log("past event",filteredPastEvents);
-      setPastEvents(filteredPastEvents);
-      setUpcomingEvents(filteredUpcomingEvents);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchEvents()
-  }, [])
-
-
+if(currentUser){
+  if(currentUser.subscribedEvents.length > 0){
+    pastEvents = currentUser.subscribedEvents.filter((event) => {
+      const eventDate = new Date(event.date);
+      return eventDate < currentDate;
+    });
+    
+    upcomingEvents = currentUser.subscribedEvents.filter((event) => {
+      const eventDate = new Date(event.date);
+      return eventDate >= currentDate;
+    });
+  }
+ 
+}
   return (
     <>
       <div>Profile</div>
@@ -65,8 +52,6 @@ console.log("Hey there ",new Date("2023-05-31") > currentDate)
     <p>Loading...</p>
   )}
 </div>
-
-
 
       <div className="container">
         <h3>Upcoming Events:</h3>

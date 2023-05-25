@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { format } from 'date-fns'
+
 const currentDate = new Date();
 
 export default function Allevents() {
@@ -34,23 +36,29 @@ export default function Allevents() {
   }, [upcomingEvents]);
 
   return (
-    <div>
-      <Link to={"/allskills"}>See all the skills</Link>
+    <>
       <h1>Upcoming Events</h1>
+    <div className="grid">
       {upcomingEvents ? (
-        <ul>
-          {upcomingEvents.map((event) => (
-            <li key={event._id}>
-              <h2>{event.title}</h2>
-              <p>Date: {event.date}</p>
-              <p>Location: {event.locationType}</p>
-              <img src={event.imageUrl} />
-            </li>
-          ))}
-        </ul>
+      
+          upcomingEvents.map((event) => (
+            <div key={event._id} className="container">
+              <Link to={`/eventdets/${event._id}`}>
+                <h2>{event.title}</h2>
+                <p>{event.locationType}</p>
+                <p>{format(new Date(event.date), 'dd-MM-yyyy')}</p>
+              </Link>
+            </div>
+          ))
+        
       ) : (
         <p>Loading events...</p>
       )}
     </div>
+
+    <div className="endLink">
+            <Link to={'/allskills'} >Improve your skills</Link>
+            </div>
+    </>
   );
 }
