@@ -58,6 +58,10 @@ display: none;
     padding: 0.7rem;
 }
 
+.pageForms img{
+    width: 100%;
+}
+
 .addSkillDiv{
     margin-bottom: 2rem;
 }
