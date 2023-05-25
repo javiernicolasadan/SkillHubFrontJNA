@@ -233,7 +233,7 @@ nav{
 
 
 
-@keyframes logo-spin {
+/* @keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -246,4 +246,47 @@ nav{
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
+} */
+
+.grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 2px;
+  padding: 0;
 }
+
+.container {
+  position: relative;
+  background-color: lightgray;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 7rem;
+}
+
+/* Estilos para tablet */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+
+  .container {
+    height: 10rem;
+  }
+}
+
+/* Estilos para web */
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+
+  .container {
+    height: 15rem;
+  }
+}
+
