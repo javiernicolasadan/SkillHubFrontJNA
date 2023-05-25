@@ -2,9 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
+const currentDate = new Date()
+
 
 export default function Profile() {
-  const currentDate = new Date()
+
   const { logout, currentUser } = useContext(SessionContext)
   
   let pastEvents = [];
@@ -37,7 +39,7 @@ if(currentUser){
       {currentUser.skills.length > 0 ? (
         currentUser.skills.map((skill) => (
           <div key={skill._id}>
-          <Link to={`//skilldets/${skill._id}`}>
+          <Link to={`/skilldets/${skill._id}`}>
             <h4>{skill.title}</h4>
             </Link>
           </div>
@@ -56,9 +58,9 @@ if(currentUser){
         {upcomingEvents.length > 0 ? (
           upcomingEvents.map((event) => (
             <div key={event._id}>
-              <Link to={`/eventdets/${event._id}`}>
-                <h4>{event.title}</h4>
-              </Link>
+            <Link to={`/eventdets/${event._id}`}>
+            <h4>{event.title}</h4>
+            </Link>
             </div>
           ))
         ) : (
@@ -71,15 +73,18 @@ if(currentUser){
         {pastEvents.length > 0 ? (
           pastEvents.map((event) => (
             <div key={event._id}>
-              <Link to={`/eventdets/${event._id}`}>
-                <h4>{event.title}</h4>
-              </Link>
+            <Link to={`/eventdets/${event._id}`}>
+            <h4>{event.title}</h4>
+            </Link>
             </div>
           ))
         ) : (
           <p>No past events found</p>
         )}
       </div>
+
+
+
 
     </>
   );

@@ -102,8 +102,8 @@ export default function AddSkill({ isUpdating = false }) {
   return (
     <>
       <h1>{isUpdating ? "Update your Skill" : "Create a new"}</h1>
-     <div className="pageForms">
-      <form encType="multipart/form-data" onSubmit={handleSubmit}>
+     <div>
+      <form  className="pageForms" encType="multipart/form-data" onSubmit={handleSubmit}>
         <div>
           <label>Category:</label>
           <select

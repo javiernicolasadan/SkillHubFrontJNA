@@ -1,18 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;1,100;1,300&display=swap');
+
+
+#root {
+  max-width: 1280px;
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+body{
+  margin: 0;
+}
+body *{
+  padding: 0.5rem 1rem;
+  font-family: Montserrat, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+
+/* .pageForms {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    } */
+
+
+/* .pageForms input {
+    border:none;
+	padding:15px 20px;
+	border-radius:25px;
+	background:rgba(255,255,255,.1);
+} */
+
+.authForms {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    /* background-image: url(/public/images/webb.jpeg); */
+    width:100vw;
+    height: 100vh;
+}
+
+
+.authForms label {
+    top: -5px;
+    letter-spacing: 5px;
+    font-size: 20px;
+    color: rgb(14, 14, 13);
+    
+}
+
+.authForms input {
+    /* border:none; */
+	padding:15px 20px;
+    background-color: rgba(240, 240, 240, 0.26);
+    border: 1px solid #dfdfdf;
+    border-radius: 16px;
+    width:100%;
+	/* color:#fff; 
+	display:block; */
+}
+
+.authForms button {
+    border:wheat;
+	padding: 20px 30px;
+    margin-top: 30px;
+	border-radius:25px;
+    color: rgb(223, 230, 236);
+    size: 20px;
+	background:rgba(4, 3, 4, 0.9);
+}
+
+/* .square {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 40%;
+    background-color: #555;
+} */
 .pageForms {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 1rem
+}
+
+.pageForms button {
+    border:wheat;
+	padding:15px 20px;
+    border: 1px solid #dfdfdf;
+	border-radius:25px;
+    color: rgb(223, 230, 236);
+    size: 0.5rem;
+	background:rgba(4, 3, 4, 0.9);
 }
 
 .pageForms input {
-    background: #ecf0f3;
-    padding: 10px;
-    padding-left: 20px;
-    height: 30px;
-    font-size: 14px;
-    border-radius: 50px;
-    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+    margin: 0.5rem 0;
+    /* align-items: center; */
+    background-color: rgba(240, 240, 240, 0.26);
+    border: 1px solid #dfdfdf;
+    border-radius: 16px;
+    box-sizing: border-box;
+    /* display: flex; */
+    font-size: 1rem;
+    /* justify-content: center; */
 }
-

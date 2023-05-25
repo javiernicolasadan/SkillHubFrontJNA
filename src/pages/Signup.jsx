@@ -15,17 +15,20 @@ export default function Signup() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/auth/signup`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: newUser.email,
-        username: newUser.username,
-        password: newUser.password,
-      }),
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BASE_API_URL}/auth/signup`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: newUser.email,
+          username: newUser.username,
+          password: newUser.password,
+        }),
+      }
+    );
     console.log(response);
     if (response.status === 201) {
       navigate("/login");
@@ -36,45 +39,62 @@ export default function Signup() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-
-    <div className="authField">
+    <div className="authForms">
+    <form className="authForms" onSubmit={handleSubmit}>
+      <div>
         <label>Email: </label>
-        <input type="email" required 
-          value={newUser.email} 
+        <input
+          type="email"
+          required
+          value={newUser.email}
           onChange={(e) => {
-            setNewUser((prevInput) => ({ ...prevInput, email: e.target.value }))
-            setErrorMessage(null)
+            setNewUser((prevInput) => ({
+              ...prevInput,
+              email: e.target.value,
+            }));
+            setErrorMessage(null);
           }}
         />
-    </div>
+      </div>
 
-    <div className="authField">
+      <div>
         <label>Username: </label>
-        <input type="text" required 
-          value={newUser.username} 
+        <input
+          type="text"
+          required
+          value={newUser.username}
           onChange={(e) => {
-            setNewUser((prevInput) => ({ ...prevInput, username: e.target.value }))
-            setErrorMessage(null)
+            setNewUser((prevInput) => ({
+              ...prevInput,
+              username: e.target.value,
+            }));
+            setErrorMessage(null);
           }}
         />
-    </div>
+      </div>
 
-    <div className="authField">
+      <div>
         <label>Password: </label>
-        <input type="password" required 
-          value={newUser.password} 
+        <input
+          type="password"
+          required
+          value={newUser.password}
           onChange={(e) => {
-            setNewUser((prevInput) => ({ ...prevInput, password: e.target.value }))
-            setErrorMessage(null)
+            setNewUser((prevInput) => ({
+              ...prevInput,
+              password: e.target.value,
+            }));
+            setErrorMessage(null);
           }}
         />
+      </div>
+      {errorMessage && <p>{errorMessage}</p>}
+      {errorMessage === "Email already exists" && (
+        <Link to={"/login"}>Login</Link>
+      )}
+
+      <button type="submit">Sign Up for free!</button>
+    </form>
     </div>
-    {errorMessage && <p>{errorMessage}</p>}
-    {errorMessage === "Email already exists" && <Link to={"/login"}>Login</Link>}
-
-    <button type="submit">Sign Up for free!</button>
-
-</form>
   );
 }

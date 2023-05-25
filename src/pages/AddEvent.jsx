@@ -71,8 +71,8 @@ export default function AddEvent() {
     :
     <p>Loading...</p>} */}
      
-    <form encType="multipart/form-data" onSubmit={handleSubmit}>
-       <div>
+    <form className="pageForms" encType="multipart/form-data" onSubmit={handleSubmit}>
+       <div >
          <label>Event Title:</label>
          <input type="text" name="title" value={newTitle} onChange={(e) => setTitle(e.target.value)} required></input>
        </div>
