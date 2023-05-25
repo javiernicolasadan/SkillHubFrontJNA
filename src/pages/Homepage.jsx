@@ -18,8 +18,8 @@ export default function Homepage() {
         {!isLoggedIn &&
         <div>
           <p  style={{ fontSize: '1.3rem', fontWeight: 500 }}>Join us now!</p>
-          <Link className="genButton" to="/signup">Signup</Link>
-          <Link className="genButton" to={"/login"}>Login</Link>
+          <Link className="genButton whiteButton" to="/signup">Signup</Link>
+          <Link className="genButton whiteButton" to={"/login"}>Login</Link>
         </div>
         }
 

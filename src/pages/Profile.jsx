@@ -7,7 +7,7 @@ const currentDate = new Date()
 
 export default function Profile() {
 
-  const { logout, currentUser } = useContext(SessionContext)
+  const {  currentUser } = useContext(SessionContext)
   
   let pastEvents = [];
   let upcomingEvents = [];
@@ -26,66 +26,89 @@ if(currentUser){
   }
  
 }
-  return (
-    <>
-      <div>Profile</div>
-      <button type='button' onClick={logout}>Log Out</button>
-      <Link to="/addskill">Add skill</Link>
-      <Link to="/addevent">Add Event</Link>
-      <div className="container">
-  {currentUser ? (
-    <>
-      <h1>My Skills:</h1>
-      {currentUser.skills.length > 0 ? (
-        currentUser.skills.map((skill) => (
-          <div key={skill._id}>
-          <Link to={`/skilldets/${skill._id}`}>
-            <h4>{skill.title}</h4>
-            </Link>
+return (
+  <>
+    {/* <Link to="/addskill">Add skill</Link>
+    <Link to="/addevent">Add Event</Link> */}
+    <div>
+      {currentUser ? (
+        <>
+          <div className="userInfo">
+            <h1>Welcome back {currentUser.username}</h1>
+            <p>Email: {currentUser.email}</p>
+            <p>Username: {currentUser.username}</p>
+            <p>Skills offered: {currentUser.skills.length}</p>
+            {upcomingEvents ?
+              <p>Upcoming events: {upcomingEvents.length}</p>
+              : <p>Upcoming events: 0</p>
+            }
+            
           </div>
-        ))
+
+          <div className="noMargin">
+            <h3>My Skills:</h3>
+
+            <div className="grid">
+              {currentUser.skills.length > 0 ? (
+                currentUser.skills.map((skill) => (
+                  <div key={skill._id} className="container">
+                    <Link to={`/skilldets/${skill._id}`}>
+                      <h2>{skill.title}</h2>
+                    </Link>
+                    {skill.imageUrl && (
+                        <img src={skill.imageUrl} alt={skill.title} />
+                    )}
+                  </div>
+                ))
+              ) : (
+                <p>No skills to show</p>
+              )}
+            </div>
+          </div>
+
+
+          <div className="noMargin">
+            <h3>Upcoming Events:</h3>
+            <div  className="grid">
+              {upcomingEvents.length > 0 ? (
+                upcomingEvents.map((event) => (
+                  <div key={event._id} className="container">
+                    <Link to={`/eventdets/${event._id}`}>
+                      <h2>{event.title}</h2>
+                    </Link>
+                    {event.imageUrl && (
+                        <img src={event.imageUrl} alt={event.title} />
+                    )}
+                  </div>
+                ))
+              ) : (
+                <p>No upcoming events found</p>
+              )}
+            </div>
+
+            <h3>Past Events:</h3>
+            <div className="grid">
+              {pastEvents.length > 0 ? (
+                pastEvents.map((event) => (
+                  <div key={event._id} className="container">
+                    <Link to={`/eventdets/${event._id}`}>
+                      <h2>{event.title}</h2>
+                    </Link>
+                    {event.imageUrl && (
+                        <img src={event.imageUrl} alt={event.title} />
+                    )}
+                  </div>
+                ))
+              ) : (
+                <p>No past events found</p>
+              )}
+            </div>
+          </div>
+        </>
       ) : (
-        <p>No skills to show</p>
+        <p>Loading...</p>
       )}
-    </>
-  ) : (
-    <p>Loading...</p>
-  )}
-</div>
-
-      <div className="container">
-        <h3>Upcoming Events:</h3>
-        {upcomingEvents.length > 0 ? (
-          upcomingEvents.map((event) => (
-            <div key={event._id}>
-            <Link to={`/eventdets/${event._id}`}>
-            <h4>{event.title}</h4>
-            </Link>
-            </div>
-          ))
-        ) : (
-          <p>No upcoming events found</p>
-        )}
-      </div>
-
-      <div className="container">
-        <h3>Past Events:</h3>
-        {pastEvents.length > 0 ? (
-          pastEvents.map((event) => (
-            <div key={event._id}>
-            <Link to={`/eventdets/${event._id}`}>
-            <h4>{event.title}</h4>
-            </Link>
-            </div>
-          ))
-        ) : (
-          <p>No past events found</p>
-        )}
-      </div>
-
-
-
-
-    </>
-  );
+    </div>
+  </>
+);
 }

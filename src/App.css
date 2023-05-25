@@ -11,7 +11,7 @@ body{
   margin: 0;
 }
 body *{
-  padding: 0.5rem 1rem;
+  padding: 0 1rem;
   font-family: Montserrat, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 300;
   text-decoration: none;
@@ -19,12 +19,14 @@ body *{
 
 h1{
   font-size: 1.5rem;
+  padding-left: 0;
+  margin-top: 0;
 }
 
 nav{
   /* background-color: #202020; */
   background-color: #fbeb7c;
-  height: 2rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -152,16 +154,18 @@ nav{
 .container p, .container h2 {
   position: relative;
   padding: 0 ;
-  border-radius: 5px;
+  border-radius: 1rem;
   color: black;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   margin: 0.3rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 0.5rem;
 }
 
 .container a{
@@ -187,12 +191,44 @@ nav{
 }
 
 .genButton{
-  background-color: #fbeb7c;
-  margin: 0.5rem;
-  border-radius: 1rem;
-  padding: 1rem;
-  color: black;
+  border:wheat;
+	padding: 20px 30px;
+  margin-top: 30px;
+	border-radius:25px;
+  color: rgb(223, 230, 236);
+	background:rgba(4, 3, 4, 0.9);
+  margin-right: 1rem;
   font-weight: 600;
+}
+
+.whiteButton{
+  color: black;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.userInfo{
+  margin: 2rem 0;
+}
+
+.userInfo p{
+  padding: 0 1rem;
+  line-height: 0.7;
+}
+
+.noMargin {
+  margin: 0 -1rem;
+  padding: 0;
+}
+
+.noMargin h3{
+  margin-left: 1rem;
+  font-weight: 600;
+}
+
+.fullWidthImg img{
+  width: 100vw;
+  margin: 0 -1rem;
+  padding: 0;
 }
 
 

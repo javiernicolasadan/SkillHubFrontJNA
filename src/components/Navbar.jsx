@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 
 export default function Navbar() {
-  const { isLoggedIn } = useContext(SessionContext);
+  const { isLoggedIn, logout } = useContext(SessionContext);
 
   return (
     <nav className="navBar">
@@ -17,6 +17,7 @@ export default function Navbar() {
       {isLoggedIn && <Link to="/profile">Profile</Link>}
       {isLoggedIn && <Link to="/allskills">Skills Venue</Link>}
       {isLoggedIn && <Link to="/allevents">Events Venue</Link>}
+      {isLoggedIn && <button type='button' onClick={logout}>Log Out</button>}
       </div>
     </nav>
   );
