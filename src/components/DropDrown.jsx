@@ -17,7 +17,7 @@ export default function DropDown() {
         <img src="/images/icon-menu.png"></img>
       </div>
       <nav className={`menu-container ${isOpened ? "opened" : "closed"} `}>
-        <div className="nav-menus">
+        <div className="drop-menus">
           {!isLoggedIn && <Link to="/signup">Signup</Link>}
           {!isLoggedIn && <Link to="/login">Login</Link>}
           {isLoggedIn && <Link to="/profile">Profile</Link>}

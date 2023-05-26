@@ -11,7 +11,7 @@
   color: #000;
   font-size: 1rem;
   font-weight: bold;
-  letter-spacing: 0.3rem;
+  /* letter-spacing: 0.3rem; */
 }
 
 .nav-menus button {
@@ -182,13 +182,26 @@
     position: absolute;
     right: 0;
     display: none;
-    padding: 1rem;
-    background: rgba(142, 141, 141);
     z-index: 1;
   }
 
   .menu-container.opened {
     display: block;
+  }
+
+  .drop-menus{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(175, 175, 175, 0.8);
+    padding: 0.5rem;
+  }
+  
+  .header h1{
+    font-size: 2.5rem;
+  }
+
+  .header p{
+    font-size: 1rem;
   }
 
   .nav-menus button {
@@ -202,14 +215,12 @@
   }
 
   .menu-container.opened .nav-menus a {
-    color: #333;
     text-decoration: none;
     font-weight: bold;
   }
 
   .menu-container.opened .nav-menus a:hover {
     color: #fff;
-    background: #333;
   }
 
   .menu-container.opened .nav-menus a:active {
@@ -230,4 +241,5 @@
     color: #fff;
     background: #000;
   }
+
 }

@@ -131,7 +131,7 @@ nav{
 .grid {
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 0.5fr));
   gap: 2px;
   padding: 0;
 }
@@ -224,6 +224,7 @@ nav{
 .noMargin {
   margin: 0 -1rem;
   padding: 0;
+  margin-bottom: 3rem;
 }
 
 .noMargin h3{
@@ -240,7 +241,7 @@ nav{
 .grid {
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 0.5fr));
   gap: 2px;
   padding: 0;
 }
@@ -260,7 +261,7 @@ nav{
 /* Estilos para tablet */
 @media (min-width: 768px) {
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 0.3333333333fr));
   }
 
   .container {
@@ -271,7 +272,7 @@ nav{
 /* Estilos para web */
 @media (min-width: 1200px) {
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 0.3333333333fr));
   }
 
   .container {
