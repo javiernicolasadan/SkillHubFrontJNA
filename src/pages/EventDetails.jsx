@@ -91,8 +91,8 @@ export default function EventDetails() {
       
       <button onClick={handleEditEvent}>Edit Event</button>
       <button onClick={handleDeleteEvent}>Delete Event</button>
-      {isSubscribed && <button onClick={() => handleSubs(oneEvent._id)}>Subscribe</button>}
-      {!isSubscribed && <button onClick={() => handleSubs(oneEvent._id)}>Unsubscribe</button>}
+      {isSubscribed && <button onClick={() => handleSubs(oneEvent._id)}>Unsubscribe</button>}
+      {!isSubscribed && <button onClick={() => handleSubs(oneEvent._id)}>Subscribe</button>}
 
     </div>
   ) : (
