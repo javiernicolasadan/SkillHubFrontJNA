@@ -13,8 +13,6 @@ export default function AddSkill({ isUpdating = false }) {
   const { skillid } = useParams()
   const [previewImageUrl, setPreviewImageUrl] = useState("");
   const [originalImageUrl, setOriginalImageUrl] = useState("");
-  /* console.log(skillid) */
-
 
   useEffect(() => {
     const fetchSkill = async () => {
