@@ -89,6 +89,9 @@ export default function SkillDetails() {
               <Link to={`/eventdets/${eachEvent._id}`}>
               <h2>{eachEvent.title}</h2>
               </Link>
+              {eachEvent.imageUrl && (
+                        <img src={eachEvent.imageUrl} alt={eachEvent.title} />
+                    )}
             </div>
           ))
         ) : (
@@ -104,6 +107,9 @@ export default function SkillDetails() {
             <Link to={`/eventdets/${eachEvent._id}`}>
               <h2>{eachEvent.title}</h2>
               </Link>
+              {eachEvent.imageUrl && (
+                        <img src={eachEvent.imageUrl} alt={eachEvent.title} />
+                    )}
             </div>
         
           ))
