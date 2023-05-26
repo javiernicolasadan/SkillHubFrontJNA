@@ -73,7 +73,7 @@ export default function UpdateEvent() {
 
   return (
     <div className="addSkillDiv">
-    <h3>Update event</h3>
+    <h2>Update event</h2>
     <form className="pageForms" onSubmit={handleUpdate}>
       <div className="addField">
         <label>Event Title:</label>

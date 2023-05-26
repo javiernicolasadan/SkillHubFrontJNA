@@ -24,6 +24,11 @@ h1{
   text-align: center;
 }
 
+h2{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
 nav{
   background-color: transparent;
   height: 3rem;
@@ -107,11 +112,15 @@ nav{
 }
 
 .allskills{
-  background-image: url('/images/b&w skillsjpg.jpg');
+  background-color: white;
+}
+
+.allskills a{
+  border: 2px solid black ;
 }
 
 .allevents{
-  background-image: url('/images/b&w events.jpg');
+  background-image: url('/images/b&weventsPeach.jpg');
 }
 
 .dropDownMenu{

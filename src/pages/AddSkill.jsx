@@ -76,7 +76,7 @@ export default function AddSkill({ isUpdating = false }) {
 
   return (
     <div className="addSkillDiv">
-      <h1>{isUpdating ? "Update your skill here" : "Add your skill here"}</h1>
+      <h2>{isUpdating ? "Update your skill here" : "Add your skill here"}</h2>
      <div>
       <form  className="pageForms" encType="multipart/form-data" onSubmit={handleSubmit}>
         <div className="addField">

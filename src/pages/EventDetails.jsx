@@ -83,7 +83,7 @@ export default function EventDetails() {
           </div>
           <br/>
 
-        <h3>Details of {oneEvent.title}</h3>
+        <h2>Details of {oneEvent.title}</h2>
         <p className="skill-dets">{oneEvent.description}</p>
         <h3>Date:</h3> <p>{oneEvent.date}</p>
         <h3>Location type:</h3> <p>{oneEvent.locationType}</p>
