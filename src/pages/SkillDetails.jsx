@@ -71,9 +71,9 @@ export default function SkillDetails() {
           <h3>Details of {skill.title}</h3>
           <p>{skill.details}</p>
           <br/>
-          <Link to={`/updateskill/${skillid}`}> Update </Link>
-          <button type="button" onClick={handleDelete}>Delete</button>
-          <Link to={`/addevent/${skillid}`}>Add event</Link>
+          <Link to={`/updateskill/${skillid}`}> Update skill</Link>
+          <button type="button" onClick={handleDelete}>Delete skill</button>
+          <Link to={`/addevent/${skillid}`}>Add event to skill</Link>
         </div>
       </div>
 
