@@ -1,7 +1,33 @@
-.hamburger {
-display: none;
-
+.home {
+  padding-left: 0;
 }
+
+.home a {
+  padding: 0;
+}
+
+
+.nav-menus a {
+  color: #000;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.3rem;
+}
+
+.nav-menus button {
+  border: 1px solid #dfdfdf;
+  border-radius: 25px;
+  color: rgb(223, 230, 236);
+  background: rgba(4, 3, 4, 0.9);
+  padding: 0.5rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
+.hamburger {
+  display: none;
+}
+
 .authForms {
   margin: 0;
   padding: 0;
@@ -40,7 +66,6 @@ display: none;
 }
 
 .pageForms button {
-  border: wheat;
   border: 1px solid #dfdfdf;
   border-radius: 25px;
   color: rgb(223, 230, 236);
@@ -48,92 +73,90 @@ display: none;
   background: rgba(4, 3, 4, 0.9);
 }
 
-.pageForms input, .pageForms select, .pageForms textarea {
-    width: 100%;
-    margin: 0.5rem 0;
-    background-color: rgb(236, 235, 235);
-    border: 1px solid #ebebeb;
-    border-radius: 16px;
-    box-sizing: border-box;
-    padding: 0.7rem;
+.pageForms input,
+.pageForms select,
+.pageForms textarea {
+  width: 100%;
+  margin: 0.5rem 0;
+  background-color: rgb(236, 235, 235);
+  border: 1px solid #ebebeb;
+  border-radius: 16px;
+  box-sizing: border-box;
+  padding: 0.7rem;
 }
 
-.pageForms img{
-    width: 100%;
+.pageForms img {
+  width: 100%;
 }
 
-.addSkillDiv{
-    margin-bottom: 2rem;
+.addSkillDiv {
+  margin-bottom: 2rem;
 }
 
-  .addSkillDiv h1{
-    margin-top: 2rem;
-    margin-left: 2rem;
-  }
-  
-  .addField{
-    width: 100%;
-    margin: 1rem 0;
-  }
-
-
-  
-  .addField label {
-    color: rgb(14, 14, 13);
-    font-weight: 500;
-  }
-  
-
-.addField textarea{
-    height: 10rem;
+.addSkillDiv h1 {
+  margin-top: 2rem;
+  margin-left: 2rem;
 }
 
+.addField {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.addField label {
+  color: rgb(14, 14, 13);
+  font-weight: 500;
+}
+
+.addField textarea {
+  height: 10rem;
+}
 
 .skill-dets {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .skill-dets h3 {
-    margin-top: 2rem;
-    margin-left: 1rem;
-    font-weight: 600;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  font-weight: 600;
 }
 
 .skill-dets a {
-    border: wheat;
-    border: 1px solid #dfdfdf;
-    border-radius: 25px;
-    color: rgb(223, 230, 236);
-    size: 1.5rem;
-    background: rgba(4, 3, 4, 0.9);
-    padding: 1rem;
-    font-size: 1rem;
-    font-weight: bold;
-    letter-spacing: 0.3rem;
+  border: wheat;
+  border: 1px solid #dfdfdf;
+  border-radius: 25px;
+  color: rgb(223, 230, 236);
+  size: 1.5rem;
+  background: rgba(4, 3, 4, 0.9);
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.3rem;
 }
 
 .skill-dets button {
-    border: wheat;
-    border: 1px solid #dfdfdf;
-    border-radius: 25px;
-    color: rgb(237, 231, 231);
-    size: 1rem;
-    background: rgba(4, 3, 4, 0.9);
-    padding: 1rem;
-    font-size: 1rem;
-    font-weight: bold;
-    letter-spacing: 0.5rem;
+  border: wheat;
+  border: 1px solid #dfdfdf;
+  border-radius: 25px;
+  color: rgb(237, 231, 231);
+  size: 1rem;
+  background: rgba(4, 3, 4, 0.9);
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
 }
 
 .skill-dets p {
-    padding: 0 1rem;
-    line-height: 0.7;
+  padding: 0 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.1rem;
+  text-align: center;
 }
-
-
 
 @media (max-width: 768px) {
   .menu-container.closed {
@@ -146,27 +169,29 @@ display: none;
     background: rgba(0, 0, 0, 0.9);
     height: 3rem;
     cursor: pointer;
+
   }
-  
+
   .hamburger img {
     padding: auto;
     margin-top: 1rem;
   }
-  
+ 
+
   .menu-container {
     position: absolute;
     right: 0;
     display: none;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.5);
-    z-index: 1; 
+    background: rgba(142, 141, 141);
+    z-index: 1;
   }
-  
+
   .menu-container.opened {
     display: block;
   }
 
- .nav-menus button {
+  .nav-menus button {
     border: wheat;
     border: 1px solid #dfdfdf;
     border-radius: 25px;
@@ -174,7 +199,7 @@ display: none;
     size: 0.5rem;
     background: rgba(4, 3, 4, 0.9);
     padding: 0.5rem;
- }
+  }
 
   .menu-container.opened .nav-menus a {
     color: #333;
@@ -205,5 +230,4 @@ display: none;
     color: #fff;
     background: #000;
   }
-
 }

@@ -33,7 +33,7 @@ export default function Allevents() {
 
   return (
     <>
-      <h1>Upcoming Events</h1>
+      <h2>Upcoming Events</h2>
     <div className="grid">
       {upcomingEvents ? (
       

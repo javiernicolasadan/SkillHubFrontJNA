@@ -11,7 +11,7 @@ export default function DropDown() {
   };
 
   return (
-    <div >
+    <div className="dropDown">
       <div className="hamburger" 
         onClick={() => toggleMenu()}>
         <img src="/images/icon-menu.png"></img>
@@ -23,7 +23,7 @@ export default function DropDown() {
           {isLoggedIn && <Link to="/profile">Profile</Link>}
           {isLoggedIn && <Link to="/allskills">Skills Venue</Link>}
           {isLoggedIn && <Link to="/allevents">Events Venue</Link>}
-          {isLoggedIn && <button onClick={logout}>logout</button>}
+          {isLoggedIn && <button onClick={logout}>Logout</button>}
         </div>
       </nav>
     </div>

@@ -33,7 +33,7 @@ return (
       {currentUser ? (
         <>
           <div className="userInfo">
-            <h1>Welcome back {currentUser.username}</h1>
+            <h2>Welcome back {currentUser.username}</h2>
             <p>Email: {currentUser.email}</p>
             <p>Username: {currentUser.username}</p>
             <p>Skills offered: {currentUser.skills.length}</p>

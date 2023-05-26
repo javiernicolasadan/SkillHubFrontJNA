@@ -84,9 +84,9 @@ export default function EventDetails() {
           <br/>
 
         <h3>Details of {oneEvent.title}</h3>
-        <p>{oneEvent.description}</p>
-        <p>Date: {oneEvent.date}</p>
-        <p>Location type: {oneEvent.locationType}</p>
+        <p className="skill-dets">{oneEvent.description}</p>
+        <h3>Date:</h3> <p>{oneEvent.date}</p>
+        <h3>Location type:</h3> <p>{oneEvent.locationType}</p>
         <br/>
       
       <button onClick={handleEditEvent}>Edit Event</button>
