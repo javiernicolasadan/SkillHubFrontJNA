@@ -14,25 +14,24 @@ export default function AddSkill({ isUpdating = false }) {
   const [previewImageUrl, setPreviewImageUrl] = useState("");
   const [originalImageUrl, setOriginalImageUrl] = useState("");
 
-  useEffect(() => {
-    const fetchSkill = async () => {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/skill/${skillid}`);
-        const data = await response.json();
-        setCategory(data.category);
-        setTitle(data.title);
-        setNewDetails(data.details);
-        setPreviewImageUrl(data.imageUrl);
-        setOriginalImageUrl(data.imageUrl);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const fetchSkill = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/skill/${skillid}`);
+      const data = await response.json();
+      setCategory(data.category);
+      setTitle(data.title);
+      setNewDetails(data.details);
+      setPreviewImageUrl(data.imageUrl);
+      setOriginalImageUrl(data.imageUrl);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
+  useEffect(() => {
     if (isUpdating && skillid) {
       fetchSkill();
     }
-
   }, [isUpdating, skillid]);
 
   const handleSubmit = async (e) => {
@@ -53,7 +52,7 @@ export default function AddSkill({ isUpdating = false }) {
             fData.append("originalImageUrl", originalImageUrl);
           }
         }
-        console.log(imageUrl)
+        /* console.log(imageUrl) */
 
     try {
       
@@ -81,12 +80,7 @@ export default function AddSkill({ isUpdating = false }) {
       <form  className="pageForms" encType="multipart/form-data" onSubmit={handleSubmit}>
         <div className="addField">
           <label>Category:</label>
-          <select
-            name="category"
-            value={newCategory}
-            onChange={(e) => setCategory(e.target.value)}
-            required
-          >
+          <select name="category" value={newCategory} onChange={(e) => setCategory(e.target.value)} required>
             <option value="Other">Other</option>
             <option value="Music">Music</option>
             <option value="Photography">Photography</option>
@@ -101,32 +95,22 @@ export default function AddSkill({ isUpdating = false }) {
 
         <div className="addField">
           <label>Title:</label>
-          <input
-            type="text"
-            name="title"
-            value={newTitle}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
+          <input type="text" name="title" value={newTitle} onChange={(e) => setTitle(e.target.value)} required />
         </div>
 
         <div className="addField">
           <label>Details:</label>
-          <textarea
-            name="details"
-            value={newDetails}
-            onChange={(e) => setNewDetails(e.target.value)}
-            required
-          ></textarea>
+          <textarea name="details" value={newDetails} onChange={(e) => setNewDetails(e.target.value)} required></textarea>
         </div>
 
         <div className="addField">
-          <label>
+          <label>Image:</label>
            <input type="file" accept="image/jpg,image/png" name="imageUrl" />
-          </label>
             {previewImageUrl && <img src={previewImageUrl} alt="Preview" />}
         </div>
+
         <button className="genButton">{isUpdating ? "Update" : "Create"}</button>
+
       </form>
       </div>
 

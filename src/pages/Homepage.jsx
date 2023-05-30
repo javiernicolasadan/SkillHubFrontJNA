@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { SessionContext } from "../contexts/SessionContext";
+import Navbar from '../components/Navbar'
 
 
 export default function Homepage() {
@@ -8,7 +9,8 @@ export default function Homepage() {
   
   return (
     <>
-      <div className="header">
+      <header>
+        <Navbar/>
         <h1> SkillHub </h1>
         <p>At Skill HuB, we believe that everyone <br/>
         has a unique set of skills and knowledge that can be shared with others.<br/>
@@ -29,10 +31,7 @@ export default function Homepage() {
         </div>
         }
         
-
-        
-        
-      </div>
+      </header>
 
       <div className="allLink allskills">
         <Link to={'/allskills'} >All Skills</Link>
