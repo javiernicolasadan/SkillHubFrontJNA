@@ -14,7 +14,9 @@ export default function Navbar() {
   return (
     <nav>
       <div>
-        <Link to={"/"}>SkillHub</Link>
+        <Link to={"/"}>
+          <img className="navLogo" src='/images/logo black.png'/>
+        </Link>
       </div>
 
       <Hamburguer />

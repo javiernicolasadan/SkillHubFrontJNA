@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { SessionContext } from "../contexts/SessionContext";
-import Navbar from '../components/Navbar'
 
 
 export default function Homepage() {
@@ -10,8 +9,7 @@ export default function Homepage() {
   return (
     <>
       <header>
-        <Navbar/>
-        <h1> SkillHub </h1>
+        <img className="neonLogo" src="/images/logo white.png"/>
         <p>At Skill HuB, we believe that everyone <br/>
         has a unique set of skills and knowledge that can be shared with others.<br/>
         Our platform is designed to connect individuals with different skill sets and<br/>

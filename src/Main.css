@@ -12,19 +12,33 @@
   }
 
   body *{
-    padding: 0 1rem;
+    padding: 0 2rem;
     font-family: Montserrat, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-weight: 300;
     text-decoration: none;
-    color: white
+    color: grey;
+  }
+
+  h1{
+    margin: 0;
+    padding: 0;
   }
 
   nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 5rem;
+    height: 3rem;
     margin: 0;
+    padding: 0;
+  }
+
+  nav a{
+    padding: 0;
+  }
+
+  .navLogo{
+    height: 1rem;
     padding: 0;
   }
 
@@ -32,9 +46,21 @@
     display: none;
   }
 
+  header{
+    padding: 1rem 0;
+    background-image: url('/images/header2bg.jpg');
+  }
+
+  .neonLogo{
+    height: 6rem;
+    padding: 0;
+  }
+
   .hamburger-container{
     position: relative;
     padding: 0;
+    background-color: #1d1d1d;
+    padding: 0.7rem 0;
   }
 
   .hamburger{
@@ -42,7 +68,7 @@
   }
 
   .hamburger img{
-    padding: 0;
+    padding: 0 1.5rem;
   }
 
   .drops.small{
@@ -55,10 +81,12 @@
     align-items: flex-end;
     padding: 0;
     margin: 0;
+    
   }
 
   .drops.large a{
     padding: 0.5rem 1rem;
+    
   }
 
   .drops{
@@ -66,13 +94,9 @@
     position: absolute;
     background-color: rgba(175, 175, 175, 0.8);
     top: 1.5rem;
-    right: 0;
-    
+    right: 0;    
   }
 
-  header{
-    background-image: url('https://img.freepik.com/free-photo/dark-room-with-light-background_1409-1809.jpg?w=740&t=st=1685528253~exp=1685528853~hmac=503ef6cd14213dc51e792efc1ea894275922959bcab6ee3447815e965ccc1f73');
-  }
 
 
   /*tablet*/
