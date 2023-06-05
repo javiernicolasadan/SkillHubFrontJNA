@@ -14,7 +14,7 @@ export default function DropDown() {
     <div className="dropDown">
       <div className="hamburger" 
         onClick={() => toggleMenu()}>
-        <img src="/images/icon-menu.png"></img>
+        {/* <img src="/images/icon-menu.png"></img> */}
       </div>
       <nav className={`menu-container ${isOpened ? "opened" : "closed"} `}>
         <div className="drop-menus">

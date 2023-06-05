@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;1,100;1,300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;1,100;1,300&display=swap');
 
 
 #root {
@@ -267,7 +267,7 @@ nav{
   height: 7rem;
 }
 
-/* Estilos para tablet */
+//Estilos para tablet
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(15rem, 0.3333333333fr));
@@ -278,7 +278,7 @@ nav{
   }
 }
 
-/* Estilos para web */
+//Estilos para web
 @media (min-width: 1200px) {
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(20rem, 0.3333333333fr));
@@ -289,3 +289,4 @@ nav{
   }
 }
 
+ */
