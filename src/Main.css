@@ -16,7 +16,7 @@
     font-family: Montserrat, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-weight: 300;
     text-decoration: none;
-    color: grey;
+    color: black;
   }
 
   h1{
@@ -49,6 +49,10 @@
   header{
     padding: 1rem 0;
     background-image: url('/images/header2bg.jpg');
+  }
+
+  header p{
+    color: white;
   }
 
   .neonLogo{
@@ -93,7 +97,7 @@
     display: block;
     position: absolute;
     background-color: rgba(175, 175, 175, 0.8);
-    top: 1.5rem;
+    top: 3rem;
     right: 0;    
   }
 
