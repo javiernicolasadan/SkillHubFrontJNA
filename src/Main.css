@@ -53,12 +53,23 @@
 
   header p{
     color: white;
+    line-height: 1.5;
   }
 
   .neonLogo{
     height: 6rem;
     padding: 0;
   }
+
+  #about p{
+    padding: 0;
+    line-height: 1.5;
+  }
+
+  #about h2{
+    padding: 0;
+  }
+
 
   .hamburger-container{
     position: relative;
