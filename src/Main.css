@@ -24,6 +24,7 @@
     padding: 0;
   }
 
+
   nav{
     display: flex;
     align-items: center;
@@ -70,6 +71,9 @@
     padding: 0;
   }
 
+  #about div{
+    padding: 0;
+  }
 
   .hamburger-container{
     position: relative;
@@ -110,6 +114,60 @@
     background-color: rgba(175, 175, 175, 0.8);
     top: 3rem;
     right: 0;    
+  }
+
+  .homeButton{
+    background-color: #1d1d1d;
+    color: white;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-weight: 500;
+  }
+
+  .homeButton:first-child{
+    margin-right: 2rem;
+  }
+
+  .homeButtonDiv{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .homeSection{
+    background-color: rgb(49, 49, 49);
+    height: 10rem;
+  }
+
+  footer {
+    background-color: #1d1d1d;
+    padding: 0.5rem 0;
+  }
+
+  .mediaDiv{
+    text-align: center;
+  }
+
+  .mediaIcon{
+    fill: white;
+    padding: 0.5rem 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  footer p{
+    color: white;
+    margin: 0.2rem;
+    text-align: center;
+  }
+
+  footer span{
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+
+  .disclaimer{
+    padding: 1rem 0;
   }
 
 
