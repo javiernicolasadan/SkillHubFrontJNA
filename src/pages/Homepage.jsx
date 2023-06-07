@@ -41,12 +41,23 @@ export default function Homepage() {
       </section>
 
       <section className="homeSection">
-        <div className="allLink allskills">
-          <Link to={'/allskills'} >All Skills</Link>
+
+        <div className="openUserDiv">
+          <h4>Explore Our Vast Skill List</h4>
+          <p>Unlock a World of Knowledge: Browse our extensive collection of skills to discover what you can learn before signing up. Expand your horizons today!
+          </p>
+          <div className="homeButtonDiv">
+            <Link to={'/allskills'} className="transButton" >View All Skills</Link>
+          </div>
         </div>
 
-        <div className="allLink allevents">
-          <Link to={'/allevents'} >All Events</Link>
+        <div className="openUserDiv">
+          <h4>Upcoming Events</h4>
+          <p>Join Our Exciting Events: Explore our upcoming events and get involved in a vibrant community of learners. Find inspiration, connect with experts, and broaden your horizons!
+          </p>
+          <div className="homeButtonDiv">
+            <Link to={'/allevents'} className="transButton">View All Events</Link>
+          </div>
         </div>
       </section>
 

@@ -62,6 +62,10 @@
     padding: 0;
   }
 
+  #about{
+    padding-bottom: 2rem;
+  }
+
   #about p{
     padding: 0;
     line-height: 1.5;
@@ -119,9 +123,7 @@
   .homeButton{
     background-color: #1d1d1d;
     color: white;
-    padding: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 1rem 2rem;
     font-weight: 500;
   }
 
@@ -132,11 +134,40 @@
   .homeButtonDiv{
     margin-top: 2rem;
     margin-bottom: 2rem;
+    padding: 0;
+  }
+
+  .transButton{
+    border: solid 2px #1d1d1d;
+    background-color: rgba(255, 255, 255, 0.541);
+    padding: 1rem;
+    font-weight: 600;
   }
 
   .homeSection{
-    background-color: rgb(49, 49, 49);
-    height: 10rem;
+    background-image: url('https://media.istockphoto.com/id/1171317153/es/vector/fondo-plexo-abstracto-con-puntos-y-l%C3%ADneas-de-conexi%C3%B3n-conexi%C3%B3n-de-red-global-tecnolog%C3%ADa.jpg?s=612x612&w=0&k=20&c=kmV322GWQK2RSw79iXf9jOfOrY8yeJfQltz_mOTihH8=');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .openUserDiv{
+    margin: 0.5rem 0;
+    padding: 0;
+  }
+
+  .openUserDiv h4{
+    padding: 0;
+    margin: 0.5rem 0 ;
+    font-weight: 600;
+  }
+
+  .openUserDiv p{
+    padding: 0;
+    margin: 0;
   }
 
   footer {
@@ -167,7 +198,9 @@
   }
 
   .disclaimer{
-    padding: 1rem 0;
+    padding-top: 0;
+    padding-bottom: 1rem;
+    
   }
 
 
