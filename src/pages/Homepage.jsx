@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { SessionContext } from "../contexts/SessionContext";
-import { FaInstagram, FaFacebookSquare, FaTwitterSquare, FaYoutube } from 'react-icons/fa'
 
 
 export default function Homepage() {
@@ -11,7 +10,7 @@ export default function Homepage() {
     <>
       <header>
         <img className="neonLogo" src="/images/logo white.png"/>
-        <p>Welcome to SkillHub, the ultimate platform for expanding knowledge and mastering new skills. Discover endless possibilities as an aspiring professional, lifelong learner, or curious explorer. Let's dive into the power of knowledge together!
+        <p>Welcome to SkillHub, the ultimate platform for expanding knowledge and mastering new skills. Discover endless possibilities as an aspiring professional, lifelong learner, or curious explorer. Let`s dive into the power of knowledge together!
         </p>        
       </header>
 
@@ -61,20 +60,7 @@ export default function Homepage() {
         </div>
       </section>
 
-      <footer>
-      <div className="mediaDiv">
-        <FaInstagram className="mediaIcon"/>
-        <FaFacebookSquare className="mediaIcon" />
-        <FaTwitterSquare className="mediaIcon"/>
-        <FaYoutube className="mediaIcon"/>
-      </div>
-      <div className="disclaimer">
-        <p>Terms of use</p>
-        <p>Cookies policy</p>
-        <p>Privacy policy</p>
-      </div>
-      <span>Copyright © 2023 | Elisa Exposito & Javier Adan</span>
-      </footer>
+      
       
     </>
   );

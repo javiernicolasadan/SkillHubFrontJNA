@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import { Link, useNavigate } from "react-router-dom";
-import Signup from "./Signup";
 
 export default function Login() {
   const { setToken, setIsLoggedIn } = useContext(SessionContext);
@@ -38,13 +37,11 @@ export default function Login() {
 
   return (
     <>
-      {/* <Link to={"/profile"}>Profile Page</Link> */}
-      <div className="authForms">
-      <div>
+    <div className="authForm">
       <form onSubmit={handleSubmit}>
-        <div className="authField">
-          <label>Email: </label>
-          <input
+        <div className="mb-3">
+          <label className="form-label">Email: </label>
+          <input className="form-control"
             type="email"
             required
             value={user.email}
@@ -54,9 +51,9 @@ export default function Login() {
           ></input>
         </div>
 
-        <div className="authField">
-          <label>Password: </label>
-          <input
+        <div className="mb-3">
+          <label className="form-label">Password: </label>
+          <input className="form-control"
             type="password"
             required
             value={user.password}
@@ -69,12 +66,16 @@ export default function Login() {
           ></input>
         </div>
 
-        <button className="genButton" type="submit">Log In</button>
+        <div className="submitDiv">
+          <button className="transButton" type="submit">Log In</button>
+        </div>
+        
+        {errorMessage && <p>{errorMessage}</p>}
+        {errorMessage === "User not found." && <Link to={"/signup"}>Sign Up</Link>}
+
       </form>
-      </div>
-      {errorMessage && <p>{errorMessage}</p>}
-    {errorMessage === "User not found." && <Link to={"/signup"}>Sign Up</Link>}
-</div>
+      
+    </div>
     </>
   );
 }

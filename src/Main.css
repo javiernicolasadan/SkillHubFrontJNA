@@ -6,6 +6,11 @@
     padding: 0;
   }
 
+  .app-container{
+    padding: 0;
+    min-height: calc(100vh - 10rem);
+  }
+
   body{
     margin: 0;
     padding: 0;
@@ -64,6 +69,7 @@
 
   #about{
     padding-bottom: 2rem;
+    padding-top: 2rem;
   }
 
   #about p{
@@ -109,13 +115,13 @@
 
   .drops.large a{
     padding: 0.5rem 1rem;
-    
+    color: white;
   }
 
   .drops{
     display: block;
     position: absolute;
-    background-color: rgba(175, 175, 175, 0.8);
+    background-color: rgba(175, 175, 175, 0.562);
     top: 3rem;
     right: 0;    
   }
@@ -171,23 +177,29 @@
   }
 
   footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: #1d1d1d;
-    padding: 0.5rem 0;
+    height: 10rem;
+    padding: 0;
+    margin: 0;
   }
 
   .mediaDiv{
     text-align: center;
+    padding: 0;
   }
 
   .mediaIcon{
     fill: white;
     padding: 0.5rem 0.5rem;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
 
   footer p{
     color: white;
-    margin: 0.2rem;
+    margin: 0rem;
     text-align: center;
   }
 
@@ -199,8 +211,29 @@
 
   .disclaimer{
     padding-top: 0;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
     
+  }
+
+  .authForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 13rem);
+  }
+
+  .form-label{
+    padding: 0;
+    font-weight: 500;
+  }
+
+  .submitDiv{
+    padding-top: 1.5rem;
+  }
+
+  form{
+    width: 100%;
   }
 
 
@@ -217,5 +250,12 @@
 
     .navAllMenus{
       display: block
+    }
+  }
+
+  /* desktop */
+  @media (min-width: 1024px) {
+    form{
+      width: 50%;
     }
   }

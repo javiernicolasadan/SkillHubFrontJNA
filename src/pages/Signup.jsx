@@ -39,15 +39,11 @@ export default function Signup() {
   };
 
   return (
-    <div className="authForms">
+    <div className="authForm">
     <form onSubmit={handleSubmit}>
-      <div className="authField">
-        <label>Email: </label>
-        <input
-          type="email"
-          required
-          value={newUser.email}
-          onChange={(e) => {
+      <div className="mb-3">
+        <label className="form-label">Email: </label>
+        <input type="email" className="form-control" required value={newUser.email} onChange={(e) => {
             setNewUser((prevInput) => ({
               ...prevInput,
               email: e.target.value,
@@ -57,9 +53,9 @@ export default function Signup() {
         />
       </div>
 
-      <div className="authField">
-        <label>Username: </label>
-        <input
+      <div className="mb-3">
+        <label className="form-label">Username: </label>
+        <input className="form-control"
           type="text"
           required
           value={newUser.username}
@@ -73,9 +69,9 @@ export default function Signup() {
         />
       </div>
 
-      <div className="authField">
-        <label>Password: </label>
-        <input
+      <div className="mb-3">
+        <label className="form-label">Password: </label>
+        <input className="form-control"
           type="password"
           required
           value={newUser.password}
@@ -93,7 +89,10 @@ export default function Signup() {
         <Link to={"/login"}>Login</Link>
       )}
 
-      <button type="submit" className="genButton">Sign Up for free!</button>
+      <div className="submitDiv">
+        <button type="submit" className="transButton">Sign up now!</button>
+      </div>
+      
     </form>
     </div>
   );

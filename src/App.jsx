@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 /* import './App.css'
 import './Styles.css' */
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './Main.css'
 import Navbar from './components/Navbar'
 import Homepage from './pages/Homepage'
@@ -15,12 +16,14 @@ import EventDetails from './pages/EventDetails'
 import AllSkills from './pages/AllSkills'
 import UpdateEvent from './pages/UpdateEvent'
 import AllEvents from './pages/Allevents'
+import Footer from './components/Footer'
 
 
 function App() {
 
   return (
     <>
+    <div className='app-container'>
       <Navbar/>
       <Routes>
         <Route path='/' element={<Homepage/>}/>
@@ -36,6 +39,8 @@ function App() {
         <Route path='/updateevent/:eventId' element={<PrivateRoute><UpdateEvent/></PrivateRoute>}/>
         <Route path='/allevents' element={<AllEvents/>}/>
       </Routes>
+    </div>
+      <Footer/>
       
     </>
   )

@@ -1,15 +1,11 @@
 import { Link } from "react-router-dom";
 import Hamburguer from "./Hamburguer";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false)
   const {isLoggedIn, logout} = useContext(SessionContext)
 
-  const toggleMenu = ()=>{
-    setMenuOpen(!menuOpen)
-  }
 
   return (
     <nav>
