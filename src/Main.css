@@ -90,6 +90,7 @@
     padding: 0;
     background-color: #1d1d1d;
     padding: 0.7rem 0;
+    border: 1px solid #1d1d1d;
   }
 
   .hamburger{
@@ -151,8 +152,7 @@
   }
 
   .homeSection{
-    background-image: url('https://media.istockphoto.com/id/1171317153/es/vector/fondo-plexo-abstracto-con-puntos-y-l%C3%ADneas-de-conexi%C3%B3n-conexi%C3%B3n-de-red-global-tecnolog%C3%ADa.jpg?s=612x612&w=0&k=20&c=kmV322GWQK2RSw79iXf9jOfOrY8yeJfQltz_mOTihH8=');
-    background-size: cover;
+    background-color: #e9e9e9;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -168,6 +168,7 @@
   .openUserDiv h4{
     padding: 0;
     margin: 0.5rem 0 ;
+    font-size: 1.1rem;
     font-weight: 600;
   }
 
@@ -235,6 +236,51 @@
   form{
     width: 100%;
   }
+
+  .userInfo{
+    background-color: #1d1d1d;
+    height: 32rem;
+    padding: 0;
+  }
+
+  .userInfo img{
+    padding: 0;
+    width: 100%;
+    max-height: 100%;
+    position: relative;
+    overflow: hidden;
+    object-fit: cover;
+  }
+
+  .userData{
+    height: 7rem;
+    border-bottom: none;
+    background-color: white;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    position: relative;
+    bottom: 7rem;
+  }
+
+  .userData h1{
+    font-weight: 600;
+    padding-top: 2.3rem;
+    font-size: 1.3rem;
+  }
+  .userData h3{
+    padding: 0;
+    font-size: 1rem;
+  }
+
+  .profileSection{
+  }
+
+  .profileSection h2{
+    font-weight: 600;
+    padding: 1rem 0;
+    font-size: 1rem;
+  }
+
 
 
 

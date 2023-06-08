@@ -28,11 +28,17 @@ if(currentUser){
 }
 return (
   <>
-   
-    <div className="contentDiv">
-      {currentUser ? (
+    {currentUser ? (
         <>
           <div className="userInfo">
+              <img src="/images/myphoto.png"></img>
+              <div className="userData">
+                <h1>{currentUser.username}</h1>
+                <h3>{currentUser.email}</h3>
+              </div>
+          </div>
+
+          {/* <div>
             <h2>Welcome back {currentUser.username}</h2>
             <p>Email: {currentUser.email}</p>
             <p>Username: {currentUser.username}</p>
@@ -42,10 +48,10 @@ return (
               : <p>Upcoming events: 0</p>
             }
             
-          </div>
+          </div> */}
 
-          <div className="noMargin">
-            <h3>My Skills:</h3>
+          <div className="profileSection">
+            <h2>Your offered skills:</h2>
 
             <div className="grid">
               <div className="container" style={{ fontSize: "4rem"}}>
@@ -68,8 +74,8 @@ return (
           </div>
 
 
-          <div className="noMargin">
-            <h3>Upcoming Events:</h3>
+          <div className="profileSection">
+            <h2>Upcoming Events:</h2>
             <div  className="grid">
               {upcomingEvents.length > 0 ? (
                 upcomingEvents.map((event) => (
@@ -87,7 +93,7 @@ return (
               )}
             </div>
 
-            <h3>Past Events:</h3>
+            <h2>Past Events:</h2>
             <div className="grid">
               {pastEvents.length > 0 ? (
                 pastEvents.map((event) => (
@@ -109,7 +115,6 @@ return (
       ) : (
         <p>Loading...</p>
       )}
-    </div>
   </>
 );
 }
