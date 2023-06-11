@@ -17,12 +17,12 @@ export default function Hamburguer() {
         </div>
 
         <div className={`drops ${isOpen ? 'large' : 'small'} `}>
-            {!isLoggedIn && <Link to="/signup">Signup</Link>}
-            {!isLoggedIn && <Link to="/login">Login</Link>}
+            {!isLoggedIn && <Link to="/signup">SignUp</Link>}
+            {!isLoggedIn && <Link to="/login">LogIn</Link>}
             {isLoggedIn && <Link to="/profile">Profile</Link>}
-            {isLoggedIn && <Link to="/allskills">Skills Venue</Link>}
-            {isLoggedIn && <Link to="/allevents">Events Venue</Link>}
-            {isLoggedIn && <button onClick={logout}>Logout</button>}
+            {isLoggedIn && <Link to="/allskills">Skills</Link>}
+            {isLoggedIn && <Link to="/allevents">Events</Link>}
+            {isLoggedIn && <button onClick={logout}>LogOut</button>}
         </div>
       </div>
     );

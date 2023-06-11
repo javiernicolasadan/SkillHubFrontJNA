@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { SessionContext } from "../contexts/SessionContext";
-import axios from "axios";
 import { Link } from "react-router-dom";
 const currentDate = new Date()
 
@@ -38,25 +37,14 @@ return (
               </div>
           </div>
 
-          {/* <div>
-            <h2>Welcome back {currentUser.username}</h2>
-            <p>Email: {currentUser.email}</p>
-            <p>Username: {currentUser.username}</p>
-            <p>Skills offered: {currentUser.skills.length}</p>
-            {upcomingEvents ?
-              <p>Upcoming events: {upcomingEvents.length}</p>
-              : <p>Upcoming events: 0</p>
-            }
-            
-          </div> */}
-
           <div className="profileSection">
-            <h2>Your offered skills:</h2>
+            <h3>Your offered skills:</h3>
 
             <div className="grid">
-              <div className="container" style={{ fontSize: "4rem"}}>
+              <div className="container" style={{ fontSize: "4rem", background: 'lightgrey', textAlign: 'center'}}>
               <Link to={'/addskill'} style={{ color: 'black' }}>+</Link></div>
-              {currentUser.skills.length > 0 ? (
+              
+              {currentUser.skills.length > 0 && (
                 currentUser.skills.map((skill) => (
                   <div key={skill._id} className="container">
                     <Link to={`/skilldets/${skill._id}`}>
@@ -67,16 +55,14 @@ return (
                     )}
                   </div>
                 ))
-              ) : (
-                <p>No skills to show</p>
               )}
             </div>
           </div>
 
 
           <div className="profileSection">
-            <h2>Upcoming Events:</h2>
-            <div  className="grid">
+            <h3>Upcoming Events:</h3>
+            <div className={`${upcomingEvents.length > 0 ? "grid" : "empty-grid"}`}>
               {upcomingEvents.length > 0 ? (
                 upcomingEvents.map((event) => (
                   <div key={event._id} className="container">
@@ -89,12 +75,18 @@ return (
                   </div>
                 ))
               ) : (
-                <p>No upcoming events found</p>
+                <>
+                  <p>No upcoming events found</p>
+                  <Link to={'/allevents'}>Check all our upcoming events</Link>
+                </>
+          
               )}
             </div>
+          </div>
 
-            <h2>Past Events:</h2>
-            <div className="grid">
+          <div className="profileSection">
+            <h3>Past Events:</h3>
+            <div className={`${pastEvents.length>0 ? 'grid' : 'empty-grid' }`}>
               {pastEvents.length > 0 ? (
                 pastEvents.map((event) => (
                   <div key={event._id} className="container">

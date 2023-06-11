@@ -42,7 +42,7 @@ export default function Homepage() {
       <section className="homeSection">
 
         <div className="openUserDiv">
-          <h4>Explore Our Vast Skill List</h4>
+          <h3>Explore Our Vast Skill List</h3>
           <p>Unlock a World of Knowledge: Browse our extensive collection of skills to discover what you can learn before signing up. Expand your horizons today!
           </p>
           <div className="homeButtonDiv">
@@ -51,7 +51,7 @@ export default function Homepage() {
         </div>
 
         <div className="openUserDiv">
-          <h4>Upcoming Events</h4>
+          <h3>Upcoming Events</h3>
           <p>Join Our Exciting Events: Explore our upcoming events and get involved in a vibrant community of learners. Find inspiration, connect with experts, and broaden your horizons!
           </p>
           <div className="homeButtonDiv">
