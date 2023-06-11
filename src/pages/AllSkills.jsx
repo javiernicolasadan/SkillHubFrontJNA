@@ -31,7 +31,7 @@ export default function AllSkills() {
     },[skills])
 
   return (
-    <>
+    <div>
         <div className="categoryMenu">
             <label>Category</label>
             <select onChange={(event)=>(setSelectedCategory(event.target.value))}>
@@ -72,7 +72,7 @@ export default function AllSkills() {
             </div>
 
         
-    </>
+    </div>
     
   )
 }
