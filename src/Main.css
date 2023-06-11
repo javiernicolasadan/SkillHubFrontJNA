@@ -300,35 +300,43 @@
     gap: 0.5rem;
   }
 
- /*  .venue{
-    grid-template-columns: repeat(2, 1fr);
-  } */
-
-
   .container{
     padding: 0;
-    width: 100%;
-    aspect-ratio: 1/1;
-    background-color: lightgrey;
-    overflow: hidden;
   }
 
-  .container h2{
-    font-size: 1rem;
+  .sqcontainer{
     padding: 0;
-    margin: 0;
+    overflow: hidden;
+    aspect-ratio: 1/1;
   }
-  
+
+  .sqcontainer img {
+    padding: 0;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    width: 100%;
+  }
+
   .container a{
     padding: 0;
   }
 
-  .container img{
+  .venueData{
     padding: 0;
-    object-fit: cover;
-    object-position: center;
-    height: 100%;
   }
+
+  .venueData a{
+    padding: 0;
+  }
+
+  .venueData h2{
+    font-size: 0.75rem;
+    padding: 0;
+    margin: 0;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
 
   .empty-grid{
     padding: 0;

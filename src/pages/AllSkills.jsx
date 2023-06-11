@@ -48,7 +48,7 @@ export default function AllSkills() {
             </select>
         </div>
 
-        <div className="grid venue">
+        <div className="grid">
             {!skills ? (
                 <p>Loading...</p>
             ) : skills.length === 0 ? (
@@ -56,13 +56,23 @@ export default function AllSkills() {
             ) : (
                 skills.map((eachSkill) => (
                 <div className="container" key={eachSkill._id}>
-                    <Link to={`/skilldets/${eachSkill._id}`}>
-                    {/* <h2>{eachSkill.title}</h2> */}
-                    </Link>
-                    {eachSkill.imageUrl && (
-                        <img src={eachSkill.imageUrl} alt={eachSkill.title} />
-                    )}
+                    <div className="sqcontainer">
+                        {eachSkill.imageUrl && (
+                            <Link to={`/skilldets/${eachSkill._id}`}>
+                                <img src={eachSkill.imageUrl} alt={eachSkill.title} />
+                            </Link>
+                            
+                        )}
+                    </div>
+
+                    <div className="venueData">
+                        <Link to={`/skilldets/${eachSkill._id}`}>
+                            <h2>{eachSkill.title} by FETCH DATA</h2>
+                        </Link>
+                    </div>
+                
                 </div>
+
                 ))
             )}
             </div>

@@ -41,18 +41,20 @@ return (
             <h3>Your offered skills:</h3>
 
             <div className="grid">
-              <div className="container" style={{ fontSize: "4rem", background: 'lightgrey', textAlign: 'center'}}>
+              <div className="sqcontainer" style={{ fontSize: "4rem", background: 'lightgrey', textAlign: 'center'}}>
               <Link to={'/addskill'} style={{ color: 'black' }}>+</Link></div>
               
               {currentUser.skills.length > 0 && (
                 currentUser.skills.map((skill) => (
                   <div key={skill._id} className="container">
-                    <Link to={`/skilldets/${skill._id}`}>
-                      <h2>{skill.title}</h2>
-                    </Link>
-                    {skill.imageUrl && (
+                  <Link to={`/skilldets/${skill._id}`}>
+                    <div className="sqcontainer">
                         <img src={skill.imageUrl} alt={skill.title} />
-                    )}
+                    </div>
+                    <div className="venueData">
+                              <h2>{skill.title}</h2>
+                      </div>
+                  </Link>
                   </div>
                 ))
               )}
@@ -63,17 +65,22 @@ return (
           <div className="profileSection">
             <h3>Upcoming Events:</h3>
             <div className={`${upcomingEvents.length > 0 ? "grid" : "empty-grid"}`}>
+            
               {upcomingEvents.length > 0 ? (
                 upcomingEvents.map((event) => (
-                  <div key={event._id} className="container">
-                    <Link to={`/eventdets/${event._id}`}>
-                      <h2>{event.title}</h2>
-                    </Link>
-                    {event.imageUrl && (
+                <div className="container" key={event._id}>
+                <Link to={`/eventdets/${event._id}`}>
+                  <div className="sqcontainer">
                         <img src={event.imageUrl} alt={event.title} />
-                    )}
                   </div>
+                  <div className="venueData">
+                            <h2>{event.title}</h2>
+                    </div>
+                </Link>
+                  </div>
+
                 ))
+                
               ) : (
                 <>
                   <p>No upcoming events found</p>
@@ -89,14 +96,17 @@ return (
             <div className={`${pastEvents.length>0 ? 'grid' : 'empty-grid' }`}>
               {pastEvents.length > 0 ? (
                 pastEvents.map((event) => (
-                  <div key={event._id} className="container">
-                    <Link to={`/eventdets/${event._id}`}>
-                      <h2>{event.title}</h2>
-                    </Link>
-                    {event.imageUrl && (
+                <div className="container" key={event._id}>
+                <Link to={`/eventdets/${event._id}`}>
+                  <div className="sqcontainer">
                         <img src={event.imageUrl} alt={event.title} />
-                    )}
                   </div>
+                  <div className="venueData">
+                            <h2>{event.title}</h2>
+                    </div>
+                </Link>
+                    
+                </div>
                 ))
               ) : (
                 <p>No past events found</p>
