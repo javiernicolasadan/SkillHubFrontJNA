@@ -74,13 +74,13 @@ export default function AddSkill({ isUpdating = false }) {
   };
 
   return (
-    <div className="addSkillDiv">
-      <h2>{isUpdating ? "Update your skill here" : "Add your skill here"}</h2>
-     <div>
-      <form  className="pageForms" encType="multipart/form-data" onSubmit={handleSubmit}>
-        <div className="addField">
-          <label>Category:</label>
-          <select name="category" value={newCategory} onChange={(e) => setCategory(e.target.value)} required>
+    <div className="create">
+      <h1>{isUpdating ? "Update your skill here" : "Add your skill here"}</h1>
+     
+      <form className="pageForms" encType="multipart/form-data" onSubmit={handleSubmit}>
+        <div className="categoryMenu">
+          <label className="form-label">Category:</label>
+          <select className="form-select" name="category" value={newCategory} onChange={(e) => setCategory(e.target.value)} required>
             <option value="Other">Other</option>
             <option value="Music">Music</option>
             <option value="Photography">Photography</option>
@@ -93,26 +93,27 @@ export default function AddSkill({ isUpdating = false }) {
           </select>
         </div>
 
-        <div className="addField">
-          <label>Title:</label>
-          <input type="text" name="title" value={newTitle} onChange={(e) => setTitle(e.target.value)} required />
+        <div className="mb-3">
+          <label className="form-label">Title:</label>
+          <input className="form-control" type="text" name="title" value={newTitle} onChange={(e) => setTitle(e.target.value)} required />
         </div>
 
-        <div className="addField">
-          <label>Details:</label>
-          <textarea name="details" value={newDetails} onChange={(e) => setNewDetails(e.target.value)} required></textarea>
+        <div className="mb-3">
+          <label className="form-label">Description:</label>
+          <textarea className="form-control" name="details" value={newDetails} onChange={(e) => setNewDetails(e.target.value)} required></textarea>
         </div>
 
-        <div className="addField">
-          <label>Image:</label>
-           <input type="file" accept="image/jpg,image/png" name="imageUrl" />
+        <div className="mb-3">
+          <label className="form-label">Image:</label>
+           <input className="form-control" type="file" accept="image/jpg,image/png" name="imageUrl" />
             {previewImageUrl && <img src={previewImageUrl} alt="Preview" />}
         </div>
 
-        <button className="genButton">{isUpdating ? "Update" : "Create"}</button>
-
+        <div className="submitDiv">
+        <button className="transButton">{isUpdating ? "Update skill" : "Add skill"}</button>
+        </div>
       </form>
-      </div>
+    
 
     </div>
   );

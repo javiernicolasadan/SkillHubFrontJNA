@@ -61,46 +61,44 @@ export default function AddEvent() {
       
 
   return (
-    <div className="addSkillDiv">
-     <h2>Schedule an event</h2>
-     {selectedSkill && <h3>{selectedSkill.category} / {selectedSkill.title}</h3>}
+    <div className="create ">
+     <h1 >Schedule an event</h1>
+     {selectedSkill && <h1>{selectedSkill.category} / {selectedSkill.title}</h1>}
 
     <form className="pageForms" encType="multipart/form-data" onSubmit={handleSubmit}>
-       <div className="addField">
-         <label>Event Title:</label>
-         <input type="text" name="title" value={newTitle} onChange={(e) => setTitle(e.target.value)} required></input>
+       <div className="mb-3">
+         <label className="form-label">Event Title:</label>
+         <input className="form-control" type="text" name="title" value={newTitle} onChange={(e) => setTitle(e.target.value)} required></input>
        </div>
 
-       <div className="addField">
-        <label>Date:</label>
-        <input type="date" name="date" value={newDate} onChange={(e) => setDate(e.target.value)} required></input>
+       <div className="mb-3">
+        <label className="form-label">Date:</label>
+        <input className="form-control" type="date" name="date" value={newDate} onChange={(e) => setDate(e.target.value)} required></input>
        </div>
 
-       <div className="addField">
-        <label>Online/In-person:</label>
-        <select type="text" name="locationType" value={newLocationType} onChange={(e) => setLocatioType(e.target.value)} required>
+       <div className="mb-3">
+        <label className="form-label">Online/In-person:</label>
+        <select className="form-select" type="text" name="locationType" value={newLocationType} onChange={(e) => setLocatioType(e.target.value)} required>
             <option value="online">Online</option>
             <option value="in-person">In-Person</option>
          </select>
        </div>
 
-       <div className="addField">
-        <label>Description:</label>
-        <textarea type="text" name="description" value={newDescription} onChange={(e) => setDescription(e.target.value)} required></textarea>
+       <div className="mb-3">
+        <label className="form-label">Description:</label>
+        <textarea className="form-control" type="text" name="description" value={newDescription} onChange={(e) => setDescription(e.target.value)} required></textarea>
        </div>
 
-       <div className="addField">
-        <label>
-          <input type="file" accept="image/jpg image/png" name="imageUrl" />
-        </label>
-
+       <div className="mb-3">
+        <label className="form-label">Image:</label>
+          <input className="form-control" type="file" accept="image/jpg image/png" name="imageUrl" />
        </div>
 
-       <div className="addField">
-        <button type="submit" className="genButton">Create Event</button>
+       <div className="submitDiv">
+        <button type="submit" className="transButton">Create Event</button>
        </div>
-
     </form>
+    
     </div>
   )
 }

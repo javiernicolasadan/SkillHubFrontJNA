@@ -6,12 +6,10 @@ const currentDate = new Date()
 export default function SkillDetails() {
   const { skillid } = useParams();
   const { currentUser } = useContext(SessionContext);
-  /* console.log(currentUser) */
   const [skill, setSkill] = useState();
   const navigate = useNavigate()
   const [upcomingEvents, setUpcomingEvents] = useState()
   const [pastEvents, setPastEvents] = useState([]);
-  /* const [subsEvents, setSubsEvents] = useState([]) */
 
   const fetchSkill = async () => {
     try {
@@ -42,7 +40,7 @@ export default function SkillDetails() {
     useEffect(()=>{
       fetchSkill()
     },[])
-  
+
 
   const handleDelete = async () => {
     try {
@@ -58,58 +56,70 @@ export default function SkillDetails() {
   };
 
   return (
-    <div>
+    <>
     {skill ? (
       <>
-      <div className="skill-dets">
         <div className="fullWidthImg">
-          {skill.imageUrl &&
-            <img src={skill.imageUrl} alt={skill.title}/>}
+            <img src={skill.imageUrl} alt={skill.title}/>
         </div>
 
-        <div className="skill-dets">
-          <h3>Details of {skill.title}</h3>
+        <div className="details">
+          <h1>Description of {skill.title}</h1>
           <p>{skill.details}</p>
-          <br/>
-          <Link to={`/updateskill/${skillid}`}> Update skill</Link>
-          <button type="button" onClick={handleDelete}>Delete skill</button>
-          <Link to={`/addevent/${skillid}`}>Add event to skill</Link>
+          {(skill.createdBy === currentUser._id) && (
+            <div className="ownerButton">
+              <Link className="transButton" to={`/updateskill/${skillid}`}> Update skill</Link>
+              <button className="transButton" type="button" onClick={handleDelete}>Delete skill</button>
+            </div>
+          )}
         </div>
+
+      <div className="profileSection">
+        <h3>Upcoming Events:</h3>
+        <div className={`${upcomingEvents ? "grid" : "empty-grid"}`}>
+        
+        {(skill.createdBy === currentUser._id) && (
+          <div className="sqcontainer" style={{ fontSize: "4rem", background: 'lightgrey', textAlign: 'center'}}>
+                <Link to={`/addevent/${skillid}`} style={{ color: 'black' }}>+</Link>
+          </div>)}
+          
+          {upcomingEvents.length > 0 ? (
+            upcomingEvents.map((eachEvent) => (
+              <div key={eachEvent._id} className="container">
+                <Link to={`/eventdets/${eachEvent._id}`}>
+                  <div className="sqcontainer">
+                    <img src={eachEvent.imageUrl} alt={eachEvent.title} />
+                  </div>
+                  <div className="venueData">
+                    <h2>{eachEvent.title}</h2>
+                  </div>
+                </Link>
+              </div>
+            ))
+          ) : (
+            <p>No events</p>
+          )}
+          </div>
       </div>
 
-
-
-      <div className="noMargin">
-        <h3>Upcoming Events:</h3>
-        <div className="grid">
-        {upcomingEvents ? (
-          upcomingEvents.map((eachEvent) => (
-            <div key={eachEvent._id} className="container">
-              
-              <Link to={`/eventdets/${eachEvent._id}`}>
-              <h2>{eachEvent.title}</h2>
-              </Link>
-              {eachEvent.imageUrl && (
-                        <img src={eachEvent.imageUrl} alt={eachEvent.title} />
-                    )}
-            </div>
-          ))
-        ) : (
-          <p>No upcoming events found</p>
-        )}
-        </div>
-
+      <div className="profileSection">
         <h3>Past Events:</h3>
-        <div className="grid">
+        <div className={`${pastEvents.length > 0 ? "grid" : "empty-grid"}`}>
         {pastEvents.length > 0 ? (
           pastEvents.map((eachEvent) => (
             <div key={eachEvent._id} className="container">
             <Link to={`/eventdets/${eachEvent._id}`}>
-              <h2>{eachEvent.title}</h2>
+              <div className="sqcontainer">
+                <img src={eachEvent.imageUrl} alt={eachEvent.title} />
+              </div>
+              <div className="venueData">
+                <h2>{eachEvent.title}</h2>
+              </div>
               </Link>
-              {eachEvent.imageUrl && (
-                        <img src={eachEvent.imageUrl} alt={eachEvent.title} />
-                    )}
+              
+                      
+              
+                    
             </div>
         
           ))
@@ -123,6 +133,6 @@ export default function SkillDetails() {
     
     ) : (<p>Loading</p>)}
 
-    </div>
+    </>
 );
 }

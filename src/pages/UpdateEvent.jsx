@@ -62,7 +62,6 @@ export default function UpdateEvent() {
         `${import.meta.env.VITE_BASE_API_URL}/event/updateevent/${eventId}`,
         fData
       );
-      console.log(response)
       if (response.status === 200) {
         navigate(`/eventdets/${eventId}`);
       }
@@ -72,12 +71,13 @@ export default function UpdateEvent() {
   };
 
   return (
-    <div className="addSkillDiv">
-    <h2>Update event</h2>
+    <div className="create">
+    <h1>Update event</h1>
+
     <form className="pageForms" onSubmit={handleUpdate}>
-      <div className="addField">
-        <label>Event Title:</label>
-        <input
+      <div className="mb-3">
+        <label className="form-label">Event Title:</label>
+        <input className="form-control"
           type="text"
           name="title"
           value={updatedTitle}
@@ -86,9 +86,9 @@ export default function UpdateEvent() {
         />
       </div>
 
-      <div className="addField">
-        <label>Description:</label>
-        <textarea
+      <div className="mb-3">
+        <label className="form-label">Description:</label>
+        <textarea className="form-control"
           type="text"
           name="description"
           value={updatedDescription}
@@ -97,9 +97,9 @@ export default function UpdateEvent() {
         ></textarea>
       </div>
 
-      <div className="addField">
-        <label>Date:</label>
-        <input
+      <div className="mb-3">
+        <label className="form-label">Date:</label>
+        <input className="form-control"
           type="date"
           name="date"
           value={updatedDate}
@@ -108,9 +108,9 @@ export default function UpdateEvent() {
         />
       </div>
 
-      <div className="addField">
-        <label>Online/In-person:</label>
-        <select
+      <div className="mb-3">
+        <label className="form-label">Online/In-person:</label>
+        <select className="form-select"
           type="text"
           name="locationType"
           value={updatedLocationType}
@@ -122,15 +122,15 @@ export default function UpdateEvent() {
         </select>
       </div>
 
-      <div className="addField">
-      <label>
-        <input type="file" accept="image/jpg,image/png" name="imageUrl" />
-      </label>
+      <div className="mb-3">
+      <label className="form-label">Image:</label>
+        <input className="form-control" type="file" accept="image/jpg,image/png" name="imageUrl" />
+      
       {previewImageUrl && <img src={previewImageUrl} alt="Preview" />}
     </div>
 
-      <div>
-        <button type="submit" className="genButton">Update Event</button>
+      <div className="submitDiv">
+        <button type="submit" className="transButton">Update Event</button>
       </div>
     </form>
     </div>

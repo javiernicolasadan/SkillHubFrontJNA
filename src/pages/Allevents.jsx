@@ -32,21 +32,37 @@ export default function Allevents() {
 
 
   return (
-    <>
-      <h2>Upcoming Events</h2>
+    <div className="venue">
+    <h1>Upcoming Events</h1>
+    <div className="categoryMenu">
+            <select className="form-select" onChange={(event)=>(setSelectedCategory(event.target.value))}>
+                <option value='All'>MAKE IT WORK All categories</option>
+                <option>Music</option>
+                <option>Photography</option>
+                <option>Coding</option>
+                <option>Cooking</option>
+                <option>Gardening</option>
+                <option>Beauty</option>
+                <option>Domestic-Skills</option>
+                <option>Languages</option>
+                <option>Other</option>
+            </select>
+        </div>
+
     <div className="grid">
       {upcomingEvents ? (
       
           upcomingEvents.map((event) => (
             <div key={event._id} className="container">
               <Link to={`/eventdets/${event._id}`}>
+              <div className="sqcontainer">
+                <img src={event.imageUrl} alt={event.title} />
+              </div>
+
+              <div className="venueData">
                 <h2>{event.title}</h2>
-                {/* <p>{event.locationType}</p>
-                <p>{format(new Date(event.date), 'dd-MM-yyyy')}</p> */}
+              </div>
               </Link>
-                {event.imageUrl && (
-                        <img src={event.imageUrl} alt={event.title} />
-                    )}
             </div>
           ))
         
@@ -55,9 +71,9 @@ export default function Allevents() {
       )}
     </div>
 
-    <div className="endLink">
-            <Link to={'/allskills'} >Improve your skills</Link>
+    <div className="homeButtonDiv" style={{textAlign: 'center'}}>
+            <Link to={'/allskills'} className="transButton">Improve your skills</Link>
             </div>
-    </>
+    </div>
   );
 }

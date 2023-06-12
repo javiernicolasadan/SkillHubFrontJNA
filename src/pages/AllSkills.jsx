@@ -31,10 +31,10 @@ export default function AllSkills() {
     },[skills])
 
   return (
-    <div>
+    <div className="venue">
+        <h1>All skills</h1>
         <div className="categoryMenu">
-            <label>Category</label>
-            <select onChange={(event)=>(setSelectedCategory(event.target.value))}>
+            <select className="form-select" onChange={(event)=>(setSelectedCategory(event.target.value))}>
                 <option value='All'>All categories</option>
                 <option>Music</option>
                 <option>Photography</option>
@@ -70,15 +70,14 @@ export default function AllSkills() {
                             <h2>{eachSkill.title} by FETCH DATA</h2>
                         </Link>
                     </div>
-                
                 </div>
 
                 ))
             )}
             </div>
 
-            <div className="endLink">
-            <Link to={'/allevents'} >Check our events out</Link>
+            <div className="homeButtonDiv" style={{textAlign: 'center'}}>
+                <Link to={'/allevents'} className="transButton">View all events</Link>
             </div>
 
         

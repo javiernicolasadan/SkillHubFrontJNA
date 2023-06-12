@@ -76,25 +76,35 @@ export default function EventDetails() {
   };
 
   return oneEvent ? (
-    <div className="skill-dets">
+    <>
       <div className="fullWidthImg">
-          {oneEvent.imageUrl &&
-            <img src={oneEvent.imageUrl} alt={oneEvent.title}/>}
+        <img src={oneEvent.imageUrl} alt={oneEvent.title}/>
+      </div>
+          
+      <div className="details">
+        <h1>Details of {oneEvent.title}</h1>
+        <p>{oneEvent.description}</p>
+        <p><h3>Date:</h3>{oneEvent.date}</p>
+        <p><h3>Location type:</h3>{oneEvent.locationType}</p>
+
+        
+        {/* fix createdby and owner buttons */}
+        {(currentUser._id) && (
+          <div className="ownerButton">
+            <button className="transButton" onClick={handleEditEvent}>Update Event</button>
+            <button className="transButton" onClick={handleDeleteEvent}>Delete Event</button>
           </div>
-          <br/>
-
-        <h2>Details of {oneEvent.title}</h2>
-        <p className="skill-dets">{oneEvent.description}</p>
-        <h3>Date:</h3> <p>{oneEvent.date}</p>
-        <h3>Location type:</h3> <p>{oneEvent.locationType}</p>
-        <br/>
+        )}
+      </div>
       
-      <button onClick={handleEditEvent}>Edit Event</button>
-      <button onClick={handleDeleteEvent}>Delete Event</button>
-      {isSubscribed && <button onClick={() => handleSubs(oneEvent._id)}>Unsubscribe</button>}
-      {!isSubscribed && <button onClick={() => handleSubs(oneEvent._id)}>Subscribe</button>}
+          <div>
+          {/* fix subscribe to events when owner */}
+          {isSubscribed && <button className="transButton" onClick={() => handleSubs(oneEvent._id)}>Unsubscribe</button>}
+          {!isSubscribed && <button className="transButton" onClick={() => handleSubs(oneEvent._id)}>Subscribe</button>}
+          </div>
+      
 
-    </div>
+    </>
   ) : (
     <h1>Loading....</h1>
   );

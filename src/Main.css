@@ -241,6 +241,7 @@
 
   .submitDiv{
     padding-top: 1.5rem;
+    padding-bottom: 2rem ;
   }
 
   form{
@@ -286,11 +287,18 @@
     margin: 1rem 0;
   }
 
-  .profileSection h3{
+  .profileSection h3, .details h3{
     padding: 0;
     margin: 0.5rem 0 ;
     font-size: 1.1rem;
     font-weight: 600;
+  }
+
+  .venue h1, .create h1{
+    padding: 0;
+    margin-top: 1rem;
+    font-weight: 500;
+    font-size: 1.5rem;
   }
 
   .grid{
@@ -337,7 +345,6 @@
     text-align: center;
   }
 
-
   .empty-grid{
     padding: 0;
     background-color: rgb(241, 241, 241);
@@ -350,6 +357,73 @@
   .empty-grid p{
     margin: 0;
   }
+
+  .categoryMenu{
+    padding: 1rem 0;
+  }
+
+  .pageForms{
+    padding: 0;
+  }
+
+  .create div{
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  textarea{
+    height: 15rem;
+  }
+
+.fullWidthImg{
+    padding: 0;
+  }
+
+  .fullWidthImg img{
+    padding: 0;
+  }
+
+  .details{
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .details h1{
+    padding: 0;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+
+  .details p{
+    padding: 1rem 0;
+  }
+
+  .ownerButton{
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .details p{
+    margin: 0;
+  }
+
+  .ownerButton :first-child{
+    margin-right: 1rem;
+  }
+
+  .grid p{
+    padding: 0;
+    text-align: center;
+  }
+
+  .create img{
+    padding: 0;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+
 
 
 
