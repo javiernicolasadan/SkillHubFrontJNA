@@ -60,6 +60,10 @@
     background-image: url('/images/header2bg.jpg');
   }
 
+  header > div{
+    padding: 0;
+  }
+
   header p{
     color: white;
     line-height: 1.5;
@@ -423,11 +427,6 @@
     margin-top: 1rem;
   }
 
-
-
-
-
-
   /*tablet*/
   @media (min-width: 769px){
     .hamburger{
@@ -445,6 +444,8 @@
     .navAllMenus{
       display: block
     }
+
+  
   }
 
   /* desktop */

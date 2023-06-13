@@ -9,9 +9,12 @@ export default function Homepage() {
   return (
     <>
       <header>
+      <div>
         <img className="neonLogo" src="/images/logo white.png"/>
         <p>Welcome to SkillHub, the ultimate platform for expanding knowledge and mastering new skills. Discover endless possibilities as an aspiring professional, lifelong learner, or curious explorer. Let`s dive into the power of knowledge together!
-        </p>        
+        </p>  
+      </div>
+              
       </header>
 
       <section id="about">
