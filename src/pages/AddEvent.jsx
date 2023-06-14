@@ -19,6 +19,7 @@ export default function AddEvent() {
       if(response.status === 200){
         const parsed = await response.json()
         setSelectedSkill(parsed)
+        console.log("parsed", parsed)
       }
     }
 
@@ -34,6 +35,7 @@ export default function AddEvent() {
         fData.append("description", newDescription)
         fData.append("imageUrl", imageUrl)
         fData.append("skillid", skillid )
+        fData.append("category", selectedSkill.category)
         
           console.log(fData)
         
@@ -58,6 +60,8 @@ export default function AddEvent() {
       useEffect(()=>{
         fetchSkillData()
       },[]) 
+
+     
       
 
   return (
