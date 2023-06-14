@@ -33,9 +33,13 @@ return (
           <div className="userInfo">
               <img src={currentUser.imageUrl}></img>
               <div className="userData">
-                <h1>{currentUser.username}</h1>
-                <h3>{currentUser.email}</h3>
-                <ChangePic />
+                <div>
+                  <h1>{currentUser.username}</h1>
+                  <h3>{currentUser.email}</h3>
+                </div>
+                <div className="updUserIcon">
+                  <ChangePic />
+                </div>
               </div>
               
           </div>
