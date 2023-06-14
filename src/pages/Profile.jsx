@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import { Link } from "react-router-dom";
+import ChangePic from "../components/ChangePic";
 const currentDate = new Date()
 
 
@@ -30,12 +31,20 @@ return (
     {currentUser ? (
         <>
           <div className="userInfo">
-              <img src="/images/myphoto.png"></img>
+              <img src={currentUser.imageUrl}></img>
               <div className="userData">
-                <h1>{currentUser.username}</h1>
-                <h3>{currentUser.email}</h3>
+                <div>
+                  <h1>{currentUser.username}</h1>
+                  <h3>{currentUser.email}</h3>
+                </div>
+                <div className="updUserIcon">
+                  <ChangePic />
+                </div>
               </div>
+              
           </div>
+
+          
 
           <div className="profileSection">
             <h3>Your offered skills:</h3>
