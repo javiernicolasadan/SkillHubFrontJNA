@@ -44,8 +44,6 @@ return (
               
           </div>
 
-          
-
           <div className="profileSection">
             <h3>Your offered skills:</h3>
 

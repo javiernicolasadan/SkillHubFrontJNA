@@ -18,7 +18,6 @@ export default function ChangePic() {
         setOriginImageUrl(currentUser.imageUrl)
     }, [])
 
-    
     const toggleWindow = () =>{
         setShowWindow(!showWindow)
     }
@@ -47,7 +46,6 @@ export default function ChangePic() {
             console.log(error)
         }
     }
-
 
   return (
     <>

@@ -9,19 +9,23 @@ export default function Homepage() {
   return (
     <>
       <header>
-      <div>
-        <img className="neonLogo" src="/images/logo white.png"/>
-        <p>Welcome to SkillHub, the ultimate platform for expanding knowledge and mastering new skills. Discover endless possibilities as an aspiring professional, lifelong learner, or curious explorer. Let`s dive into the power of knowledge together!
-        </p>  
-      </div>
-              
+        <div>
+          <img className="neonLogo" src="/images/logo white.png"/>
+          <p>Welcome to SkillHub, the ultimate platform for expanding knowledge and mastering new skills. Discover endless possibilities as an aspiring professional, lifelong learner, or curious explorer. Let`s dive into the power of knowledge together!
+          </p>  
+        </div>
       </header>
 
       <section id="about">
-        <h2>ABOUT</h2>
+      <img className="aboutImg" src="https://www.cnb.csic.es/media/k2/items/cache/babfabc324898098b0ab92678d27d9e5_XL.jpg"/>
+      
+      <div className="aboutData">
+      <h2>ABOUT</h2>
         <p>
         SkillHub is a global platform dedicated to accessible learning for everyone. With diverse courses, expert instructors, and interactive experiences, we foster comprehensive and enjoyable learning environments. Join us now to unlock knowledge, excel in your career, and broaden your horizons. Let SkillHub be your trusted companion on the journey to greatness!
         </p>
+      
+        
 
         {!isLoggedIn &&
         <div>
@@ -39,7 +43,7 @@ export default function Homepage() {
           <p  style={{ fontSize: '1.3rem', fontWeight: 500 }}>Check our info out below!</p>
         </div>
         }
-
+        </div>
       </section>
 
       <section className="homeSection">
