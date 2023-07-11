@@ -67,7 +67,7 @@ export default function AllSkills() {
 
                     <div className="venueData">
                         <Link to={`/skilldets/${eachSkill._id}`}>
-                            <h2>{eachSkill.title} by FETCH DATA</h2>
+                            <h2>{eachSkill.title} by {eachSkill.createdBy.username}</h2>
                         </Link>
                     </div>
                 </div>
@@ -79,8 +79,6 @@ export default function AllSkills() {
             <div className="homeButtonDiv" style={{textAlign: 'center'}}>
                 <Link to={'/allevents'} className="transButton">View all events</Link>
             </div>
-
-        
     </div>
     
   )

@@ -23,7 +23,7 @@
   body *{
     padding: 0 2rem;
     font-family: Montserrat, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     text-decoration: none;
     color: black;
   }
@@ -381,6 +381,7 @@
     margin: 0;
     margin-top: 0.5rem;
     text-align: center;
+    font-weight: 600;
   }
 
   .empty-grid{
@@ -487,6 +488,10 @@
     display: none;
   }
 
+  .aboutImg{
+    display: none;
+  }
+
   /*tablet*/
   @media (min-width: 769px){
     .hamburger{
@@ -505,11 +510,109 @@
       display: block
     }
 
-  
+    .app-container{
+      padding: 0;
+      min-height: calc(100vh - 7rem);
+    }
+
+    #about{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .aboutImg{
+      display: block;
+      width: 40vw;
+      height: max-content;
+    }
+
+    .aboutData{
+      width: 50vw;
+      text-align: end;
+    }
+
+    header p{
+      width: 50vw;
+    }
+
+    .navAllMenus a{
+      margin: 1rem;
+    }
+
+    .homeSection{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .openUserDiv{
+      width: 40vw;
+    }
+
+
+    footer{
+      height: 7rem;
+    }
+
+    .mediaIcon{
+      font-size: 3rem;
+      margin: 0 0.5rem;
+    }
+
+    .disclaimer{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .disclaimer p{
+      padding: 0 1rem;
+      border-right: solid 1px white;
+      border-left: solid 1px white;
+    }
   }
 
   /* desktop */
   @media (min-width: 1024px) {
+    nav{
+      height: 4rem;
+    }
+
+    .navAllMenus{
+      font-size: 1.2rem;
+    }
+
+    .navLogo{
+      height: 1.5rem;
+    }
+
+    .aboutImg{
+      display: none;
+    }
+
+    header, #about{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    header p, #about p{
+      width: 40vw;
+    }
+
+    .aboutData{
+      width: 40vw;
+      text-align: center;
+    }
+
+    .openUserDiv{
+      width: 40vw;
+      text-align: center;
+      margin: 1rem 3rem;
+    }
+
     form{
       width: 50%;
     }
