@@ -72,7 +72,7 @@ export default function Allevents() {
     </div>
 
     <div className="homeButtonDiv" style={{textAlign: 'center'}}>
-            <Link to={'/allskills'} className="transButton">Improve your skills</Link>
+            <Link to={'/allskills'} className="transButton">See all skills</Link>
             </div>
     </div>
   );

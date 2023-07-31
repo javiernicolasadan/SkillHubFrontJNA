@@ -177,6 +177,7 @@
   .openUserDiv{
     margin: 0.5rem 0;
     padding: 0;
+    max-width: 35rem;
   }
 
   .openUserDiv h3{
@@ -544,11 +545,7 @@
     .homeSection{
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
-    }
-
-    .openUserDiv{
-      width: 40vw;
+      justify-content: space-around;
     }
 
 
@@ -608,7 +605,6 @@
     }
 
     .openUserDiv{
-      width: 40vw;
       text-align: center;
       margin: 1rem 3rem;
     }
