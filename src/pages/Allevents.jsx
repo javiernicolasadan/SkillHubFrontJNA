@@ -6,13 +6,18 @@ import { format } from 'date-fns'
 const currentDate = new Date();
 
 export default function Allevents() {
+  const [selectedCategory, setSelectedCategory] = useState('All')
   const [upcomingEvents, setUpcomingEvents] = useState();
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_BASE_API_URL}/event`
-      );
+        let url = `${import.meta.env.VITE_BASE_API_URL}/event`
+        if(selectedCategory !== 'All'){
+        url += `?category=${selectedCategory}`
+        }
+        const response = await axios.get(
+        url
+        );
       if (response.status === 200) {
         const data = response.data;
         const filteredUpcomingEvents = data.filter(
@@ -28,7 +33,7 @@ export default function Allevents() {
 
   useEffect(() => {
     fetchEvents();
-  }, []);
+  }, [selectedCategory]);
 
 
   return (
@@ -36,7 +41,7 @@ export default function Allevents() {
     <h1>Upcoming Events</h1>
     <div className="categoryMenu">
             <select className="form-select" onChange={(event)=>(setSelectedCategory(event.target.value))}>
-                <option value='All'>MAKE IT WORK All categories</option>
+                <option value='All'>All categories</option>
                 <option>Music</option>
                 <option>Photography</option>
                 <option>Coding</option>

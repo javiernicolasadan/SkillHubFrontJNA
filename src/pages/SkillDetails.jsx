@@ -8,7 +8,7 @@ export default function SkillDetails() {
   const { currentUser } = useContext(SessionContext);
   const [skill, setSkill] = useState();
   const navigate = useNavigate()
-  const [upcomingEvents, setUpcomingEvents] = useState()
+  const [upcomingEvents, setUpcomingEvents] = useState([])
   const [pastEvents, setPastEvents] = useState([]);
 
   const fetchSkill = async () => {
