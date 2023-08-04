@@ -89,7 +89,7 @@ export default function AddEvent() {
        </div>
 
        <div className="mb-3">
-        <label className="form-label">Description:</label>
+        <label className="form-label">Description and event details:</label>
         <textarea className="form-control" type="text" name="description" value={newDescription} onChange={(e) => setDescription(e.target.value)} required></textarea>
        </div>
 

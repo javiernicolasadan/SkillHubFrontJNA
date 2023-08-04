@@ -31,7 +31,9 @@ return (
     {currentUser ? (
         <>
           <div className="userInfo">
-              <img src={currentUser.imageUrl}></img>
+              
+                <img className="centeredProfilePic" src={currentUser.imageUrl}></img>
+              
               <div className="userData">
                 <div>
                   <h1>{currentUser.username}</h1>
@@ -48,7 +50,7 @@ return (
             <h3>Your offered skills:</h3>
 
             <div className="grid">
-              <div className="sqcontainer" style={{ fontSize: "4rem", background: 'lightgrey', textAlign: 'center'}}>
+              <div className="sqcontainer" style={{ fontSize: "4rem", background: 'rgb(241, 241, 241)', textAlign: 'center'}}>
               <Link to={'/addskill'} style={{ color: 'black' }}>+</Link></div>
               
               {currentUser.skills.length > 0 && (

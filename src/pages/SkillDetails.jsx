@@ -79,7 +79,7 @@ export default function SkillDetails() {
         <div className={`${upcomingEvents ? "grid" : "empty-grid"}`}>
         
         {(skill.createdBy === currentUser._id) && (
-          <div className="sqcontainer" style={{ fontSize: "4rem", background: 'lightgrey', textAlign: 'center'}}>
+          <div className="sqcontainer" style={{ fontSize: "4rem", background: 'rgb(241, 241, 241)', textAlign: 'center'}}>
                 <Link to={`/addevent/${skillid}`} style={{ color: 'black' }}>+</Link>
           </div>)}
           
@@ -97,7 +97,7 @@ export default function SkillDetails() {
               </div>
             ))
           ) : (
-            <p>No events</p>
+            <p></p>
           )}
           </div>
       </div>

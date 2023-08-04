@@ -97,7 +97,7 @@ export default function EventDetails() {
         )}
       </div>
       
-          <div>
+          <div className="anonButton">
           {/* fix subscribe to events when owner */}
           {isSubscribed && <button className="transButton" onClick={() => handleSubs(oneEvent._id)}>Unsubscribe</button>}
           {!isSubscribed && <button className="transButton" onClick={() => handleSubs(oneEvent._id)}>Subscribe</button>}

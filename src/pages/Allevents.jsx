@@ -55,7 +55,9 @@ export default function Allevents() {
         </div>
 
     <div className="grid">
-      {upcomingEvents ? (
+      {upcomingEvents ? 
+      upcomingEvents.length > 0 ? 
+      (
       
           upcomingEvents.map((event) => (
             <div key={event._id} className="container">
@@ -71,7 +73,8 @@ export default function Allevents() {
             </div>
           ))
         
-      ) : (
+      ) 
+      : <p>No upcoming events to show</p>: (
         <p>Loading events...</p>
       )}
     </div>

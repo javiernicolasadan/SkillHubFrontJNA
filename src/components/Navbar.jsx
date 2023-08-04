@@ -23,7 +23,7 @@ export default function Navbar() {
         {isLoggedIn && <Link to="/profile">Profile</Link>}
         {isLoggedIn && <Link to="/allskills">Skills Venue</Link>}
         {isLoggedIn && <Link to="/allevents">Events Venue</Link>}
-        {isLoggedIn && <button onClick={logout}>Logout</button>}
+        {isLoggedIn && <button onClick={logout} className="logout">Logout</button>}
       </div>
 
     </nav>
